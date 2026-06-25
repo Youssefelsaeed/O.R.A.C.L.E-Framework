@@ -1,0 +1,112 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments and secrets
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+env/
+*.pem
+*.key
+*.crt
+secrets/
+
+# Node / GUI
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local datasets - do not upload raw data
+Workin with/
+Mutant_Sheild Module/**/Data set/
+ART - IBM/
+*.pcap
+*.pcapng
+*.parquet
+*.feather
+*.arff
+*.pcap.csv
+*.h5
+*.hdf5
+
+# Large or generated model artifacts
+models_candidate/
+models_final/
+*.pkl
+*.joblib
+*.pth
+*.pt
+*.onnx
+*.keras
+*.h5
+*.bin
+
+# Keep documentation placeholders if added later
+!**/models_final/README.md
+!**/models_candidate/README.md
+
+# Logs and temporary outputs
+*.log
+logs/
+reports/
+tmp/
+temp/
+*.tmp
+*.bak
+*.sqlite
+*.sqlite3
+*.db
+data/*.db
+data/*.jsonl
+.benchmarks/
+
+# Generated transient reports, keep final lightweight reports
+reports/final/gui_validation/logs/
+reports/**/*.tmp
+reports/**/*_sample.json
+
+# IDE and OS
+.vscode/
+.idea/
+.cursor/
+Thumbs.db
+Desktop.ini
+
+# Archives
+*.zip
+*.7z
+*.tar
+*.gz
+
+# Local development history and generated/runtime state
+Diagrams/
+data/
+keys/
+models_registry/
+modules/
+Chrono_Ledger Module/
+Ethic-Q Module/
+Ghost_Tunnel Module/
+Mutant_Sheild Module/
+Q-AuthCore Module/
+O.R.A.C.L.E/
+qauthcore_audit_fallback.jsonl
+README_RUNBOOK.md
+SRS_ORACLE_*.md
+SRS_ORACLE_WORD_OUTLINE.md
+O.R.A.C.L.E_PROJECT_DOCUMENTATION.md
+ORACLE_LIBRARIES_DOCUMENTATION.md
+IEEE829_Test_Cases_ORACLE.csv

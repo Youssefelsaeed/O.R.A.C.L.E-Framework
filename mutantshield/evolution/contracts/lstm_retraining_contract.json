@@ -1,0 +1,82 @@
+{
+  "contract_name": "lstm_retraining_contract",
+  "contract_version": "1.0",
+  "model_family": "LSTM",
+  "purpose": "Candidate-safe production-line LSTM retraining gate for MutantShield Evolution Engine.",
+  "required_input_schema": {
+    "required_columns": [
+      "sequence_id",
+      "sequence_index",
+      "timestamp",
+      "flow_id",
+      "label",
+      "is_attack",
+      "attack_family"
+    ],
+    "feature_order_source": "models_candidate/<candidate_id>/feature_schema.json or production 78-feature MutantShield schema",
+    "target_column": "is_attack",
+    "label_column": "label"
+  },
+  "temporal_sequence_format": {
+    "row_unit": "one flow timestep",
+    "group_by": "sequence_id",
+    "order_by": [
+      "sequence_index",
+      "timestamp"
+    ],
+    "minimum_sequence_length": 15,
+    "forbidden_sequence_methods": [
+      "static row duplication",
+      "random shuffling inside a sequence",
+      "mean-window surrogate pretending to be real LSTM"
+    ]
+  },
+  "required_metadata_fields": [
+    "candidate_id",
+    "model_family",
+    "contract_name",
+    "contract_version",
+    "created_at",
+    "feature_order",
+    "sequence_length",
+    "label_mapping",
+    "scaler_type",
+    "training_rows",
+    "training_sequences",
+    "validation_sequences",
+    "source_datasets",
+    "models_final_unchanged",
+    "promotion_eligible"
+  ],
+  "allowed_candidate_output_directory": "models_candidate/<candidate_id>/LSTM_Optimized/",
+  "required_output_artifacts": [
+    "lstm_candidate_model.*",
+    "lstm_candidate_weights.*",
+    "lstm_candidate_metadata.json",
+    "lstm_training_report.json"
+  ],
+  "forbidden_output_directories": [
+    "models_final/",
+    "Mutant_Sheild Module/mutantshield/src/FinalVersion/models_final/",
+    "Mutant_Sheild Module/mutantshield/src/FinalVersion/models_final/LSTM_Optimized/",
+    "Mutant_Sheild Module/mutantshield/src/FinalVersion/models_final/GNN/",
+    "Mutant_Sheild Module/mutantshield/src/FinalVersion/models_final/FusionEngine/"
+  ],
+  "validation_gates_before_training": [
+    "required columns present",
+    "production feature order available and matched",
+    "sequence groups valid",
+    "sequence order valid",
+    "minimum sequence length satisfied",
+    "labels trusted",
+    "candidate output path under models_candidate",
+    "models_final hash snapshot recorded"
+  ],
+  "rollback_safety_requirements": [
+    "candidate-only dry-run by default",
+    "write blocked or failed report on error",
+    "never promote automatically",
+    "never write models_final",
+    "do not label surrogate as real LSTM retraining"
+  ]
+}

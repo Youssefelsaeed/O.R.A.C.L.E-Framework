@@ -1,0 +1,24 @@
+# ORACLE Final Python dependencies
+fastapi
+uvicorn
+httpx
+requests
+pydantic
+pydantic-settings
+python-dotenv
+
+# Data and ML
+numpy
+pandas
+scikit-learn
+joblib
+xgboost
+torch
+tensorflow
+
+# Testing and utilities
+pytest
+tqdm
+
+# Optional adversarial validation
+adversarial-robustness-toolbox
