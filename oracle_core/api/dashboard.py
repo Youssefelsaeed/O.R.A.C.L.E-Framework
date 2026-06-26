@@ -49,6 +49,27 @@ async def dashboard_health() -> Dict[str, Any]:
     }
 
 
+@router.get("/module-status")
+async def dashboard_module_status() -> Dict[str, Any]:
+    summary = build_dashboard_summary()
+    latest = build_latest_events(limit=5)
+    return {
+        "backend_status": summary["backend_status"],
+        "modules": summary["modules"],
+        "monitoring": {
+            "live_network_capture": "NOT_ACTIVE",
+            "realtime_replay": "LAST_RUN" if any(
+                "LIVE_REPLAY" in str(event.get("data_source", "")) for event in latest.get("events", [])
+            ) else "NOT_RUN",
+            "latest_event_source": (latest.get("events") or [{}])[0].get("data_source", "REPORT"),
+            "last_trace_id": (latest.get("events") or [{}])[0].get("oracle_trace_id"),
+            "last_event_timestamp": (latest.get("events") or [{}])[0].get("timestamp"),
+            "note": "Live network capture is not active unless sensor readiness reports ready; realtime replay proof is the validated safe live proof.",
+        },
+        "latest_events": latest.get("events", []),
+    }
+
+
 @router.get("/performance")
 async def dashboard_performance() -> Dict[str, Any]:
     validation, w1 = _read_json(REPORTS_DIR / "oracle_backend_final_validation.json")
@@ -215,4 +236,69 @@ async def action_evolution_dry_run() -> Dict[str, Any]:
         "run": result,
         "evolution": evo.get("evolution"),
         "promotion_allowed": (evo.get("evolution") or {}).get("promotion_allowed"),
+    }
+
+
+@router.post("/actions/qauth-test-token")
+async def action_qauth_test_token() -> Dict[str, Any]:
+    try:
+        import httpx
+
+        async with httpx.AsyncClient(timeout=httpx.Timeout(20.0)) as client:
+            response = await client.post(
+                "http://127.0.0.1:8001/api/v1/tokens/generate",
+                json={"metadata": {"source_module": "gui_operator_qauth_test", "purpose": "safe_demo"}},
+            )
+            body = response.json()
+    except Exception as exc:
+        return {
+            "success": False,
+            "locked": False,
+            "error": str(exc),
+            "note": "QAuthCore test token endpoint could not be reached; no user management was attempted.",
+        }
+    token = body.get("token") or body.get("access_token") or body.get("qauthcore_token")
+    return {
+        "success": response.status_code < 400,
+        "status_code": response.status_code,
+        "token_preview": f"{str(token)[:12]}..." if token else None,
+        "keys": sorted(body.keys()) if isinstance(body, dict) else [],
+        "note": "Safe test token generation only; no user management or permission changes.",
+    }
+
+
+@router.post("/actions/ghosttunnel-test-transmit")
+async def action_ghosttunnel_test_transmit() -> Dict[str, Any]:
+    summary = build_dashboard_summary()
+    ghost = summary.get("ghosttunnel", {})
+    return {
+        "success": True,
+        "accepted": True,
+        "job_id": f"gui-demo-{int(asyncio.get_running_loop().time() * 1000)}",
+        "fast_ack_enabled": ghost.get("fast_ack_enabled"),
+        "jobs_completed": ghost.get("jobs_completed"),
+        "note": "Safe demo transmit acknowledgement only; no persistent tunnel was created.",
+    }
+
+
+@router.post("/actions/chronoledger-chain-verify")
+async def action_chronoledger_chain_verify() -> Dict[str, Any]:
+    try:
+        import httpx
+
+        async with httpx.AsyncClient(timeout=httpx.Timeout(20.0)) as client:
+            response = await client.get("http://127.0.0.1:8003/chain/verify")
+            body = response.json()
+    except Exception as exc:
+        return {
+            "success": False,
+            "error": str(exc),
+            "note": "Chain verify endpoint unavailable; no ledger mutation was attempted.",
+        }
+    return {
+        "success": response.status_code < 500,
+        "status_code": response.status_code,
+        "chain_status": body.get("status") or body.get("chain_status"),
+        "body": body,
+        "note": "Read-only chain verification; no ledger mutation was performed.",
     }

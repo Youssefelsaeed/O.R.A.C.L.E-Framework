@@ -158,6 +158,10 @@ export async function fetchLatestEvents() {
   return apiFetch<{ events: Record<string, unknown>[]; warnings?: string[] }>("/oracle/dashboard/latest-events");
 }
 
+export async function fetchModuleStatus() {
+  return apiFetch<Record<string, unknown>>("/oracle/dashboard/module-status");
+}
+
 export async function runHealthCheck() {
   return apiFetch<Record<string, unknown>>("/oracle/dashboard/actions/health-check", {
     method: "POST",
@@ -172,6 +176,24 @@ export async function runBackendValidation() {
 
 export async function runEvolutionDryRun() {
   return apiFetch<Record<string, unknown>>("/oracle/dashboard/actions/evolution-dry-run", {
+    method: "POST",
+  });
+}
+
+export async function runQAuthTestToken() {
+  return apiFetch<Record<string, unknown>>("/oracle/dashboard/actions/qauth-test-token", {
+    method: "POST",
+  });
+}
+
+export async function runGhostTunnelTestTransmit() {
+  return apiFetch<Record<string, unknown>>("/oracle/dashboard/actions/ghosttunnel-test-transmit", {
+    method: "POST",
+  });
+}
+
+export async function runChronoLedgerChainVerify() {
+  return apiFetch<Record<string, unknown>>("/oracle/dashboard/actions/chronoledger-chain-verify", {
     method: "POST",
   });
 }

@@ -1,10 +1,12 @@
 import { GlassCard } from "@/app/components/glass-card";
 import { BackendBanner, StatusBadge } from "@/app/components/backend-banner";
 import { ModuleModeCard } from "@/app/components/module-mode-card";
+import { DataBadge, useOperatorActionPanel } from "@/app/components/operator-action-panel";
 import { Button } from "@/app/components/ui/button";
 import { Badge } from "@/app/components/ui/badge";
 import { useDashboardSummary } from "@/app/lib/use-oracle-data";
-import { runEvolutionDryRun, SAFETY_BLOCKED_MSG } from "@/app/lib/api";
+import { fetchModuleStatus, runEvolutionDryRun } from "@/app/lib/api";
+import { useEffect, useState } from "react";
 import {
   Brain,
   Network,
@@ -94,10 +96,16 @@ const detectionHistory = [
 
 export function MutantShield() {
   const { data, offline, refresh } = useDashboardSummary();
+  const action = useOperatorActionPanel();
+  const [moduleStatus, setModuleStatus] = useState<Record<string, unknown> | null>(null);
   const evo = data?.evolution;
   const bufferCount = evo?.supervised_buffer_count;
 
-  const handleBlocked = () => alert(SAFETY_BLOCKED_MSG);
+  useEffect(() => {
+    fetchModuleStatus().then((response) => setModuleStatus(response.data));
+  }, []);
+
+  const monitoring = (moduleStatus?.monitoring || {}) as Record<string, unknown>;
 
   return (
     <div className="p-8 space-y-6">
@@ -109,11 +117,28 @@ export function MutantShield() {
           </p>
         </div>
         <div className="flex gap-3">
-          <Button variant="outline" className="border-white/10 opacity-50" onClick={handleBlocked} disabled>
+          <Button
+            variant="outline"
+            className="border-[#ff3366]/30 text-[#ff3366]"
+            onClick={() =>
+              action.showLocked(
+                "Trigger Retraining",
+                "Production retraining is blocked. Use Evolution Dry-Run / candidate-only mode.",
+                { production_models_unchanged: true, allowed_action: "POST /oracle/dashboard/actions/evolution-dry-run" },
+              )
+            }
+          >
             <Play className="size-4 mr-2" />
             Trigger Retraining
           </Button>
-          <Button className="bg-[#00d4ff] hover:bg-[#00d4ff]/90 text-black" onClick={() => runEvolutionDryRun().then(() => refresh())}>
+          <Button
+            className="bg-[#00d4ff] hover:bg-[#00d4ff]/90 text-black"
+            onClick={() => action.runAction("Run Evolution Dry-Run", async () => {
+              const result = await runEvolutionDryRun();
+              await refresh();
+              return result;
+            })}
+          >
             <TrendingUp className="size-4 mr-2" />
             Run Evolution Dry-Run
           </Button>
@@ -121,6 +146,7 @@ export function MutantShield() {
       </div>
 
       <BackendBanner offline={offline} />
+      {action.Panel}
 
       <ModuleModeCard
         title="MutantShield"
@@ -130,6 +156,23 @@ export function MutantShield() {
           "Promotion blocked until fair baseline",
         ]}
       />
+
+      <GlassCard>
+        <div className="p-5">
+          <h3 className="mb-3">Monitoring Mode <DataBadge label="LIVE/REPORT" /></h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+            <div><p className="text-gray-400 text-xs">Live Network Capture</p><p className="font-semibold">{String(monitoring.live_network_capture || "NOT_ACTIVE")}</p></div>
+            <div><p className="text-gray-400 text-xs">Realtime Replay</p><p className="font-semibold">{String(monitoring.realtime_replay || "UNKNOWN")}</p></div>
+            <div><p className="text-gray-400 text-xs">Latest Event Source</p><p className="font-semibold">{String(monitoring.latest_event_source || "REPORT")}</p></div>
+            <div><p className="text-gray-400 text-xs">Last Trace ID</p><p className="font-mono text-xs break-all">{String(monitoring.last_trace_id || "—")}</p></div>
+            <div><p className="text-gray-400 text-xs">Last Event Timestamp</p><p>{String(monitoring.last_event_timestamp || "—")}</p></div>
+            <div><p className="text-gray-400 text-xs">Next Command</p><code className="text-xs">python scripts/oracle_realtime_replay_proof.py --events 25</code></div>
+          </div>
+          <p className="text-xs text-[#fbbf24] mt-3">
+            Live network capture is not active unless live sensor readiness passes. Realtime replay proof is available and validated.
+          </p>
+        </div>
+      </GlassCard>
 
       <GlassCard glow glowColor="violet">
         <div className="p-6 space-y-4">
@@ -179,6 +222,7 @@ export function MutantShield() {
           return (
             <GlassCard key={model.name} className="hover:border-[#00d4ff]/30 transition-all">
               <div className="p-5">
+                <DataBadge label="REPORT" />
                 <div className="flex items-start justify-between mb-4">
                   <div
                     className="p-3 rounded-lg"
@@ -296,7 +340,7 @@ export function MutantShield() {
         <GlassCard>
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3>Live Anomaly Stream</h3>
+                  <h3>Live Anomaly Stream <DataBadge label="DEMO" /></h3>
               <div className="flex items-center gap-2">
                 <div className="size-2 bg-[#00ffcc] rounded-full animate-pulse" />
                 <span className="text-xs text-gray-400">Live</span>

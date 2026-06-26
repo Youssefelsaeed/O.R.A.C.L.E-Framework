@@ -1,9 +1,10 @@
 import { GlassCard } from "@/app/components/glass-card";
 import { BackendBanner } from "@/app/components/backend-banner";
 import { ModuleModeCard } from "@/app/components/module-mode-card";
+import { DataBadge, useOperatorActionPanel } from "@/app/components/operator-action-panel";
 import { Button } from "@/app/components/ui/button";
 import { useDashboardSummary } from "@/app/lib/use-oracle-data";
-import { fetchLatestEvents, SAFETY_BLOCKED_MSG } from "@/app/lib/api";
+import { fetchLatestEvents, runChronoLedgerChainVerify } from "@/app/lib/api";
 import { useEffect, useState } from "react";
 import { Input } from "@/app/components/ui/input";
 import {
@@ -84,6 +85,7 @@ const recentEvents = [
 
 export function ChronoLedger() {
   const { data, offline } = useDashboardSummary();
+  const action = useOperatorActionPanel();
   const chrono = data?.chronoledger_evidence;
   const [events, setEvents] = useState<Record<string, unknown>[]>([]);
 
@@ -100,13 +102,18 @@ export function ChronoLedger() {
             Immutable audit trail — integrity-trusted, label-trust requires human review
           </p>
         </div>
-        <Button variant="outline" className="border-white/10 opacity-50" onClick={() => alert(SAFETY_BLOCKED_MSG)} disabled>
+        <Button
+          variant="outline"
+          className="border-white/10"
+          onClick={() => action.showLocked("Export", "ChronoLedger export is restricted in final demo mode. Use latest evidence view or backend reports.", { locked: true })}
+        >
           <Download className="size-4 mr-2" />
           Export (restricted)
         </Button>
       </div>
 
       <BackendBanner offline={offline} />
+      {action.Panel}
       <ModuleModeCard
         title="ChronoLedger"
         lines={[
@@ -115,28 +122,40 @@ export function ChronoLedger() {
         ]}
       />
 
+      <div className="flex gap-2">
+        <Button variant="outline" className="border-white/10" onClick={() => action.runAction("Chain Verify", runChronoLedgerChainVerify)}>
+          Chain Verify
+        </Button>
+        <Button variant="outline" className="border-white/10" onClick={() => fetchLatestEvents().then((r) => action.showLocked("View Latest Evidence/Events", "Latest evidence loaded from safe dashboard endpoint.", r.data))}>
+          View Latest Evidence/Events
+        </Button>
+        <Button variant="outline" className="border-[#ff3366]/30 text-[#ff3366]" onClick={() => action.showLocked("Append Test Event", "Append test event is locked from GUI to avoid mutating audit history during demo.", { allowed_read_only: ["Chain Verify", "Latest Events"] })}>
+          Append Test Event
+        </Button>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <GlassCard>
           <div className="p-5">
-            <p className="text-xs text-gray-400 uppercase mb-2">Evidence Count</p>
+            <p className="text-xs text-gray-400 uppercase mb-2">Evidence Count <DataBadge label="REPORT" /></p>
             <p className="text-2xl font-semibold text-[#00d4ff]">{chrono?.total_events ?? "—"}</p>
           </div>
         </GlassCard>
         <GlassCard>
           <div className="p-5">
-            <p className="text-xs text-gray-400 uppercase mb-2">False Positive Candidates</p>
+            <p className="text-xs text-gray-400 uppercase mb-2">False Positive Candidates <DataBadge label="REPORT" /></p>
             <p className="text-2xl font-semibold text-[#fbbf24]">{chrono?.false_positive_candidate ?? "—"}</p>
           </div>
         </GlassCard>
         <GlassCard>
           <div className="p-5">
-            <p className="text-xs text-gray-400 uppercase mb-2">Outlier Candidates</p>
+            <p className="text-xs text-gray-400 uppercase mb-2">Outlier Candidates <DataBadge label="REPORT" /></p>
             <p className="text-2xl font-semibold text-[#a855f7]">{chrono?.outlier_candidate ?? "—"}</p>
           </div>
         </GlassCard>
         <GlassCard>
           <div className="p-5">
-            <p className="text-xs text-gray-400 uppercase mb-2">Unverified</p>
+            <p className="text-xs text-gray-400 uppercase mb-2">Unverified <DataBadge label="REPORT" /></p>
             <p className="text-2xl font-semibold text-[#ff3366]">{chrono?.unverified_count ?? "—"}</p>
           </div>
         </GlassCard>
@@ -145,7 +164,7 @@ export function ChronoLedger() {
       {events.length > 0 && (
         <GlassCard>
           <div className="p-6">
-            <h3 className="mb-4">Latest Evidence Events (from reports)</h3>
+            <h3 className="mb-4">Latest Evidence Events <DataBadge label="LIVE/REPORT" /></h3>
             <div className="space-y-2 max-h-64 overflow-y-auto">
               {events.slice(0, 10).map((e, i) => (
                 <div key={i} className="p-3 rounded-lg bg-white/5 border border-white/10 text-xs">
@@ -181,7 +200,7 @@ export function ChronoLedger() {
       {/* Blockchain Explorer Table */}
       <GlassCard>
         <div className="p-6">
-          <h3 className="mb-4">Blockchain Log Blocks</h3>
+          <h3 className="mb-4">Blockchain Log Blocks <DataBadge label="DEMO" /></h3>
           <div className="border border-white/10 rounded-lg overflow-hidden">
             <Table>
               <TableHeader>
@@ -250,10 +269,10 @@ export function ChronoLedger() {
       <GlassCard>
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3>Recent Event Stream</h3>
+            <h3>Recent Event Stream <DataBadge label="DEMO" /></h3>
             <div className="flex items-center gap-2">
               <div className="size-2 bg-[#00ffcc] rounded-full animate-pulse" />
-              <span className="text-xs text-gray-400">Live</span>
+              <span className="text-xs text-gray-400">Demo</span>
             </div>
           </div>
 
@@ -287,7 +306,7 @@ export function ChronoLedger() {
       {/* Chain Visualization */}
       <GlassCard>
         <div className="p-6">
-          <h3 className="mb-6">Block Chain Visualization</h3>
+          <h3 className="mb-6">Block Chain Visualization <DataBadge label="DEMO" /></h3>
           <div className="flex items-center justify-center gap-4 overflow-x-auto pb-4">
             {blockchainBlocks.slice(0, 5).reverse().map((block, idx) => (
               <div key={block.blockId} className="flex items-center">

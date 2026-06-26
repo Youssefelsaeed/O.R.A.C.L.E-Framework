@@ -19,6 +19,7 @@ import {
 import { useState } from "react";
 import { SAFETY_BLOCKED_MSG } from "@/app/lib/api";
 import { Lock } from "lucide-react";
+import { useOperatorActionPanel } from "@/app/components/operator-action-panel";
 
 const apiKeys = [
   {
@@ -53,6 +54,7 @@ const userRoles = [
 
 export function SettingsPage() {
   const [showKeys, setShowKeys] = useState<{ [key: string]: boolean }>({});
+  const action = useOperatorActionPanel();
 
   const toggleKeyVisibility = (keyName: string) => {
     setShowKeys((prev) => ({ ...prev, [keyName]: !prev[keyName] }));
@@ -93,7 +95,8 @@ export function SettingsPage() {
             ].map((control) => (
               <div
                 key={control}
-                className="flex items-center justify-between p-4 rounded-lg bg-white/5 border border-[#ff3366]/20 opacity-60"
+                className="flex items-center justify-between p-4 rounded-lg bg-white/5 border border-[#ff3366]/20 cursor-pointer"
+                onClick={() => action.showLocked(control, SAFETY_BLOCKED_MSG, { control, locked: true, production_models_unchanged: true })}
               >
                 <span className="text-sm">{control}</span>
                 <span className="text-xs text-[#ff3366]">{SAFETY_BLOCKED_MSG}</span>
@@ -102,6 +105,8 @@ export function SettingsPage() {
           </div>
         </div>
       </GlassCard>
+
+      {action.Panel}
 
       {/* API Key Management */}
       <GlassCard>

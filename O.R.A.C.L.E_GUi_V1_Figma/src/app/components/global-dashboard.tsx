@@ -236,6 +236,14 @@ export function GlobalDashboard() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
             <div className="p-3 rounded-lg bg-white/5 border border-white/10">
+              <p className="text-xs text-gray-400">Live Network Capture</p>
+              <p className="text-sm font-semibold text-[#fbbf24]">NOT ACTIVE</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/5 border border-white/10">
+              <p className="text-xs text-gray-400">Realtime Replay</p>
+              <p className="text-sm font-semibold text-[#00ffcc]">{liveReplayEvents.length > 0 ? "LAST RUN" : "NOT RUN"}</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/5 border border-white/10">
               <p className="text-xs text-gray-400">Latest event count</p>
               <p className="text-xl font-semibold text-[#00ffcc]">{events.length}</p>
             </div>
@@ -261,6 +269,9 @@ export function GlobalDashboard() {
               No LIVE_REPLAY events visible yet. Run: <code>python scripts/oracle_realtime_replay_proof.py --events 25</code>
             </div>
           )}
+          <div className="px-4 py-3 rounded-lg bg-[#fbbf24]/10 border border-[#fbbf24]/30 text-xs text-[#fbbf24]">
+            Packet Capture Dependency: Scapy/Npcap/admin rights required on Windows. Live network capture is not active by default. Next command: <code>python scripts/oracle_live_sensor_smoke_test.py</code> or <code>python scripts/oracle_realtime_replay_proof.py --events 25</code>.
+          </div>
         </div>
       </GlassCard>
 

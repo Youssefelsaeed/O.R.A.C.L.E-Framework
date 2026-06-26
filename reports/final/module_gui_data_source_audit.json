@@ -1,0 +1,49 @@
+{
+  "phase": "12.15",
+  "status": "PASS",
+  "generated_by": "manual_source_audit",
+  "pages": {
+    "dashboard": {
+      "labels": ["LIVE", "REPORT DATA", "DEMO VISUAL", "LIVE/REPORT"],
+      "monitoring_truth": "Live network capture is not active by default; realtime replay proof is validated."
+    },
+    "mutantshield": {
+      "labels": ["LIVE/REPORT", "REPORT", "DEMO", "LOCKED"],
+      "safe_actions": ["Run Evolution Dry-Run"],
+      "locked_actions": ["Trigger Retraining"]
+    },
+    "evolution_engine": {
+      "labels": ["LIVE/CONFIG", "REPORT", "LIVE SAFETY POLICY"],
+      "safe_actions": ["Run Evolution Dry-Run"],
+      "locked_actions": ["Promote Candidate"]
+    },
+    "qauthcore": {
+      "labels": ["LIVE", "REPORT", "DEMO", "LOCKED"],
+      "safe_actions": ["Health Check", "Generate Test Token", "View Capability Report"],
+      "locked_actions": ["Manage Users"]
+    },
+    "ethicq": {
+      "labels": ["LIVE", "REPORT", "DEMO", "LOCKED"],
+      "safe_actions": ["Run Health Check", "View Rationality Matrix"],
+      "locked_actions": ["Edit Rules"]
+    },
+    "ghosttunnel": {
+      "labels": ["LIVE/REPORT", "REPORT", "DEMO", "LOCKED"],
+      "safe_actions": ["Demo Transmit Test"],
+      "locked_actions": ["Create Persistent Tunnel"]
+    },
+    "chronoledger": {
+      "labels": ["LIVE/REPORT", "REPORT", "DEMO", "LOCKED"],
+      "safe_actions": ["Chain Verify", "View Latest Evidence/Events"],
+      "locked_actions": ["Append Test Event", "Export"]
+    },
+    "settings": {
+      "labels": ["LOCKED"],
+      "safe_actions": [],
+      "locked_actions": ["Dangerous safety controls"]
+    }
+  },
+  "no_mock_numbers_without_label": true,
+  "no_silent_noop_buttons": true,
+  "models_final_policy": "unchanged"
+}

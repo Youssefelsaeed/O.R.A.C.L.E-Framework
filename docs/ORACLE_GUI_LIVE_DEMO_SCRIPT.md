@@ -87,6 +87,9 @@ No dashboard section should silently show mock data.
 ```powershell
 python scripts/test_dashboard_action_endpoints.py
 python scripts/test_gui_operator_console_live.py
+python scripts/check_live_sensor_readiness.py
+python scripts/test_module_gui_actions.py
+python scripts/test_module_pages_operator_ui.py
 ```
 
 Build the GUI:
@@ -102,3 +105,19 @@ npm run build
 - If the latest events table is empty, run `python scripts/oracle_realtime_replay_proof.py --events 25`.
 - If buttons appear to do nothing, check the `Action Result` panel for HTTP errors.
 - If report links fail, verify `http://127.0.0.1:8000/oracle/dashboard/reports`.
+
+## 7. Module Operator Actions
+
+Dashboard actions are live. Module actions are either live-safe or locked with a visible safety reason:
+
+- MutantShield `Run Evolution Dry-Run`: safe backend dry-run; no promotion.
+- MutantShield `Trigger Retraining`: locked; use candidate-only dry-run.
+- Evolution Engine `Run Evolution Dry-Run`: safe backend dry-run.
+- Evolution Engine `Promote Candidate`: locked by ORACLE safety policy.
+- QAuthCore `Manage Users`: locked future admin feature; health check and test token actions are available.
+- EthicQ `Edit Rules`: locked; policy edits require reviewed config updates.
+- GhostTunnel `Create New Tunnel`: safe demo transmit acknowledgement only; no persistent tunnel.
+- ChronoLedger actions: read-only chain verify/latest evidence; append/export locked from GUI.
+- Settings dangerous controls: locked with visible safety reason.
+
+Live network capture requires Scapy, Npcap on Windows, and sufficient permissions. If these are unavailable, the GUI must not claim live capture is active. Realtime replay is the validated safe live proof.

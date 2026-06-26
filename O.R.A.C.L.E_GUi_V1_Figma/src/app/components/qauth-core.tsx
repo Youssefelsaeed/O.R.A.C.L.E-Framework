@@ -1,9 +1,11 @@
 import { GlassCard } from "@/app/components/glass-card";
 import { BackendBanner, StatusBadge } from "@/app/components/backend-banner";
 import { ModuleModeCard } from "@/app/components/module-mode-card";
+import { DataBadge, useOperatorActionPanel } from "@/app/components/operator-action-panel";
 import { Button } from "@/app/components/ui/button";
 import { Badge } from "@/app/components/ui/badge";
 import { useDashboardSummary } from "@/app/lib/use-oracle-data";
+import { runHealthCheck, runQAuthTestToken } from "@/app/lib/api";
 import { Lock, Key, Shield, Users, Activity, CheckCircle2, AlertTriangle } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
@@ -50,12 +52,14 @@ const recentAuth = [
 
 export function QAuthCore() {
   const { data, offline } = useDashboardSummary();
+  const action = useOperatorActionPanel();
   const assurance = data?.assurance;
   const moduleOk = data?.modules?.qauthcore;
 
   return (
     <div className="p-8 space-y-6">
       <BackendBanner offline={offline} />
+      {action.Panel}
       <ModuleModeCard
         title="QAuthCore"
         lines={["Entropy: local hot path + deferred quantum assurance"]}
@@ -75,10 +79,35 @@ export function QAuthCore() {
             Quantum-resistant authentication and access control
           </p>
         </div>
-        <Button className="bg-[#00d4ff] hover:bg-[#00d4ff]/90 text-black">
+        <Button
+          className="bg-[#00d4ff] hover:bg-[#00d4ff]/90 text-black"
+          onClick={() =>
+            action.showLocked(
+              "Manage Users",
+              "QAuthCore user management is a future admin feature. Current validated capabilities: token generation, verification, and assurance.",
+              {
+                health_check: "POST /oracle/dashboard/actions/health-check",
+                safe_test_token: "POST /oracle/dashboard/actions/qauth-test-token",
+                capability_report: "/oracle/dashboard/reports/backend_validation",
+              },
+            )
+          }
+        >
           <Users className="size-4 mr-2" />
           Manage Users
         </Button>
+      </div>
+
+      <div className="flex gap-2">
+        <Button variant="outline" className="border-white/10" onClick={() => action.runAction("QAuthCore Health Check", runHealthCheck)}>
+          Health Check
+        </Button>
+        <Button variant="outline" className="border-white/10" onClick={() => action.runAction("Generate Test Token", runQAuthTestToken)}>
+          Generate Test Token
+        </Button>
+        <a href="http://127.0.0.1:8000/oracle/dashboard/reports/backend_validation" target="_blank" rel="noreferrer">
+          <Button variant="outline" className="border-white/10">View Capability Report</Button>
+        </a>
       </div>
 
       {/* Stats Overview */}
@@ -86,7 +115,7 @@ export function QAuthCore() {
         <GlassCard glow glowColor="teal">
           <div className="p-5">
             <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-              Active Sessions
+              Active Sessions <DataBadge label="DEMO" />
             </p>
             <p className="text-2xl font-semibold text-[#00ffcc]">42</p>
             <p className="text-xs text-gray-500 mt-1">Across all systems</p>
@@ -96,7 +125,7 @@ export function QAuthCore() {
         <GlassCard>
           <div className="p-5">
             <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-              Auth Success Rate
+              Auth Success Rate <DataBadge label="REPORT" />
             </p>
             <p className="text-2xl font-semibold text-[#00d4ff]">98.7%</p>
             <p className="text-xs text-gray-500 mt-1">Last 24 hours</p>
@@ -106,7 +135,7 @@ export function QAuthCore() {
         <GlassCard>
           <div className="p-5">
             <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-              Failed Attempts
+              Failed Attempts <DataBadge label="DEMO" />
             </p>
             <p className="text-2xl font-semibold text-[#ff3366]">23</p>
             <p className="text-xs text-gray-500 mt-1">Suspicious: 5</p>
@@ -116,7 +145,7 @@ export function QAuthCore() {
         <GlassCard>
           <div className="p-5">
             <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-              Registered Users
+              Registered Users <DataBadge label="DEMO" />
             </p>
             <p className="text-2xl font-semibold text-[#a855f7]">187</p>
             <p className="text-xs text-gray-500 mt-1">+3 this week</p>
@@ -127,7 +156,7 @@ export function QAuthCore() {
       {/* Authentication Methods */}
       <GlassCard>
         <div className="p-6">
-          <h3 className="mb-4">Authentication Methods</h3>
+          <h3 className="mb-4">Authentication Methods <DataBadge label="REPORT" /></h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {authMethods.map((method) => {
               const Icon = method.icon;
@@ -228,10 +257,10 @@ export function QAuthCore() {
         <GlassCard className="lg:col-span-2">
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3>Recent Authentication Events</h3>
+              <h3>Recent Authentication Events <DataBadge label="DEMO" /></h3>
               <div className="flex items-center gap-2">
                 <div className="size-2 bg-[#00ffcc] rounded-full animate-pulse" />
-                <span className="text-xs text-gray-400">Live</span>
+                <span className="text-xs text-gray-400">Demo</span>
               </div>
             </div>
 

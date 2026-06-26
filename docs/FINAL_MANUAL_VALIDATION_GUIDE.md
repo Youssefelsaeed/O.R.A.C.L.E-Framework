@@ -73,11 +73,23 @@ Run:
 
 ```powershell
 python scripts/oracle_operator_final_validation.py
+python scripts/check_live_sensor_readiness.py
+python scripts/test_module_gui_actions.py
+python scripts/test_module_pages_operator_ui.py
 python scripts/oracle_live_sensor_smoke_test.py
 python scripts/oracle_realtime_replay_proof.py --events 100
 ```
 
 The live sensor smoke test attempts limited packet capture. If packet capture permissions, Scapy, or Npcap are unavailable, it reports the blocked reason and uses realtime replay proof as a safe fallback.
+
+Confirm the GUI monitoring mode is truthful:
+
+- `Live Network Capture`: `ACTIVE` only if sensor readiness passes and live capture is running.
+- `Realtime Replay`: `LAST RUN` or `ACTIVE` after `oracle_realtime_replay_proof.py`.
+- `Latest Event Source`: `LIVE_REPLAY`, `LIVE_SENSOR`, or `REPORT`.
+- If Scapy/Npcap/admin permissions are unavailable, the GUI must say live network capture is not active.
+
+Module-page buttons must never silently do nothing. They either run a safe backend action or open a visible locked/safety action result explaining why destructive behavior is blocked.
 
 ## 7. Capture Screenshots
 

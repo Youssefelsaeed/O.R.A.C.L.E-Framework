@@ -1,9 +1,11 @@
 import { GlassCard } from "@/app/components/glass-card";
 import { BackendBanner, StatusBadge } from "@/app/components/backend-banner";
 import { ModuleModeCard } from "@/app/components/module-mode-card";
+import { DataBadge, useOperatorActionPanel } from "@/app/components/operator-action-panel";
 import { Button } from "@/app/components/ui/button";
 import { Badge } from "@/app/components/ui/badge";
 import { useDashboardSummary } from "@/app/lib/use-oracle-data";
+import { runGhostTunnelTestTransmit } from "@/app/lib/api";
 import { Radio, Signal, Lock, Activity, Globe, Zap } from "lucide-react";
 
 const tunnels = [
@@ -22,12 +24,14 @@ const communicationLog = [
 
 export function GhostTunnel() {
   const { data, offline } = useDashboardSummary();
+  const action = useOperatorActionPanel();
   const ghost = data?.ghosttunnel;
   const assurance = data?.assurance;
 
   return (
     <div className="p-8 space-y-6">
       <BackendBanner offline={offline} />
+      {action.Panel}
       <ModuleModeCard
         title="GhostTunnel"
         lines={[
@@ -42,7 +46,10 @@ export function GhostTunnel() {
             Fast-ack: {ghost?.fast_ack_enabled ? "enabled" : "disabled"} • Async assurance: {assurance?.async_assurance_enabled ? "ON" : "OFF"}
           </p>
         </div>
-        <Button className="bg-[#00d4ff] hover:bg-[#00d4ff]/90 text-black">
+        <Button
+          className="bg-[#00d4ff] hover:bg-[#00d4ff]/90 text-black"
+          onClick={() => action.runAction("Demo Transmit Test", runGhostTunnelTestTransmit)}
+        >
           <Zap className="size-4 mr-2" />
           Create New Tunnel
         </Button>
@@ -51,25 +58,25 @@ export function GhostTunnel() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <GlassCard>
           <div className="p-5">
-            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Jobs Completed</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Jobs Completed <DataBadge label="LIVE/REPORT" /></p>
             <p className="text-2xl font-semibold text-[#00ffcc]">{ghost?.jobs_completed ?? "—"}</p>
           </div>
         </GlassCard>
         <GlassCard>
           <div className="p-5">
-            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Jobs Pending</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Jobs Pending <DataBadge label="LIVE/REPORT" /></p>
             <p className="text-2xl font-semibold text-[#fbbf24]">{ghost?.jobs_pending ?? "—"}</p>
           </div>
         </GlassCard>
         <GlassCard>
           <div className="p-5">
-            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Jobs Failed</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Jobs Failed <DataBadge label="LIVE/REPORT" /></p>
             <p className="text-2xl font-semibold text-[#ff3366]">{ghost?.jobs_failed ?? "—"}</p>
           </div>
         </GlassCard>
         <GlassCard>
           <div className="p-5">
-            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Avg Latency</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Avg Latency <DataBadge label="REPORT" /></p>
             <p className="text-2xl font-semibold text-[#00d4ff]">
               {ghost?.ghosttunnel_avg_ms != null ? `${ghost.ghosttunnel_avg_ms.toFixed(1)}ms` : "—"}
             </p>
@@ -124,7 +131,7 @@ export function GhostTunnel() {
       {/* Active Tunnels */}
       <GlassCard>
         <div className="p-6">
-          <h3 className="mb-4">Active Communication Tunnels</h3>
+          <h3 className="mb-4">Active Communication Tunnels <DataBadge label="DEMO" /></h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {tunnels.map((tunnel) => {
               const statusConfig = {
@@ -183,10 +190,10 @@ export function GhostTunnel() {
       <GlassCard>
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3>Recent Communications</h3>
+            <h3>Recent Communications <DataBadge label="DEMO" /></h3>
             <div className="flex items-center gap-2">
               <div className="size-2 bg-[#00ffcc] rounded-full animate-pulse" />
-              <span className="text-xs text-gray-400">Live</span>
+              <span className="text-xs text-gray-400">Demo</span>
             </div>
           </div>
 
@@ -223,7 +230,7 @@ export function GhostTunnel() {
       {/* Network Topology */}
       <GlassCard>
         <div className="p-6">
-          <h3 className="mb-6">Network Topology</h3>
+          <h3 className="mb-6">Network Topology <DataBadge label="DEMO" /></h3>
           <div className="flex items-center justify-center min-h-[300px]">
             <div className="relative">
               {/* Central HQ */}

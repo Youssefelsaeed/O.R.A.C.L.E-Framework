@@ -2,8 +2,10 @@ import { useState } from "react";
 import { GlassCard } from "@/app/components/glass-card";
 import { BackendBanner, StatusBadge } from "@/app/components/backend-banner";
 import { ModuleModeCard } from "@/app/components/module-mode-card";
+import { DataBadge, useOperatorActionPanel } from "@/app/components/operator-action-panel";
 import { Button } from "@/app/components/ui/button";
 import { useDashboardSummary } from "@/app/lib/use-oracle-data";
+import { runHealthCheck } from "@/app/lib/api";
 import { Badge } from "@/app/components/ui/badge";
 import { Textarea } from "@/app/components/ui/textarea";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/app/components/ui/dialog";
@@ -98,12 +100,14 @@ const recentDecisions = [
 export function EthicQ() {
   const [overrideDialogOpen, setOverrideDialogOpen] = useState(false);
   const { data, offline } = useDashboardSummary();
+  const action = useOperatorActionPanel();
   const assurance = data?.assurance;
   const moduleOk = data?.modules?.ethicq;
 
   return (
     <div className="p-8 space-y-6">
       <BackendBanner offline={offline} />
+      {action.Panel}
       <ModuleModeCard title="EthicQ" lines={["Provenance: cached hot path + async reconciliation"]} />
       <GlassCard>
         <div className="p-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
@@ -121,10 +125,32 @@ export function EthicQ() {
             Ethical decision engine ensuring responsible AI operations
           </p>
         </div>
-        <Button className="bg-[#a855f7] hover:bg-[#a855f7]/90 text-white">
+        <Button
+          className="bg-[#a855f7] hover:bg-[#a855f7]/90 text-white"
+          onClick={() =>
+            action.showLocked(
+              "Edit Rules",
+              "EthicQ rule editing is locked in final demo mode. Policy changes require reviewed config update.",
+              {
+                locked: true,
+                view_rationality_matrix: "/oracle/dashboard/reports/backend_validation",
+                health_check: "POST /oracle/dashboard/actions/health-check",
+              },
+            )
+          }
+        >
           <Edit3 className="size-4 mr-2" />
           Edit Rules
         </Button>
+      </div>
+
+      <div className="flex gap-2">
+        <Button variant="outline" className="border-white/10" onClick={() => action.runAction("EthicQ Health Check", runHealthCheck)}>
+          Run Health Check
+        </Button>
+        <a href="http://127.0.0.1:8000/oracle/dashboard/reports/backend_validation" target="_blank" rel="noreferrer">
+          <Button variant="outline" className="border-white/10">View Rationality Matrix</Button>
+        </a>
       </div>
 
       {/* Compliance Overview */}
@@ -132,7 +158,7 @@ export function EthicQ() {
         <GlassCard glow glowColor="teal">
           <div className="p-5">
             <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-              Compliance Score
+              Compliance Score <DataBadge label="REPORT" />
             </p>
             <p className="text-2xl font-semibold text-[#00ffcc]">99.2%</p>
             <p className="text-xs text-gray-500 mt-1">Excellent standing</p>
@@ -142,7 +168,7 @@ export function EthicQ() {
         <GlassCard>
           <div className="p-5">
             <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-              Active Rules
+              Active Rules <DataBadge label="REPORT" />
             </p>
             <p className="text-2xl font-semibold text-[#00d4ff]">
               {ethicsRules.length}
@@ -154,7 +180,7 @@ export function EthicQ() {
         <GlassCard>
           <div className="p-5">
             <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-              Decisions Today
+              Decisions Today <DataBadge label="DEMO" />
             </p>
             <p className="text-2xl font-semibold text-[#a855f7]">1,029</p>
             <p className="text-xs text-gray-500 mt-1">+12% from yesterday</p>
@@ -164,7 +190,7 @@ export function EthicQ() {
         <GlassCard>
           <div className="p-5">
             <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-              Violations
+              Violations <DataBadge label="REPORT" />
             </p>
             <p className="text-2xl font-semibold text-[#fbbf24]">3</p>
             <p className="text-xs text-gray-500 mt-1">Reviewed & resolved</p>
@@ -175,7 +201,7 @@ export function EthicQ() {
       {/* Ethics Rules Panel */}
       <GlassCard>
         <div className="p-6">
-          <h3 className="mb-4">Active Ethics Rules</h3>
+          <h3 className="mb-4">Active Ethics Rules <DataBadge label="REPORT" /></h3>
           <div className="space-y-3">
             {ethicsRules.map((rule) => (
               <div
@@ -228,7 +254,7 @@ export function EthicQ() {
       {/* Decision Explanation Viewer */}
       <GlassCard>
         <div className="p-6">
-          <h3 className="mb-4">Recent Ethical Decisions</h3>
+          <h3 className="mb-4">Recent Ethical Decisions <DataBadge label="DEMO" /></h3>
           <div className="space-y-3">
             {recentDecisions.map((decision, idx) => {
               const verdictConfig = {

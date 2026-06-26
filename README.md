@@ -120,6 +120,9 @@ GUI live demo validation:
 ```powershell
 python scripts/test_dashboard_action_endpoints.py
 python scripts/test_gui_operator_console_live.py
+python scripts/check_live_sensor_readiness.py
+python scripts/test_module_gui_actions.py
+python scripts/test_module_pages_operator_ui.py
 ```
 
 The live dashboard demo flow is documented in `docs/ORACLE_GUI_LIVE_DEMO_SCRIPT.md`.
@@ -147,7 +150,9 @@ Current validated framework status:
 
 Summary metrics are documented in `docs/TESTING_AND_VALIDATION.md` and `docs/MODULE_CAPABILITIES.md`.
 
-GUI data source labels are documented in `docs/GUI_DATA_SOURCES.md`. The dashboard marks values as `LIVE`, `REPORT`, `DEMO`, `LIVE/CONFIG`, or `LIVE SAFETY POLICY`.
+GUI data source labels are documented in `docs/GUI_DATA_SOURCES.md`. Dashboard and module pages mark values as `LIVE`, `REPORT`, `DEMO`, `LOCKED`, `LIVE/CONFIG`, or `LIVE SAFETY POLICY`.
+
+Dashboard actions are live. Module actions are either live-safe or locked with a visible safety reason. Live network capture requires Scapy/Npcap/admin rights; realtime replay is the validated safe live proof when packet capture is unavailable.
 
 ## Operator Dashboard Preview
 
