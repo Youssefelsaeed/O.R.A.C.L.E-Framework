@@ -189,7 +189,11 @@ export function ChronoLedger() {
                 className="pl-10 bg-white/5 border-white/10"
               />
             </div>
-            <Button variant="outline" className="border-white/10">
+            <Button
+              variant="outline"
+              className="border-white/10"
+              onClick={() => action.showLocked("Filters", "ChronoLedger filters are visual-only in this final demo. Use latest evidence/events endpoint for live evidence review.", { data_source: "DEMO", endpoint: "/oracle/dashboard/latest-events" })}
+            >
               <Filter className="size-4 mr-2" />
               Filters
             </Button>
@@ -253,6 +257,7 @@ export function ChronoLedger() {
                         variant="ghost"
                         size="sm"
                         className="text-[#00d4ff] hover:text-[#00d4ff]/80"
+                        onClick={() => action.showLocked(`Block ${block.blockId}`, "Blockchain block rows are demo visualization entries. Use Chain Verify for read-only live verification.", { data_source: "DEMO", safe_action: "Chain Verify" })}
                       >
                         <Link2 className="size-4" />
                       </Button>

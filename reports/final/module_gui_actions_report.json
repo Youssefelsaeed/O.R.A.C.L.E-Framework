@@ -1,10 +1,10 @@
 {
-  "generated_at": 1782512368.6283524,
+  "generated_at": 1782512620.9136965,
   "backend_actions": {
     "health_check": {
       "success": true,
       "status_code": 200,
-      "latency_ms": 17.73,
+      "latency_ms": 23.18,
       "keys": [
         "health"
       ],
@@ -13,7 +13,7 @@
     "evolution_dry_run": {
       "success": true,
       "status_code": 200,
-      "latency_ms": 14809.02,
+      "latency_ms": 16492.85,
       "keys": [
         "evolution",
         "promotion_allowed",
@@ -26,7 +26,7 @@
     "qauth_test_token": {
       "success": true,
       "status_code": 200,
-      "latency_ms": 423.08,
+      "latency_ms": 416.61,
       "keys": [
         "keys",
         "note",
@@ -43,7 +43,7 @@
     "ghosttunnel_test_transmit": {
       "success": true,
       "status_code": 200,
-      "latency_ms": 16.35,
+      "latency_ms": 16.62,
       "keys": [
         "accepted",
         "fast_ack_enabled",
@@ -56,13 +56,13 @@
         "success": true,
         "note": "Safe demo transmit acknowledgement only; no persistent tunnel was created.",
         "accepted": true,
-        "job_id": "gui-demo-929909781"
+        "job_id": "gui-demo-930162125"
       }
     },
     "chronoledger_chain_verify": {
       "success": true,
       "status_code": 200,
-      "latency_ms": 471.05,
+      "latency_ms": 400.15,
       "keys": [
         "body",
         "chain_status",
@@ -79,7 +79,7 @@
     "backend_validation": {
       "success": true,
       "status_code": 200,
-      "latency_ms": 1648.97,
+      "latency_ms": 1668.71,
       "keys": [
         "audit_logged",
         "backend_status",

@@ -118,7 +118,12 @@ export function SettingsPage() {
                 Manage API keys for programmatic access to O.R.A.C.L.E.
               </p>
             </div>
-            <Button className="bg-[#00d4ff]/40 text-black cursor-not-allowed" disabled title={SAFETY_BLOCKED_MSG}>
+            <Button
+              className="bg-[#00d4ff]/40 text-black cursor-not-allowed"
+              title={SAFETY_BLOCKED_MSG}
+              aria-disabled="true"
+              onClick={() => action.showLocked("Generate New Key", SAFETY_BLOCKED_MSG, { locked: true, no_secret_created: true })}
+            >
               <Key className="size-4 mr-2" />
               Generate New Key
             </Button>
@@ -165,8 +170,9 @@ export function SettingsPage() {
                         variant="ghost"
                         size="sm"
                         className="text-gray-400 hover:text-white"
-                        disabled
                         title={SAFETY_BLOCKED_MSG}
+                        aria-disabled="true"
+                        onClick={() => action.showLocked(`Copy API Key: ${apiKey.name}`, SAFETY_BLOCKED_MSG, { locked: true, no_secret_exposed: true })}
                       >
                         <Copy className="size-4" />
                       </Button>
@@ -182,8 +188,9 @@ export function SettingsPage() {
                       variant="ghost"
                       size="sm"
                       className="text-[#00d4ff] hover:text-[#00d4ff]/80"
-                      disabled
                       title={SAFETY_BLOCKED_MSG}
+                      aria-disabled="true"
+                      onClick={() => action.showLocked(`Rotate API Key: ${apiKey.name}`, SAFETY_BLOCKED_MSG, { locked: true, no_secret_rotated: true })}
                     >
                       <RefreshCw className="size-4" />
                     </Button>
@@ -191,8 +198,9 @@ export function SettingsPage() {
                       variant="ghost"
                       size="sm"
                       className="text-[#ff3366] hover:text-[#ff3366]/80"
-                      disabled
                       title={SAFETY_BLOCKED_MSG}
+                      aria-disabled="true"
+                      onClick={() => action.showLocked(`Revoke API Key: ${apiKey.name}`, SAFETY_BLOCKED_MSG, { locked: true, no_secret_revoked: true })}
                     >
                       Revoke
                     </Button>
@@ -241,8 +249,9 @@ export function SettingsPage() {
                       variant="outline"
                       size="sm"
                       className="w-full border-white/10"
-                      disabled
                       title={SAFETY_BLOCKED_MSG}
+                      aria-disabled="true"
+                      onClick={() => action.showLocked(`Configure ${integration.name}`, "External SIEM/SOAR/EDR configuration is documented as future integration only. No connector is enabled in this release.", { locked: true })}
                     >
                       Configure
                     </Button>
@@ -251,8 +260,9 @@ export function SettingsPage() {
                       variant="outline"
                       size="sm"
                       className="w-full border-[#00d4ff]/30 text-[#00d4ff]"
-                      disabled
                       title={SAFETY_BLOCKED_MSG}
+                      aria-disabled="true"
+                      onClick={() => action.showLocked(`${integration.name} Future Integration`, "Future SIEM/SOAR/EDR integrations are documentation-only in this release. No external service is contacted.", { locked: true })}
                     >
                       Future Integration
                     </Button>
@@ -274,7 +284,11 @@ export function SettingsPage() {
                 Configure how alerts are distributed to different teams
               </p>
             </div>
-            <Button variant="outline" className="border-white/10">
+            <Button
+              variant="outline"
+              className="border-white/10"
+              onClick={() => action.showLocked("Add Alert Routing Rule", "Alert routing edits are locked in final demo mode. Use reviewed configuration updates for production routing.", { locked: true })}
+            >
               <Bell className="size-4 mr-2" />
               Add Rule
             </Button>
@@ -324,7 +338,12 @@ export function SettingsPage() {
                     <p className="text-xs text-gray-400">{rule.method}</p>
                   </div>
                 </div>
-                <Button variant="ghost" size="sm" className="text-gray-400">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-gray-400"
+                  onClick={() => action.showLocked(`Edit Alert Rule: ${rule.severity}`, "Alert routing rule editing is locked in final demo mode.", { locked: true, severity: rule.severity })}
+                >
                   Edit
                 </Button>
               </div>
@@ -343,7 +362,11 @@ export function SettingsPage() {
                 Manage access control and user permissions
               </p>
             </div>
-            <Button variant="outline" className="border-white/10">
+            <Button
+              variant="outline"
+              className="border-white/10"
+              onClick={() => action.showLocked("Settings Manage Users", "User and role management is locked in final demo mode. QAuthCore validates token generation, verification, and assurance only.", { locked: true })}
+            >
               <Users className="size-4 mr-2" />
               Manage Users
             </Button>

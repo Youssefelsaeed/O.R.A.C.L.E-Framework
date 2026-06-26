@@ -285,6 +285,13 @@ export function MutantShield() {
                   variant="outline"
                   size="sm"
                   className="w-full mt-4 border-white/10 hover:border-[#00d4ff]/50"
+                  onClick={() =>
+                    action.showLocked(
+                      `View Model Details: ${model.name}`,
+                      "Detailed per-model diagnostics are report-backed in this release. Production model files are not modified from the GUI.",
+                      { data_source: "REPORT", production_models_unchanged: true },
+                    )
+                  }
                 >
                   <Eye className="size-4 mr-2" />
                   View Model Details

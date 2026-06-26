@@ -241,6 +241,13 @@ export function EthicQ() {
                     variant="ghost"
                     size="sm"
                     className="text-[#00d4ff] hover:text-[#00d4ff]/80"
+                    onClick={() =>
+                      action.showLocked(
+                        `View Rule: ${rule.name}`,
+                        "Rule viewing is report-backed in this final demo. Editing production ethics policy remains locked.",
+                        { data_source: "REPORT", rule: rule.name, locked_editing: true },
+                      )
+                    }
                   >
                     <Eye className="size-4" />
                   </Button>
@@ -384,7 +391,14 @@ export function EthicQ() {
                   </Button>
                   <Button
                     className="bg-[#ff3366] hover:bg-[#ff3366]/90"
-                    onClick={() => setOverrideDialogOpen(false)}
+                    onClick={() => {
+                      setOverrideDialogOpen(false);
+                      action.showLocked(
+                        "Submit Override",
+                        "Manual override submission is simulated in final demo mode. Production policy overrides require reviewed authorization workflow.",
+                        { locked: true, no_policy_change: true },
+                      );
+                    }}
                   >
                     Submit Override
                   </Button>

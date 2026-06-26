@@ -324,7 +324,18 @@ export function QAuthCore() {
                   <p className="text-xs text-gray-400 mb-2">
                     IP: 203.0.113.42 attempted 5 failed logins in the last 10 minutes
                   </p>
-                  <Button size="sm" variant="outline" className="border-[#fbbf24]/30 text-[#fbbf24] hover:bg-[#fbbf24]/10">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="border-[#fbbf24]/30 text-[#fbbf24] hover:bg-[#fbbf24]/10"
+                    onClick={() =>
+                      action.showLocked(
+                        "Block IP Address",
+                        "Destructive access-control changes are not implemented from the final demo GUI. Use reviewed admin tooling in a production deployment.",
+                        { locked: true, source: "DEMO alert row" },
+                      )
+                    }
+                  >
                     Block IP Address
                   </Button>
                 </div>
