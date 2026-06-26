@@ -115,6 +115,15 @@ python scripts/oracle_realtime_replay_proof.py --events 100
 
 Use `--manage-stack` only when you intentionally want a validation script to start and stop its own backend services.
 
+GUI live demo validation:
+
+```powershell
+python scripts/test_dashboard_action_endpoints.py
+python scripts/test_gui_operator_console_live.py
+```
+
+The live dashboard demo flow is documented in `docs/ORACLE_GUI_LIVE_DEMO_SCRIPT.md`.
+
 ## Evolution Engine And Adaptive Retraining
 
 The Evolution Engine uses a candidate-only workflow. New model artifacts are written to candidate directories and are not promoted automatically. XGBoost and AutoEncoder candidate retraining are supported; LSTM/GNN retraining is contract-gated, while production inference remains active.

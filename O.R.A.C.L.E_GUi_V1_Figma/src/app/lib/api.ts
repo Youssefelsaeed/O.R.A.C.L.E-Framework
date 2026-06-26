@@ -83,6 +83,7 @@ export interface ApiResult<T> {
   data: T | null;
   offline: boolean;
   error?: string;
+  status?: number;
 }
 
 let lastKnownSummary: DashboardSummary | null = null;
@@ -96,13 +97,27 @@ async function apiFetch<T>(path: string, init?: RequestInit): Promise<ApiResult<
         ...(init?.headers || {}),
       },
     });
-    if (!res.ok) {
-      return { data: null, offline: false, error: `HTTP ${res.status}` };
+    const text = await res.text();
+    let data: T | null = null;
+    try {
+      data = text ? (JSON.parse(text) as T) : null;
+    } catch {
+      data = null;
     }
-    const data = (await res.json()) as T;
-    return { data, offline: false };
-  } catch {
-    return { data: null, offline: true, error: "Backend Offline" };
+    if (!res.ok) {
+      const detail =
+        data && typeof data === "object" && "detail" in data
+          ? String((data as Record<string, unknown>).detail)
+          : text.slice(0, 300);
+      return { data: null, offline: false, status: res.status, error: `HTTP ${res.status}${detail ? `: ${detail}` : ""}` };
+    }
+    return { data, offline: false, status: res.status };
+  } catch (error) {
+    return {
+      data: null,
+      offline: true,
+      error: error instanceof Error ? `Backend Offline: ${error.message}` : "Backend Offline",
+    };
   }
 }
 
@@ -140,7 +155,7 @@ export async function fetchChronoEvidence() {
 }
 
 export async function fetchLatestEvents() {
-  return apiFetch<{ events: Record<string, unknown>[] }>("/oracle/dashboard/latest-events");
+  return apiFetch<{ events: Record<string, unknown>[]; warnings?: string[] }>("/oracle/dashboard/latest-events");
 }
 
 export async function runHealthCheck() {

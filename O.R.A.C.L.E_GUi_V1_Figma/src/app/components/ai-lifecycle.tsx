@@ -10,7 +10,8 @@ import {
   TooltipTrigger,
 } from "@/app/components/ui/tooltip";
 import { useEvolutionData } from "@/app/lib/use-oracle-data";
-import { runEvolutionDryRun, SAFETY_BLOCKED_MSG } from "@/app/lib/api";
+import { API_BASE, runEvolutionDryRun, SAFETY_BLOCKED_MSG } from "@/app/lib/api";
+import { useState } from "react";
 import {
   Database,
   Shield,
@@ -113,6 +114,12 @@ function SourceLabel({ source }: { source: "LIVE/CONFIG" | "REPORT" | "LIVE SAFE
 
 export function AILifecycle() {
   const { data, offline, loading, refresh } = useEvolutionData();
+  const [actionResult, setActionResult] = useState<{
+    status: "idle" | "running" | "success" | "failed";
+    timestamp?: string;
+    error?: string;
+    data?: Record<string, unknown> | null;
+  }>({ status: "idle" });
   const evo = (data?.evolution || {}) as Record<string, unknown>;
   const buffer = (data?.training_buffer || {}) as Record<string, unknown>;
   const adv = (data?.adversarial_hardening || {}) as Record<string, unknown>;
@@ -124,6 +131,17 @@ export function AILifecycle() {
   const artLabel = evo.art_source === "local" ? `ART v${artVersion} local` : `ART ${artVersion}`;
 
   const handlePromote = () => alert(SAFETY_BLOCKED_MSG);
+  const handleDryRun = async () => {
+    setActionResult({ status: "running", timestamp: new Date().toLocaleString() });
+    const result = await runEvolutionDryRun();
+    setActionResult({
+      status: result.error ? "failed" : "success",
+      timestamp: new Date().toLocaleString(),
+      error: result.error,
+      data: result.data,
+    });
+    await refresh();
+  };
 
   return (
     <div className="p-8 space-y-6">
@@ -133,6 +151,7 @@ export function AILifecycle() {
           <p className="text-sm text-gray-400">
             Retraining, adversarial hardening, and promotion safety
           </p>
+          <p className="text-xs text-gray-500 mt-1">API base: <code>{API_BASE}</code></p>
         </div>
         <div className="flex gap-2">
           <TooltipProvider>
@@ -153,7 +172,7 @@ export function AILifecycle() {
           <Button
             className="bg-[#00d4ff] hover:bg-[#00d4ff]/90 text-black"
             disabled={loading}
-            onClick={() => runEvolutionDryRun().then(() => refresh())}
+            onClick={handleDryRun}
           >
             <Play className="size-4 mr-2" />
             Run Evolution Dry-Run
@@ -162,6 +181,21 @@ export function AILifecycle() {
       </div>
 
       <BackendBanner offline={offline} />
+
+      <GlassCard>
+        <div className="p-6">
+          <h3 className="mb-2">Evolution Action Result <SourceLabel source="LIVE/CONFIG" /></h3>
+          <p className="text-xs text-gray-400 mb-3">
+            {actionResult.status === "idle"
+              ? "Click Run Evolution Dry-Run to see live backend action output here."
+              : `Status: ${actionResult.status} at ${actionResult.timestamp}`}
+          </p>
+          {actionResult.error && <p className="text-sm text-[#ff3366] mb-2">{actionResult.error}</p>}
+          <pre className="max-h-64 overflow-auto rounded-lg bg-black/30 border border-white/10 p-3 text-xs text-gray-300">
+            {actionResult.data ? JSON.stringify(actionResult.data, null, 2).slice(0, 1600) : "No action output yet."}
+          </pre>
+        </div>
+      </GlassCard>
 
       {fullEvolutionReady && (
         <div className="px-4 py-3 rounded-lg bg-[#00ffcc]/10 border border-[#00ffcc]/30 flex items-center gap-3">

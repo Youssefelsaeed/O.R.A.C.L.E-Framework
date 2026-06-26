@@ -79,6 +79,8 @@ RELEASE_SCRIPT_NAMES = {
     "oracle_post_packaging_final_regression.py",
     "test_gui_live_status.py",
     "test_gui_buttons_live_actions.py",
+    "test_dashboard_action_endpoints.py",
+    "test_gui_operator_console_live.py",
     "oracle_live_sensor_smoke_test.py",
     "oracle_realtime_replay_proof.py",
     "oracle_operator_final_validation.py",
@@ -95,6 +97,8 @@ ALLOWED_STAGED_REPORTS = {
     "reports/final/oracle_realtime_replay_proof_report.json",
     "reports/final/gui_live_monitor_report.json",
     "reports/final/oracle_operator_final_validation_report.json",
+    "reports/final/dashboard_action_endpoints_report.json",
+    "reports/final/gui_operator_console_live_report.json",
     "reports/final/ORACLE_FINAL_CLOSURE_STATUS.json",
     "reports/final/ORACLE_FINAL_CLOSURE_STATUS.md",
 }
