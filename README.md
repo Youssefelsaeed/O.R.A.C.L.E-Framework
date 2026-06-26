@@ -126,6 +126,19 @@ Current validated framework status:
 
 Summary metrics are documented in `docs/TESTING_AND_VALIDATION.md` and `docs/MODULE_CAPABILITIES.md`.
 
+## Operator Dashboard Preview
+
+Screenshots are captured during final manual validation. Use `docs/FINAL_MANUAL_VALIDATION_GUIDE.md` for the exact capture checklist and standardized filenames.
+
+![Dashboard](docs/assets/screenshots/Global%20Dashboard.png)
+![MutantShield](docs/assets/screenshots/Mutant%20Sheild.png)
+![QAuthCore](docs/assets/screenshots/QauthCore.png)
+![EthicQ](docs/assets/screenshots/EthicQ.png)
+![ChronoLedger](docs/assets/screenshots/ChronoLedger.png)
+![GhostTunnel](docs/assets/screenshots/GhostTunnel.png)
+![Evolution Engine](docs/assets/screenshots/Evo%20Engine.png)
+![Settings Safety](docs/assets/screenshots/Settings.png)
+
 ## Known Limitations
 
 - Raw datasets are not included in the GitHub repository.
@@ -137,11 +150,31 @@ Summary metrics are documented in `docs/TESTING_AND_VALIDATION.md` and `docs/MOD
 
 ## Roadmap
 
-- Harden production deployment profiles.
-- Add optional SIEM/SOAR/EDR connectors.
-- Add quality-gated GAN synthetic data generation.
-- Promote LSTM/GNN retraining when temporal and graph contracts are satisfied.
-- Package model artifacts through Git LFS or release assets if public redistribution is approved.
+Completed:
+
+- Core framework.
+- Oracle GUI.
+- MutantShield detection.
+- QAuthCore assurance.
+- EthicQ governance.
+- ChronoLedger audit.
+- GhostTunnel secure response.
+- Evolution Engine.
+- CSE adaptation.
+- DoHBrw anomaly adapter.
+- Module capability validation.
+- GitHub release.
+
+Deferred/Future:
+
+- GAN synthetic threat generation.
+- LSTM/GNN candidate-safe retraining execution after contracts are satisfied.
+- SIEM/SOAR/EDR integrations.
+- Production deployment hardening.
+- Cloud deployment.
+- Container orchestration.
+
+See `docs/ROADMAP.md` and `docs/SIEM_SOAR_EDR_INTEGRATION.md`.
 
 ## Repository Structure
 
