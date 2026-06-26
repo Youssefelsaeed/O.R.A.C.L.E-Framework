@@ -1,0 +1,84 @@
+.git
+.cursor
+.vscode
+.idea
+
+# Secrets and local environments
+.env
+.env.*
+!.env.example
+!.env.docker.example
+.venv
+venv
+env
+secrets
+keys
+
+# Node/build/cache
+node_modules
+**/node_modules
+dist
+**/dist
+.vite
+__pycache__
+**/__pycache__
+.pytest_cache
+.mypy_cache
+.ruff_cache
+*.pyc
+*.pyo
+
+# Raw datasets and packet captures
+Workin with
+Workin with/
+**/Data set
+**/Data set/
+*.pcap
+*.pcapng
+*.pcap.csv
+*.parquet
+*.feather
+*.arff
+
+# Large/generated model artifacts are mounted at runtime instead.
+models_final
+models_final/
+models_candidate
+models_candidate/
+**/models_final
+**/models_final/
+**/models_candidate
+**/models_candidate/
+*.pkl
+*.joblib
+*.pth
+*.pt
+*.onnx
+*.keras
+*.h5
+*.hdf5
+*.bin
+
+# Generated reports/logs/state are mounted, not baked.
+reports
+reports/
+logs
+logs/
+data
+data/
+*.log
+*.sqlite
+*.sqlite3
+*.db
+
+# Local research/tooling archives
+ART - IBM
+ART - IBM/
+Diagrams
+Diagrams/
+*.zip
+*.7z
+*.tar
+*.gz
+*.tmp
+*.bak

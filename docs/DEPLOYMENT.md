@@ -47,6 +47,42 @@ http://127.0.0.1:4173
 - GhostTunnel: `8004`
 - Oracle GUI: `4173`
 
+## Docker Runtime Deployment
+
+Docker deployment starts the same runtime services without changing the local Python startup scripts.
+
+Requirements:
+
+- Docker Desktop or Linux Docker engine
+- Linux containers enabled on Docker Desktop
+
+Start:
+
+```powershell
+python scripts/docker_oracle_up.py
+```
+
+Open:
+
+```text
+http://127.0.0.1:4173
+```
+
+Validate:
+
+```powershell
+python scripts/check_docker_packaging_safety.py
+python scripts/test_docker_oracle_runtime.py
+```
+
+Stop:
+
+```powershell
+python scripts/docker_oracle_down.py
+```
+
+Docker is runtime deployment, not training deployment. Raw datasets are excluded from images. `models_final` is mounted read-only when present, `models_candidate` is mounted read/write, and realtime replay proof works against Dockerized Oracle Core. Live packet capture remains host/manual because it depends on Scapy, Npcap, and permissions.
+
 ## Health And Validation
 
 Operator mode uses the running stack and leaves it alive:

@@ -1,0 +1,130 @@
+services:
+  qauthcore:
+    build:
+      context: .
+      dockerfile: docker/qauthcore/Dockerfile
+    container_name: oracle-qauthcore
+    environment:
+      ORACLE_ASYNC_ASSURANCE: "1"
+    ports:
+      - "8001:8001"
+    networks:
+      - oracle-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8001/api/v1/health || curl -fsS http://127.0.0.1:8001/docs"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  ethicq:
+    build:
+      context: .
+      dockerfile: docker/ethicq/Dockerfile
+    container_name: oracle-ethicq
+    ports:
+      - "8002:8002"
+    networks:
+      - oracle-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8002/api/v1/health || curl -fsS http://127.0.0.1:8002/docs"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  chronoledger:
+    build:
+      context: .
+      dockerfile: docker/chronoledger/Dockerfile
+    container_name: oracle-chronoledger
+    ports:
+      - "8003:8003"
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+    networks:
+      - oracle-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8003/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  ghosttunnel:
+    build:
+      context: .
+      dockerfile: docker/ghosttunnel/Dockerfile
+    container_name: oracle-ghosttunnel
+    environment:
+      GHOSTTUNNEL_FAST_ACK: "1"
+    ports:
+      - "8004:8004"
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+    networks:
+      - oracle-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8004/health || curl -fsS http://127.0.0.1:8004/docs"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  oracle-core:
+    build:
+      context: .
+      dockerfile: docker/oracle-core/Dockerfile
+    container_name: oracle-core
+    environment:
+      ORACLE_ASYNC_ASSURANCE: "1"
+      ORACLE_FAST_PIPELINE: "1"
+      QAUTHCORE_URL: "http://qauthcore:8001"
+      ETHICQ_URL: "http://ethicq:8002"
+      CHRONOLEDGER_URL: "http://chronoledger:8003"
+      GHOSTTUNNEL_URL: "http://ghosttunnel:8004"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./reports:/app/reports
+      - ./data:/app/data
+      - ./models_candidate:/app/models_candidate
+      - ./models_final:/app/models_final:ro
+    depends_on:
+      qauthcore:
+        condition: service_healthy
+      ethicq:
+        condition: service_healthy
+      chronoledger:
+        condition: service_healthy
+      ghosttunnel:
+        condition: service_healthy
+    networks:
+      - oracle-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8000/oracle/dashboard/summary"]
+      interval: 10s
+      timeout: 5s
+      retries: 18
+
+  oracle-gui:
+    build:
+      context: .
+      dockerfile: docker/gui/Dockerfile
+      args:
+        VITE_ORACLE_API_BASE_URL: "http://127.0.0.1:8000"
+    container_name: oracle-gui
+    ports:
+      - "4173:4173"
+    depends_on:
+      oracle-core:
+        condition: service_healthy
+    networks:
+      - oracle-net
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:4173/ >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+networks:
+  oracle-net:
+    driver: bridge

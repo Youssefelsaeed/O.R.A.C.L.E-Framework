@@ -70,6 +70,21 @@ Open the dashboard:
 http://127.0.0.1:4173
 ```
 
+Docker runtime quick start:
+
+```powershell
+python scripts/docker_oracle_up.py
+python scripts/test_docker_oracle_runtime.py
+```
+
+Docker opens the same GUI at `http://127.0.0.1:4173`. Stop it with:
+
+```powershell
+python scripts/docker_oracle_down.py
+```
+
+Docker deployment is runtime-only. It excludes raw datasets, secrets, `node_modules`, generated reports, and model binaries from images; `models_final` is mounted read-only when present.
+
 ## Deployment
 
 Local service ports:
@@ -82,6 +97,7 @@ Local service ports:
 - Oracle GUI: `http://127.0.0.1:4173`
 
 See `docs/DEPLOYMENT.md` for setup, environment variables, health checks, and troubleshooting.
+See `docs/DOCKER_DEPLOYMENT_ARCHITECTURE.md` for Docker runtime architecture.
 
 ## Running Tests And Benchmarks
 
@@ -123,6 +139,13 @@ python scripts/test_gui_operator_console_live.py
 python scripts/check_live_sensor_readiness.py
 python scripts/test_module_gui_actions.py
 python scripts/test_module_pages_operator_ui.py
+```
+
+Docker runtime validation:
+
+```powershell
+python scripts/check_docker_packaging_safety.py
+python scripts/test_docker_oracle_runtime.py
 ```
 
 The live dashboard demo flow is documented in `docs/ORACLE_GUI_LIVE_DEMO_SCRIPT.md`.
@@ -171,6 +194,7 @@ Screenshots are captured during final manual validation. Use `docs/FINAL_MANUAL_
 
 - Raw datasets are not included in the GitHub repository.
 - Production model binaries may require local placement, Git LFS, or GitHub Release assets depending on deployment policy.
+- Docker images do not include raw datasets or model binaries; runtime volumes are used instead.
 - LSTM/GNN retraining is contract-gated; inference remains active.
 - GAN synthetic generation is future work.
 - SIEM/SOAR/EDR integrations are future work.

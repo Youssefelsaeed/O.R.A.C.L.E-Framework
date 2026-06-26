@@ -8,6 +8,12 @@ This script demonstrates that the GUI is connected to the live Oracle backend an
 python scripts/start_oracle_stack.py --gui --kill-existing
 ```
 
+Docker runtime alternative:
+
+```powershell
+python scripts/docker_oracle_up.py
+```
+
 Open:
 
 ```text
@@ -90,6 +96,7 @@ python scripts/test_gui_operator_console_live.py
 python scripts/check_live_sensor_readiness.py
 python scripts/test_module_gui_actions.py
 python scripts/test_module_pages_operator_ui.py
+python scripts/check_docker_packaging_safety.py
 ```
 
 Build the GUI:
@@ -121,3 +128,13 @@ Dashboard actions are live. Module actions are either live-safe or locked with a
 - Settings dangerous controls: locked with visible safety reason.
 
 Live network capture requires Scapy, Npcap on Windows, and sufficient permissions. If these are unavailable, the GUI must not claim live capture is active. Realtime replay is the validated safe live proof.
+
+## 8. Docker Demo Mode
+
+Docker mode is a runtime deployment path:
+
+- GUI: `http://127.0.0.1:4173`
+- Oracle Core: `http://127.0.0.1:8000`
+- Realtime replay proof works with `python scripts/oracle_realtime_replay_proof.py --events 25 --oracle-url http://127.0.0.1:8000`
+- Live packet capture remains host/manual and is not containerized by default.
+- Docker images do not include raw datasets, `.env`, `node_modules`, or model binaries.

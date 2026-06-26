@@ -1,0 +1,12 @@
+services:
+  oracle-core:
+    environment:
+      ORACLE_RUNTIME_MODE: "docker"
+    volumes:
+      - ./reports:/app/reports
+      - ./data:/app/data
+
+  oracle-gui:
+    build:
+      args:
+        VITE_ORACLE_API_BASE_URL: "http://127.0.0.1:8000"

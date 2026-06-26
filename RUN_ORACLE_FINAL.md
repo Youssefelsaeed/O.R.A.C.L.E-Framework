@@ -31,6 +31,34 @@ Open:
 http://127.0.0.1:4173
 ```
 
+## Docker Runtime
+
+Install Docker Desktop, enable Linux containers, then run:
+
+```powershell
+python scripts/docker_oracle_up.py
+```
+
+Open:
+
+```text
+http://127.0.0.1:4173
+```
+
+Test:
+
+```powershell
+python scripts/test_docker_oracle_runtime.py
+```
+
+Stop:
+
+```powershell
+python scripts/docker_oracle_down.py
+```
+
+Docker is for runtime operation only. It excludes raw datasets, `.env`, `node_modules`, generated reports, and model binaries from images. Live packet capture remains host/manual; realtime replay proof is supported.
+
 ## Health
 
 ```powershell
@@ -54,3 +82,4 @@ python scripts/oracle_phase11_final_benchmark.py
 - Do not edit or overwrite `models_final`.
 - Do not commit `.env`, secrets, raw datasets, `node_modules`, virtual environments, cache files, reports, or temporary files.
 - GAN generation and SIEM/SOAR/EDR integrations remain roadmap items.
+- Docker deployment must not be used to promote models or train GAN artifacts.
