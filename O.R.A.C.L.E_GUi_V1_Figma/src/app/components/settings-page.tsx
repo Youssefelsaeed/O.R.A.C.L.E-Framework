@@ -23,32 +23,25 @@ import { Lock } from "lucide-react";
 const apiKeys = [
   {
     name: "Production API Key",
-    key: "ora_prod_xk8j2m9f3h7s4p1q6w0e",
-    created: "2025-11-15",
-    lastUsed: "2 hours ago",
-    status: "active",
+    key: "Not configured in this release",
+    created: "—",
+    lastUsed: "—",
+    status: "blocked",
   },
   {
-    name: "Development API Key",
-    key: "ora_dev_r5t8y2u9i4o3p1a7s6d",
-    created: "2026-01-05",
-    lastUsed: "5 min ago",
-    status: "active",
-  },
-  {
-    name: "Backup API Key",
-    key: "ora_backup_f3g7h2j5k8l1m4n9p0q",
-    created: "2025-12-01",
-    lastUsed: "Never",
-    status: "inactive",
+    name: "Operator API Key",
+    key: "Use environment-managed credentials",
+    created: "—",
+    lastUsed: "—",
+    status: "blocked",
   },
 ];
 
 const siemIntegrations = [
-  { name: "Splunk Enterprise", icon: Database, enabled: true, status: "connected" },
-  { name: "Elastic Stack (ELK)", icon: Zap, enabled: true, status: "connected" },
-  { name: "IBM QRadar", icon: Shield, enabled: false, status: "not configured" },
-  { name: "Microsoft Sentinel", icon: Globe, enabled: false, status: "not configured" },
+  { name: "Wazuh", icon: Database, enabled: false, status: "future integration" },
+  { name: "Elastic Stack (ELK)", icon: Zap, enabled: false, status: "future integration" },
+  { name: "Splunk Enterprise", icon: Shield, enabled: false, status: "future integration" },
+  { name: "Microsoft Sentinel", icon: Globe, enabled: false, status: "future integration" },
 ];
 
 const userRoles = [
@@ -66,6 +59,7 @@ export function SettingsPage() {
   };
 
   const maskKey = (key: string, visible: boolean) => {
+    if (key.includes("Not configured") || key.includes("environment-managed")) return key;
     if (visible) return key;
     return key.slice(0, 12) + "•".repeat(key.length - 16) + key.slice(-4);
   };
@@ -119,7 +113,7 @@ export function SettingsPage() {
                 Manage API keys for programmatic access to O.R.A.C.L.E.
               </p>
             </div>
-            <Button className="bg-[#00d4ff] hover:bg-[#00d4ff]/90 text-black">
+            <Button className="bg-[#00d4ff]/40 text-black cursor-not-allowed" disabled title={SAFETY_BLOCKED_MSG}>
               <Key className="size-4 mr-2" />
               Generate New Key
             </Button>
@@ -139,7 +133,7 @@ export function SettingsPage() {
                         className={
                           apiKey.status === "active"
                             ? "bg-[#00ffcc]/10 text-[#00ffcc] border-[#00ffcc]/30 border"
-                            : "bg-gray-500/10 text-gray-400 border-gray-500/30 border"
+                            : "bg-[#ff3366]/10 text-[#ff3366] border-[#ff3366]/30 border"
                         }
                       >
                         {apiKey.status}
@@ -154,6 +148,7 @@ export function SettingsPage() {
                         size="sm"
                         onClick={() => toggleKeyVisibility(apiKey.name)}
                         className="text-gray-400 hover:text-white"
+                        disabled={apiKey.status === "blocked"}
                       >
                         {showKeys[apiKey.name] ? (
                           <EyeOff className="size-4" />
@@ -165,6 +160,8 @@ export function SettingsPage() {
                         variant="ghost"
                         size="sm"
                         className="text-gray-400 hover:text-white"
+                        disabled
+                        title={SAFETY_BLOCKED_MSG}
                       >
                         <Copy className="size-4" />
                       </Button>
@@ -180,6 +177,8 @@ export function SettingsPage() {
                       variant="ghost"
                       size="sm"
                       className="text-[#00d4ff] hover:text-[#00d4ff]/80"
+                      disabled
+                      title={SAFETY_BLOCKED_MSG}
                     >
                       <RefreshCw className="size-4" />
                     </Button>
@@ -187,6 +186,8 @@ export function SettingsPage() {
                       variant="ghost"
                       size="sm"
                       className="text-[#ff3366] hover:text-[#ff3366]/80"
+                      disabled
+                      title={SAFETY_BLOCKED_MSG}
                     >
                       Revoke
                     </Button>
@@ -204,8 +205,7 @@ export function SettingsPage() {
           <div className="mb-4">
             <h3 className="mb-1">SIEM Integrations</h3>
             <p className="text-sm text-gray-400">
-              Connect O.R.A.C.L.E. with your existing security information and event
-              management systems
+              Future SIEM/SOAR/EDR connectors are documented only. No live external integrations are enabled in this release.
             </p>
           </div>
 
@@ -229,13 +229,15 @@ export function SettingsPage() {
                         </p>
                       </div>
                     </div>
-                    <Switch checked={integration.enabled} />
+                    <Switch checked={integration.enabled} disabled title={SAFETY_BLOCKED_MSG} />
                   </div>
                   {integration.enabled ? (
                     <Button
                       variant="outline"
                       size="sm"
                       className="w-full border-white/10"
+                      disabled
+                      title={SAFETY_BLOCKED_MSG}
                     >
                       Configure
                     </Button>
@@ -244,8 +246,10 @@ export function SettingsPage() {
                       variant="outline"
                       size="sm"
                       className="w-full border-[#00d4ff]/30 text-[#00d4ff]"
+                      disabled
+                      title={SAFETY_BLOCKED_MSG}
                     >
-                      Set Up Integration
+                      Future Integration
                     </Button>
                   )}
                 </div>

@@ -97,6 +97,20 @@ function EvoMetricCard({ label, value }: { label: string; value: string }) {
   );
 }
 
+function SourceLabel({ source }: { source: "LIVE/CONFIG" | "REPORT" | "LIVE SAFETY POLICY" }) {
+  const color =
+    source === "LIVE SAFETY POLICY"
+      ? "text-[#ff3366] border-[#ff3366]/30 bg-[#ff3366]/10"
+      : source === "LIVE/CONFIG"
+        ? "text-[#fbbf24] border-[#fbbf24]/30 bg-[#fbbf24]/10"
+        : "text-[#00d4ff] border-[#00d4ff]/30 bg-[#00d4ff]/10";
+  return (
+    <span className={`ml-2 px-2 py-0.5 rounded border text-[10px] uppercase tracking-wider ${color}`}>
+      {source}
+    </span>
+  );
+}
+
 export function AILifecycle() {
   const { data, offline, loading, refresh } = useEvolutionData();
   const evo = (data?.evolution || {}) as Record<string, unknown>;
@@ -161,11 +175,15 @@ export function AILifecycle() {
 
       <div className="px-4 py-4 rounded-lg bg-[#ff3366]/10 border border-[#ff3366]/30 flex items-start gap-3">
         <AlertTriangle className="size-5 text-[#fbbf24] shrink-0 mt-0.5" />
-        <p className="text-sm text-[#fbbf24]">{PROMOTION_BLOCKED_MSG}</p>
+          <p className="text-sm text-[#fbbf24]">
+            {PROMOTION_BLOCKED_MSG} <SourceLabel source="LIVE SAFETY POLICY" />
+          </p>
       </div>
 
       <div>
-        <h3 className="text-sm font-semibold mb-3 text-gray-300">Evolution Status</h3>
+        <h3 className="text-sm font-semibold mb-3 text-gray-300">
+          Evolution Status <SourceLabel source="REPORT" />
+        </h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <EvoMetricCard label="Framework Status" value={fullEvolutionReady ? "FULL_EVOLUTION_READY" : String(evo.final_status ?? "—")} />
           <EvoMetricCard label="Full Ensemble" value={String(evo.full_ensemble ?? true)} />
@@ -195,7 +213,7 @@ export function AILifecycle() {
       {perModel.length > 0 && (
         <GlassCard>
           <div className="p-6">
-            <h3 className="mb-4">Full Ensemble Model Coverage</h3>
+            <h3 className="mb-4">Full Ensemble Model Coverage <SourceLabel source="REPORT" /></h3>
             <div className="space-y-2">
               {perModel.map((m) => (
                 <ModelCoverageRow
@@ -212,7 +230,7 @@ export function AILifecycle() {
 
       <GlassCard>
         <div className="p-6">
-          <h3 className="mb-4">Evolution Pipeline</h3>
+          <h3 className="mb-4">Evolution Pipeline <SourceLabel source="REPORT" /></h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <PipelineSection
               title="Dataset Registry"
@@ -271,7 +289,7 @@ export function AILifecycle() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <GlassCard>
           <div className="p-6">
-            <h3 className="mb-4">Training Buffer Breakdown</h3>
+            <h3 className="mb-4">Training Buffer Breakdown <SourceLabel source="REPORT" /></h3>
             <div className="space-y-3">
               {Object.entries((buffer.source_counts as Record<string, number>) || {}).map(([name, count]) => (
                 <div key={name} className="p-4 rounded-lg bg-white/5 border border-white/10 flex items-center justify-between">
@@ -288,7 +306,7 @@ export function AILifecycle() {
 
         <GlassCard>
           <div className="p-6">
-            <h3 className="mb-4">Evolution Reports</h3>
+            <h3 className="mb-4">Evolution Reports <SourceLabel source="REPORT" /></h3>
             <ReportLinks />
           </div>
         </GlassCard>

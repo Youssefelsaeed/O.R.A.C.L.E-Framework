@@ -41,6 +41,8 @@ Capture or visually verify these GUI areas:
 
 ## 5. Run Final Tests
 
+The final validation scripts default to operator mode. They use the existing running stack and do not stop services they did not start.
+
 Run:
 
 ```powershell
@@ -56,7 +58,28 @@ ORACLE_MODULE_CAPABILITY_VALIDATED
 models_final unchanged: TRUE
 ```
 
-## 6. Capture Screenshots
+If the stack is not already running, start it manually or use managed test mode explicitly:
+
+```powershell
+python scripts/oracle_final_acceptance_test.py --manage-stack
+python scripts/oracle_phase12_11_module_capability_validation.py --manage-stack
+```
+
+Use `--kill-existing` only with `--manage-stack`.
+
+## 6. Run Live Operator Proofs
+
+Run:
+
+```powershell
+python scripts/oracle_operator_final_validation.py
+python scripts/oracle_live_sensor_smoke_test.py
+python scripts/oracle_realtime_replay_proof.py --events 100
+```
+
+The live sensor smoke test attempts limited packet capture. If packet capture permissions, Scapy, or Npcap are unavailable, it reports the blocked reason and uses realtime replay proof as a safe fallback.
+
+## 7. Capture Screenshots
 
 Save screenshots using these exact filenames:
 
@@ -72,7 +95,7 @@ Save screenshots using these exact filenames:
 
 Do not include screenshots containing secrets, private local paths, API keys, tokens, `.env` values, raw datasets, or personal credentials.
 
-## 7. Final Manual Validation Status
+## 8. Final Manual Validation Status
 
 After completing the checklist and adding screenshots, the final presentation status is:
 

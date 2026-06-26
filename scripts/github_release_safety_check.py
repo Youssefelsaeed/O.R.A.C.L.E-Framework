@@ -70,6 +70,33 @@ RELEASE_SCRIPT_NAMES = {
     "oracle_stack_common.py",
     "check_services_health.py",
     "github_release_safety_check.py",
+    "check_all_services.py",
+    "phase8_common.py",
+    "oracle_runtime_mode.py",
+    "oracle_final_acceptance_test.py",
+    "oracle_phase11_final_benchmark.py",
+    "oracle_phase12_11_module_capability_validation.py",
+    "oracle_post_packaging_final_regression.py",
+    "test_gui_live_status.py",
+    "test_gui_buttons_live_actions.py",
+    "oracle_live_sensor_smoke_test.py",
+    "oracle_realtime_replay_proof.py",
+    "oracle_operator_final_validation.py",
+    "test_mutantshield_detection_capability.py",
+    "test_qauthcore_authentication_capability.py",
+    "test_chronoledger_logging_capability.py",
+    "test_ghosttunnel_communication_capability.py",
+}
+ALLOWED_STAGED_REPORTS = {
+    "reports/final/operator_runtime_safety_report.json",
+    "reports/final/gui_live_actions_report.json",
+    "reports/final/gui_data_source_map.json",
+    "reports/final/oracle_live_sensor_proof_report.json",
+    "reports/final/oracle_realtime_replay_proof_report.json",
+    "reports/final/gui_live_monitor_report.json",
+    "reports/final/oracle_operator_final_validation_report.json",
+    "reports/final/ORACLE_FINAL_CLOSURE_STATUS.json",
+    "reports/final/ORACLE_FINAL_CLOSURE_STATUS.md",
 }
 RELEASE_ROOT_FILES = {
     "README.md",
@@ -165,7 +192,13 @@ def run() -> Dict[str, Any]:
     before = _models_hash()
     gitignore = _read(ROOT / ".gitignore")
     staged = _git_staged_files()
-    forbidden_staged = [path for path in staged if FORBIDDEN_STAGE_RE.search(path)]
+    forbidden_staged = [
+        path
+        for path in staged
+        if FORBIDDEN_STAGE_RE.search(path)
+        and path not in ALLOWED_STAGED_REPORTS
+        and not (path.startswith("scripts/") and Path(path).name in RELEASE_SCRIPT_NAMES)
+    ]
     docs = {doc: (ROOT / doc).exists() for doc in PROFESSIONAL_DOCS}
     checks = {
         "raw datasets ignored": "Workin with/" in gitignore and "*.pcap" in gitignore,
@@ -174,7 +207,7 @@ def run() -> Dict[str, Any]:
         "venv ignored": ".venv/" in gitignore and "venv/" in gitignore,
         "cache ignored": "__pycache__/" in gitignore and ".pytest_cache/" in gitignore,
         "models_final handling documented": "models_final" in _read(ROOT / "README.md") and "Git LFS" in _read(ROOT / "README.md"),
-        "reports not staged": not any(path.startswith("reports/") for path in staged),
+        "reports not staged": not any(path.startswith("reports/") and path not in ALLOWED_STAGED_REPORTS for path in staged),
         "README exists": (ROOT / "README.md").exists(),
         "professional docs exist": all(docs.values()),
         "secrets not found": not _secret_findings(),

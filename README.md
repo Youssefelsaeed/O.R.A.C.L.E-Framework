@@ -85,6 +85,8 @@ See `docs/DEPLOYMENT.md` for setup, environment variables, health checks, and tr
 
 ## Running Tests And Benchmarks
 
+Operator-safe validation uses the existing running stack and does not stop services it did not start:
+
 Health and acceptance:
 
 ```powershell
@@ -102,6 +104,16 @@ Final benchmark:
 ```powershell
 python scripts/oracle_phase11_final_benchmark.py
 ```
+
+Live operator proof:
+
+```powershell
+python scripts/oracle_operator_final_validation.py
+python scripts/oracle_live_sensor_smoke_test.py
+python scripts/oracle_realtime_replay_proof.py --events 100
+```
+
+Use `--manage-stack` only when you intentionally want a validation script to start and stop its own backend services.
 
 ## Evolution Engine And Adaptive Retraining
 
@@ -125,6 +137,8 @@ Current validated framework status:
 - `ORACLE_FINAL_QA_COMPLETE`
 
 Summary metrics are documented in `docs/TESTING_AND_VALIDATION.md` and `docs/MODULE_CAPABILITIES.md`.
+
+GUI data source labels are documented in `docs/GUI_DATA_SOURCES.md`. The dashboard marks values as `LIVE`, `REPORT`, `DEMO`, `LIVE/CONFIG`, or `LIVE SAFETY POLICY`.
 
 ## Operator Dashboard Preview
 

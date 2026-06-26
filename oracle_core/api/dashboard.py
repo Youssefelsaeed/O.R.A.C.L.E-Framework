@@ -168,9 +168,41 @@ async def action_health_check() -> Dict[str, Any]:
 
 @router.post("/actions/backend-validation")
 async def action_backend_validation() -> Dict[str, Any]:
-    result = await _run_script("oracle_backend_final_validation.py")
-    summary = build_dashboard_summary()
-    return {"run": result, "backend_status": summary["backend_status"]}
+    sample = {
+        "flow_id": f"gui-validation-{int(asyncio.get_running_loop().time() * 1000)}",
+        "risk_score": 0.82,
+        "risk_label": "HIGH",
+        "is_attack": True,
+        "attack_family": "operator_validation",
+        "src_ip": "192.0.2.10",
+        "dst_ip": "198.51.100.20",
+        "confidence_band": "HIGH",
+        "model_consensus": "gui-action",
+    }
+    summary_before = build_dashboard_summary()
+    try:
+        import httpx
+
+        async with httpx.AsyncClient(timeout=httpx.Timeout(20.0)) as client:
+            response = await client.post("http://127.0.0.1:8000/oracle/process", json=sample)
+            body = response.json()
+    except Exception as exc:
+        return {
+            "success": False,
+            "backend_status": summary_before["backend_status"],
+            "error": str(exc),
+            "note": "Lightweight live validation failed; no stack management was attempted.",
+        }
+    summary_after = build_dashboard_summary()
+    return {
+        "success": response.status_code in (200, 207),
+        "status_code": response.status_code,
+        "backend_status": summary_after["backend_status"],
+        "oracle_trace_id": body.get("oracle_trace_id"),
+        "audit_logged": bool((body.get("audit") or {}).get("logged")),
+        "failed_services": body.get("failed_services", []),
+        "note": "Lightweight live backend validation; does not start, stop, or kill services.",
+    }
 
 
 @router.post("/actions/evolution-dry-run")

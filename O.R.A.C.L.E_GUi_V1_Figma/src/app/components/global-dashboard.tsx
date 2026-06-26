@@ -41,6 +41,22 @@ const moduleLabels: Record<string, string> = {
   oracle_core: "Oracle Core",
 };
 
+function SourceLabel({ source }: { source: "LIVE" | "REPORT" | "DEMO" | "LIVE/REPORT" }) {
+  const color =
+    source === "LIVE"
+      ? "text-[#00ffcc] border-[#00ffcc]/30 bg-[#00ffcc]/10"
+      : source === "REPORT"
+        ? "text-[#00d4ff] border-[#00d4ff]/30 bg-[#00d4ff]/10"
+        : source === "LIVE/REPORT"
+          ? "text-[#fbbf24] border-[#fbbf24]/30 bg-[#fbbf24]/10"
+          : "text-gray-400 border-white/10 bg-white/5";
+  return (
+    <span className={`ml-2 px-2 py-0.5 rounded border text-[10px] uppercase tracking-wider ${color}`}>
+      {source}
+    </span>
+  );
+}
+
 export function GlobalDashboard() {
   const { data, offline, loading, refresh } = useDashboardSummary();
   const summary = data;
@@ -90,7 +106,9 @@ export function GlobalDashboard() {
 
       <GlassCard glow glowColor="blue">
         <div className="p-6">
-          <h3 className="mb-4 text-sm uppercase tracking-wider text-gray-400">Architecture Status</h3>
+          <h3 className="mb-4 text-sm uppercase tracking-wider text-gray-400">
+            Architecture Status <SourceLabel source="LIVE" />
+          </h3>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-center">
               <p className="text-xs text-gray-400 mb-1">Backend</p>
@@ -125,7 +143,7 @@ export function GlobalDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <GlassCard glow glowColor="blue">
           <div className="p-6">
-            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Avg Latency</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Avg Latency <SourceLabel source="REPORT" /></p>
             <p className="text-3xl font-semibold text-[#00d4ff]">
               {perf?.avg_latency_ms != null ? `${perf.avg_latency_ms.toFixed(1)}ms` : "—"}
             </p>
@@ -136,7 +154,7 @@ export function GlobalDashboard() {
         </GlassCard>
         <GlassCard glow glowColor="violet">
           <div className="p-6">
-            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Pipeline Results</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Pipeline Results <SourceLabel source="REPORT" /></p>
             <p className="text-lg font-semibold text-[#a855f7]">
               {perf?.success ?? "—"} ok / {perf?.degraded ?? 0} degraded / {perf?.failed ?? 0} failed
             </p>
@@ -147,7 +165,7 @@ export function GlobalDashboard() {
         </GlassCard>
         <GlassCard glow glowColor="teal">
           <div className="p-6">
-            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">System Health</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">System Health <SourceLabel source="LIVE" /></p>
             <p className="text-3xl font-semibold text-[#00ffcc]">
               {systemHealthPct != null ? `${systemHealthPct}%` : "—"}
             </p>
@@ -158,7 +176,7 @@ export function GlobalDashboard() {
         </GlassCard>
         <GlassCard>
           <div className="p-6">
-            <h3 className="mb-3 text-sm">Reports</h3>
+            <h3 className="mb-3 text-sm">Reports <SourceLabel source="REPORT" /></h3>
             <ReportLinks />
           </div>
         </GlassCard>
@@ -167,7 +185,7 @@ export function GlobalDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <GlassCard>
           <div className="p-6">
-            <h3 className="mb-4">Assurance Pipeline</h3>
+            <h3 className="mb-4">Assurance Pipeline <SourceLabel source="LIVE/REPORT" /></h3>
             <div className="grid grid-cols-3 gap-4 text-center">
               <div className="p-4 rounded-lg bg-white/5">
                 <p className="text-2xl font-semibold text-[#00ffcc]">{assurance?.latest_completed ?? "—"}</p>
@@ -187,7 +205,7 @@ export function GlobalDashboard() {
 
         <GlassCard>
           <div className="p-6">
-            <h3 className="mb-4">GhostTunnel Jobs</h3>
+            <h3 className="mb-4">GhostTunnel Jobs <SourceLabel source="LIVE/REPORT" /></h3>
             <div className="grid grid-cols-3 gap-4 text-center">
               <div className="p-4 rounded-lg bg-white/5">
                 <p className="text-2xl font-semibold text-[#00ffcc]">{ghost?.jobs_completed ?? "—"}</p>
@@ -212,7 +230,7 @@ export function GlobalDashboard() {
 
       <GlassCard>
         <div className="p-6">
-          <h3 className="mb-4">Attack Timeline (24h)</h3>
+          <h3 className="mb-4">Attack Timeline (24h) <SourceLabel source="DEMO" /></h3>
           <div className="h-[250px] flex items-center justify-center text-gray-500 text-sm border border-dashed border-white/10 rounded-lg">
             No live timeline yet — connect Oracle Sensor stream for real-time charts
           </div>
@@ -221,7 +239,7 @@ export function GlobalDashboard() {
 
       <GlassCard>
         <div className="p-6">
-          <h3 className="mb-4">Module Health Status</h3>
+          <h3 className="mb-4">Module Health Status <SourceLabel source="LIVE" /></h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {Object.entries(moduleHealth).map(([key, ok]) => {
               const Icon = moduleIcons[key] || Shield;
@@ -265,7 +283,7 @@ export function GlobalDashboard() {
           <div className="p-6 flex items-start gap-3">
             <AlertTriangle className="size-5 text-[#fbbf24] mt-0.5 shrink-0" />
             <div>
-              <h3 className="mb-2">Evolution Engine</h3>
+              <h3 className="mb-2">Evolution Engine <SourceLabel source="REPORT" /></h3>
               <p className="text-sm text-gray-400">
                 Status: <StatusBadge status={summary.evolution.final_status} /> • Promotion:{" "}
                 <StatusBadge status={summary.evolution.promotion_status} />

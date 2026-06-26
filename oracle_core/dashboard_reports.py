@@ -362,6 +362,7 @@ def build_dashboard_summary() -> Dict[str, Any]:
 def build_latest_events(limit: int = 20) -> Dict[str, Any]:
     chrono, err = _read_json(_evolution_path("chronoledger_evidence.json"))
     events: List[Dict[str, Any]] = []
+    warnings = [err] if err else []
     if chrono:
         raw = chrono.get("events") or []
         for e in sorted(raw, key=lambda x: x.get("timestamp", 0), reverse=True)[:limit]:
@@ -375,5 +376,25 @@ def build_latest_events(limit: int = 20) -> Dict[str, Any]:
                 "human_reviewed": e.get("human_reviewed"),
                 "timestamp": e.get("timestamp"),
                 "assurance_states": e.get("assurance_states"),
+                "data_source": "REPORT",
             })
-    return {"events": events, "warning": err}
+    for report_name in ("oracle_live_sensor_proof_report.json", "oracle_realtime_replay_proof_report.json"):
+        proof, proof_err = _read_json(REPORTS_DIR / "final" / report_name)
+        if proof_err:
+            warnings.append(proof_err)
+            continue
+        for e in (proof or {}).get("events", []):
+            events.append(
+                {
+                    "oracle_trace_id": e.get("oracle_trace_id"),
+                    "flow_id": e.get("flow_id"),
+                    "risk_label": e.get("risk_label"),
+                    "attack_family": e.get("attack_family"),
+                    "final_action": e.get("final_action"),
+                    "audit_logged": e.get("audit_logged"),
+                    "timestamp": e.get("timestamp"),
+                    "data_source": e.get("data_source", "LIVE_PROOF"),
+                }
+            )
+    events = sorted(events, key=lambda x: x.get("timestamp") or 0, reverse=True)[:limit]
+    return {"events": events, "warnings": [w for w in warnings if w]}

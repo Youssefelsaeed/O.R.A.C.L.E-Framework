@@ -49,11 +49,29 @@ http://127.0.0.1:4173
 
 ## Health And Validation
 
+Operator mode uses the running stack and leaves it alive:
+
 ```powershell
 python scripts/oracle_final_acceptance_test.py
 python scripts/oracle_phase12_11_module_capability_validation.py
 python scripts/oracle_phase11_final_benchmark.py
 ```
+
+Managed test mode is explicit:
+
+```powershell
+python scripts/oracle_final_acceptance_test.py --manage-stack
+python scripts/oracle_phase12_11_module_capability_validation.py --manage-stack
+```
+
+Run live proof:
+
+```powershell
+python scripts/oracle_live_sensor_smoke_test.py
+python scripts/oracle_realtime_replay_proof.py --events 100
+```
+
+If GUI buttons do not respond, verify `VITE_ORACLE_API_BASE_URL=http://127.0.0.1:8000`, rebuild the GUI, and confirm `http://127.0.0.1:8000/oracle/dashboard/summary` is reachable.
 
 ## Deployment Notes
 
