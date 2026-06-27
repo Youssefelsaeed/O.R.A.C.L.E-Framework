@@ -1,0 +1,80 @@
+{
+  "generated_at": 1782568764.5045109,
+  "steps": {
+    "Runtime Current Code": {
+      "script": "oracle_phase12_18b_hard_runtime_reset.py",
+      "exit_code": 1,
+      "success": false,
+      "duration_seconds": 201.84,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18B HARD RUNTIME RESET ===\nPorts Checked: PASS\nListeners Detected: 6\nStack Restarted: FAIL\nCurrent Code Verified: FAIL\nAll Services Alive: FAIL\nFinal Status: FAIL\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18b_runtime_reset_report.json\n",
+      "stderr_tail": ""
+    },
+    "Balanced Eval Sets": {
+      "script": "oracle_phase12_18b_build_balanced_eval_sets.py",
+      "exit_code": 0,
+      "success": true,
+      "duration_seconds": 42.65,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18B BALANCED EVAL SETS ===\nCIC-IDS2017: pass benign=500 attack=24\nUNSW-NB15: pass benign=500 attack=500\nCSE-CIC-IDS2018: pass benign=500 attack=500\nDoHBrw: pass benign=500 attack=500\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18b_eval_set_summary.json\n",
+      "stderr_tail": ""
+    },
+    "Detector Routing Audit": {
+      "script": "oracle_phase12_18b_detector_routing_audit.py",
+      "exit_code": 0,
+      "success": true,
+      "duration_seconds": 3.73,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18B DETECTOR ROUTING AUDIT ===\nCIC-IDS2017: PASS detector=MutantShield production FusionEngine valid=True\nUNSW-NB15: PASS detector=UNSW semantic mapped path valid=False\nCSE-CIC-IDS2018: PASS detector=Production mapped path plus CSE repair candidate if available valid=True\nDoHBrw: PASS detector=DoHBrw native adapter; mapped CIC only as weak baseline valid=True\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18b_detector_routing_audit.json\n",
+      "stderr_tail": ""
+    },
+    "Standalone MutantShield Eval": {
+      "script": "oracle_phase12_18b_mutantshield_controlled_eval.py",
+      "exit_code": 0,
+      "success": true,
+      "duration_seconds": 233.57,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18B MUTANTSHIELD CONTROLLED EVAL ===\nCIC-IDS2017:production_fusion: PASS rows=124 recall=0.625 f1=0.7692\nUNSW-NB15:mapped_validation: PASS rows=200 recall=0.01 f1=0.0189\nCSE-CIC-IDS2018:production_fusion: PASS rows=200 recall=0.0 f1=0.0\nCSE-CIC-IDS2018:cse_repair_candidate: PASS rows=200 recall=1.0 f1=1.0\nDoHBrw:mapped_cic: PASS rows=200 recall=0.0 f1=0.0\nDoHBrw:native_adapter: PASS rows=200 recall=1.0 f1=0.9009\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18b_mutantshield_controlled_eval.json\n",
+      "stderr_tail": "ore/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\n2026-06-27 16:55:39.411694: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.\nTo enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.\n2026-06-27 16:55:39,554 - FusionEngine_final - INFO - Loading LSTM v2 final (weights+metadata) from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\LSTM_Optimized\\Final Model\\lstm_v2_final_20260130_185100.pkl\n2026-06-27 16:55:40,448 - tensorflow - WARNING - From C:\\Users\\YOUSSEF ELSAEED\\AppData\\Roaming\\Python\\Python312\\site-packages\\keras\\src\\backend\\tensorflow\\core.py:232: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.\n\n2026-06-27 16:55:40,504 - FusionEngine_final - INFO - LSTM v2 loaded: 78 features, 11 classes, seq_len=15\n2026-06-27 16:55:40,504 - FusionEngine_final - INFO - Loading GNN from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\GNN\\gnn_graphsage_mutantshield.pth and D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\GNN\\gnn_graphsage_builder.pkl\n2026-06-27 16:55:44,339 - FusionEngine_final - INFO - GNN inference helper initialized (dynamic ego-graphs enabled)\n2026-06-27 16:55:44,344 - FusionEngine_final - INFO - All models loaded successfully\n2026-06-27 16:55:44,344 - FusionEngine_final - INFO - Loading learned fusion model from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\FusionEngine\\learned_fusion_mlp.pt\n2026-06-27 16:55:44,347 - FusionEngine_final - INFO - Learned fusion model loaded successfully\n2026-06-27 16:55:44,347 - FusionEngine_final - INFO - Risk calibrator loaded from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models\\risk_calibrator.pkl\n2026-06-27 16:55:44,347 - oracle_sensor.mutantshield - INFO - {'msg': 'mutantshield_fusion_loaded', 'model_keys': ['xgboost', 'autoencoder', 'lstm', 'gnn_model', 'gnn_builder']}\n"
+    },
+    "Full Stack Oracle Eval": {
+      "script": "oracle_phase12_18b_full_stack_controlled_eval.py",
+      "exit_code": 1,
+      "success": false,
+      "duration_seconds": 0.84,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18B FULL STACK CONTROLLED EVAL ===\nFinal Status: FAIL\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18b_full_stack_controlled_eval.json\n",
+      "stderr_tail": ""
+    },
+    "Original Metrics Comparison": {
+      "script": "oracle_phase12_18b_compare_original_mutantshield_metrics.py",
+      "exit_code": 0,
+      "success": true,
+      "duration_seconds": 0.11,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18B ORIGINAL METRIC COMPARISON ===\nSources Compared: 4\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18b_original_metric_comparison.json\n",
+      "stderr_tail": ""
+    },
+    "Final Detection Verdict": {
+      "script": "oracle_phase12_18b_final_detection_verdict.py",
+      "exit_code": 1,
+      "success": false,
+      "duration_seconds": 0.78,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18B FINAL DETECTION VERDICT ===\nMutantShield Alone Tested: True\nFull Stack Tested: False\nOracle Preserved Detector Output: False\nFinal Status: NOT_READY\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\ORACLE_FINAL_DETECTION_VERDICT.json\n",
+      "stderr_tail": ""
+    },
+    "Request Handling Recheck": {
+      "script": "oracle_phase12_18b_request_handling_final_rerun.py",
+      "exit_code": 1,
+      "success": false,
+      "duration_seconds": 0.77,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18B REQUEST HANDLING FINAL RERUN ===\nRuntime Current Code: FAIL\nvalid_failed: None\nvalid_degraded: None\np95_latency_ms: None\naudit_logged_rate: None\nFinal Status: FAIL\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18b_request_handling_final_rerun.json\n",
+      "stderr_tail": ""
+    },
+    "GitHub Safety": {
+      "script": "github_release_safety_check.py",
+      "exit_code": 0,
+      "success": true,
+      "duration_seconds": 3.29,
+      "stdout_tail": "=== O.R.A.C.L.E FRAMEWORK RELEASE SAFETY CHECK ===\nSafety Check: PASS\nProfessional Docs: PASS\nReports Not Staged: PASS\nmodels_final unchanged: TRUE\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\github_release_safety_check.json\n",
+      "stderr_tail": ""
+    }
+  },
+  "models_final_unchanged": true,
+  "pass": false,
+  "final_status": "NOT_READY"
+}

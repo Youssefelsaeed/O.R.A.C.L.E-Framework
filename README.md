@@ -156,6 +156,14 @@ python scripts/oracle_phase12_17_final_operational_verification.py
 
 This loop boots the local stack, checks backend endpoints and GUI actions, sends 1000 mixed Oracle requests, verifies realtime replay updates the latest-events feed, checks reports/docs, runs safety checks, and confirms `models_final` is unchanged.
 
+Final controlled detection verification:
+
+```powershell
+python scripts/oracle_phase12_18b_final_detection_verification.py
+```
+
+Phase 12.18B is the current evidence gate for detection claims. It builds fixed-seed controlled eval sets, runs MutantShield standalone on CIC/UNSW/CSE/DoHBrw paths, compares old metric claims, and blocks full-stack claims unless `/oracle/runtime-info` proves `phase12_18b_runtime`. The latest local run remained `NOT_READY` because stale Windows listeners prevented current-code proof for Oracle Core.
+
 The live dashboard demo flow is documented in `docs/ORACLE_GUI_LIVE_DEMO_SCRIPT.md`.
 
 ## Evolution Engine And Adaptive Retraining

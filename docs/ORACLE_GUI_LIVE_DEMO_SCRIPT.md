@@ -78,6 +78,14 @@ http://127.0.0.1:8000/oracle/dashboard/latest-events
 
 Compare the `LIVE_REPLAY` rows and trace IDs with the GUI table.
 
+For final detection proof, also open:
+
+```text
+http://127.0.0.1:8000/oracle/runtime-info
+```
+
+The current-code proof must show `code_marker: phase12_18b_runtime`. If this endpoint returns `404` or a different marker, do not claim full-stack Phase 12.18B detection metrics.
+
 ## 5. Explain Data Badges
 
 - `LIVE`: current backend endpoint or current service state.
@@ -98,6 +106,7 @@ python scripts/test_module_gui_actions.py
 python scripts/test_module_pages_operator_ui.py
 python scripts/check_docker_packaging_safety.py
 python scripts/oracle_phase12_17_final_operational_verification.py
+python scripts/oracle_phase12_18b_final_detection_verification.py
 ```
 
 Build the GUI:

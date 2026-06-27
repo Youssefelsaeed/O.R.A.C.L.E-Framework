@@ -3,6 +3,9 @@ from __future__ import annotations
 print("REAL ORACLE CORE FILE LOADED", __file__)
 
 import time
+import os
+import subprocess
+import sys
 from contextlib import asynccontextmanager
 from typing import Any, Dict
 
@@ -16,6 +19,22 @@ from .config import get_settings
 from .models.oracle_event import OracleEvent
 from .orchestrator import OracleOrchestrator
 from .payload_validation import validate_oracle_payload
+
+STARTED_AT = time.time()
+CODE_MARKER = "phase12_18b_runtime"
+
+
+def _git_commit() -> str | None:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=os.getcwd(),
+            text=True,
+            stderr=subprocess.DEVNULL,
+            timeout=5,
+        ).strip()
+    except Exception:
+        return None
 
 
 @asynccontextmanager
@@ -58,6 +77,7 @@ async def health() -> Dict[str, Any]:
     return {
         "status": "ok",
         "service": "oracle_core",
+        "code_marker": CODE_MARKER,
         "token_cache_ttl_seconds": settings.oracle_token_cache_ttl_seconds,
         "downstream": {
             "qauthcore_url": str(settings.qauthcore_url),
@@ -65,6 +85,19 @@ async def health() -> Dict[str, Any]:
             "chronoledger_url": str(settings.chronoledger_url),
             "ghosttunnel_url": str(settings.ghosttunnel_url),
         },
+    }
+
+
+@app.get("/oracle/runtime-info", summary="Return current Oracle Core runtime build information.")
+async def runtime_info() -> Dict[str, Any]:
+    return {
+        "git_commit": _git_commit(),
+        "app_version": app.version,
+        "started_at": STARTED_AT,
+        "process_id": os.getpid(),
+        "code_marker": CODE_MARKER,
+        "python_executable": sys.executable,
+        "working_directory": os.getcwd(),
     }
 
 

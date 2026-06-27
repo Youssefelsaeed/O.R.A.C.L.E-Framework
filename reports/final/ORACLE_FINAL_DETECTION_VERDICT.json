@@ -1,0 +1,207 @@
+{
+  "generated_at": 1782568760.3372507,
+  "did_generate_flows_from_datasets": true,
+  "dataset_generation_method": "Balanced CSV eval sets from local dataset rows with original_label, y_true, dataset_source, attack_family, and row_origin_file.",
+  "tested_mutantshield_alone": true,
+  "tested_full_oracle_stack": false,
+  "oracle_core_uses_real_mutantshield_output": false,
+  "proof_records_sample": [],
+  "trustworthy_final_metrics": {
+    "CIC-IDS2017:production_fusion": {
+      "standalone": {
+        "accuracy": 0.9274,
+        "precision": 1.0,
+        "recall": 0.625,
+        "f1": 0.7692,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.375,
+        "confusion_matrix": {
+          "tn": 100,
+          "fp": 0,
+          "fn": 9,
+          "tp": 15
+        },
+        "per_attack_family_recall": {
+          "DoS slowloris": {
+            "attack_rows": 3,
+            "detected": 3,
+            "recall": 1.0
+          },
+          "PortScan": {
+            "attack_rows": 21,
+            "detected": 12,
+            "recall": 0.5714
+          }
+        }
+      },
+      "full_stack": null,
+      "final_claim_valid": true
+    },
+    "CSE-CIC-IDS2018:cse_repair_candidate": {
+      "standalone": {
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": {
+          "tn": 100,
+          "fp": 0,
+          "fn": 0,
+          "tp": 100
+        },
+        "per_attack_family_recall": {
+          "DDoS attacks-LOIC-HTTP": {
+            "attack_rows": 100,
+            "detected": 100,
+            "recall": 1.0
+          }
+        }
+      },
+      "full_stack": null,
+      "final_claim_valid": true
+    },
+    "CSE-CIC-IDS2018:production_fusion": {
+      "standalone": {
+        "accuracy": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 1.0,
+        "confusion_matrix": {
+          "tn": 100,
+          "fp": 0,
+          "fn": 100,
+          "tp": 0
+        },
+        "per_attack_family_recall": {
+          "DDoS attacks-LOIC-HTTP": {
+            "attack_rows": 100,
+            "detected": 0,
+            "recall": 0.0
+          }
+        }
+      },
+      "full_stack": null,
+      "final_claim_valid": true
+    },
+    "DoHBrw:mapped_cic": {
+      "standalone": {
+        "accuracy": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 1.0,
+        "confusion_matrix": {
+          "tn": 100,
+          "fp": 0,
+          "fn": 100,
+          "tp": 0
+        },
+        "per_attack_family_recall": {
+          "Malicious": {
+            "attack_rows": 100,
+            "detected": 0,
+            "recall": 0.0
+          }
+        }
+      },
+      "full_stack": null,
+      "final_claim_valid": true
+    },
+    "DoHBrw:native_adapter": {
+      "standalone": {
+        "accuracy": 0.89,
+        "precision": 0.8197,
+        "recall": 1.0,
+        "f1": 0.9009,
+        "false_positive_rate": 0.22,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": {
+          "tn": 78,
+          "fp": 22,
+          "fn": 0,
+          "tp": 100
+        },
+        "per_attack_family_recall": {
+          "Malicious": {
+            "attack_rows": 100,
+            "detected": 100,
+            "recall": 1.0
+          }
+        }
+      },
+      "full_stack": null,
+      "final_claim_valid": true
+    },
+    "UNSW-NB15:mapped_validation": {
+      "standalone": {
+        "accuracy": 0.48,
+        "precision": 0.1667,
+        "recall": 0.01,
+        "f1": 0.0189,
+        "false_positive_rate": 0.05,
+        "false_negative_rate": 0.99,
+        "confusion_matrix": {
+          "tn": 95,
+          "fp": 5,
+          "fn": 99,
+          "tp": 1
+        },
+        "per_attack_family_recall": {
+          "1": {
+            "attack_rows": 100,
+            "detected": 1,
+            "recall": 0.01
+          }
+        }
+      },
+      "full_stack": null,
+      "final_claim_valid": true
+    }
+  },
+  "presentation_metrics": "Use only Phase 12.18B per-dataset/path metrics with final_claim_valid=true; do not use unsupported banner metrics.",
+  "unsupported_or_outdated_metrics": {
+    "README.md": [
+      "Phase 12.18B is the current evidence gate for detection claims. It builds fixed-seed controlled eval sets, runs MutantShield standalone on CIC/UNSW/CSE/DoHBrw paths, compares old metric claims, and blocks full-stack claims unless `/oracle/runtime-info` proves `phase12_18b_runtime`. The latest local run remained `NOT_READY` because stale Windows listeners prevented current-code proof for Oracle Core.",
+      "Phase 12.18 detection truth audit uses fresh per-dataset evidence instead of banner metrics:",
+      "Latest Phase 12.18 bounded sample audit did not confirm previous perfect-looking detection claims. CSE mapped-path recall and DoHBrw native-adapter recall were `0.0` on the bounded sample, so banner/global detection metrics should be replaced by per-dataset Phase 12.18 tables."
+    ],
+    "docs\\TESTING_AND_VALIDATION.md": [
+      "- Historical CSE/DoHBrw recall values are not treated as banner truth unless reconfirmed by Phase 12.18 per-dataset evaluation.",
+      "## Phase 12.18B Controlled Detection Verification"
+    ],
+    "docs\\MODULE_CAPABILITIES.md": [
+      "| MutantShield | AI detection and adapter-based analysis | Evidence-gated | Use Phase 12.18B controlled reports for CIC, UNSW mapped validation, CSE production/candidate, DoHBrw mapped, and DoHBrw native metrics. Historical high recall values are not banner truth unless freshly reconfirmed. |",
+      "- Phase 12.18B controlled standalone results: CIC production recall `0.625`, UNSW mapped recall `0.01`, CSE production recall `0.0`, CSE HOIC repair candidate recall `1.0`, DoHBrw mapped recall `0.0`, DoHBrw native-adapter recall `1.0`."
+    ],
+    "reports\\final\\ORACLE_FINAL_CAPABILITY_MATRIX.md": [
+      "Phase 12.18 replaces banner-style global detection claims with per-dataset evidence:",
+      "| CIC-IDS2017 mapped CIC | 1.0 | 50 | 0.0 | 0.0 | Sample was benign-only; do not infer attack recall. |",
+      "| CSE-CIC-IDS2018 mapped CIC | 0.9872 | 50 | 0.0 | 0.0 | Fresh audit did not confirm historical CSE recall. |",
+      "| DoHBrw native adapter | native | 50 | 0.0 | 0.0 | Fresh bounded sample did not confirm historical adapter recall. |"
+    ]
+  },
+  "confident_detection": [
+    "Report CIC/CSE-style production FusionEngine only for measured balanced paths.",
+    "Report DoHBrw through native adapter when measured."
+  ],
+  "not_confident_detection": [
+    "Paths with weak recall/F1 in controlled evaluation.",
+    "UNSW as native production claim because it is mapped validation.",
+    "CSE repair candidate when no candidate bundle is present."
+  ],
+  "learn_adapt_capability": [
+    "Candidate-only XGBoost/AutoEncoder retraining.",
+    "CSE repair candidates when available.",
+    "DoHBrw native adapter candidates.",
+    "LSTM/GNN retraining after contracts pass."
+  ],
+  "runtime_current_code_verified": false,
+  "models_final_hashes_present": true,
+  "final_status": "NOT_READY",
+  "pass": false
+}

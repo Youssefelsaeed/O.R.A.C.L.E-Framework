@@ -22,28 +22,30 @@ O.R.A.C.L.E Framework has been validated through backend, production-like simula
 - 0 failed
 - Historical CSE/DoHBrw recall values are not treated as banner truth unless reconfirmed by Phase 12.18 per-dataset evaluation.
 
-## Phase 12.18 Detection Truth Audit
+## Phase 12.18B Controlled Detection Verification
 
 Fresh detection metrics must come from:
 
-- `reports/final/phase12_18_feature_mapping_audit.json`
-- `reports/final/phase12_18_mutantshield_standalone_eval.json`
-- `reports/final/phase12_18_full_stack_dataset_eval.json`
-- `reports/final/phase12_18_metric_truth_comparison.json`
+- `reports/final/phase12_18b_eval_set_summary.json`
+- `reports/final/phase12_18b_detector_routing_audit.json`
+- `reports/final/phase12_18b_mutantshield_controlled_eval.json`
+- `reports/final/phase12_18b_full_stack_controlled_eval.json`
+- `reports/final/ORACLE_FINAL_DETECTION_VERDICT.json`
 
-If raw datasets are absent, the Phase 12.18 reports mark the dataset as `BLOCKED_MISSING_DATASET` instead of carrying old or banner metrics forward.
+If runtime proof fails, full-stack metrics are blocked instead of being reported from a stale Oracle Core process.
 
-Latest bounded Phase 12.18 sample results:
+Latest Phase 12.18B controlled standalone MutantShield results:
 
 | Dataset / Path | Rows | Accuracy | Precision | Recall | F1 | FPR | FNR |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| CIC-IDS2017 mapped CIC | 50 | 1.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
-| UNSW-NB15 mapped CIC | 50 | 0.96 | 0.0 | 0.0 | 0.0 | 0.04 | 0.0 |
-| CSE-CIC-IDS2018 mapped CIC | 50 | 0.12 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
-| DoHBrw mapped CIC | 50 | 1.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
-| DoHBrw native adapter | 50 | 0.86 | 0.0 | 0.0 | 0.0 | 0.14 | 0.0 |
+| CIC-IDS2017 production FusionEngine | 124 | 0.9274 | 1.0 | 0.625 | 0.7692 | 0.0 | 0.375 |
+| UNSW-NB15 mapped validation | 200 | 0.48 | 0.1667 | 0.01 | 0.0189 | 0.05 | 0.99 |
+| CSE-CIC-IDS2018 production FusionEngine | 200 | 0.5 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| CSE-CIC-IDS2018 HOIC repair candidate | 200 | 1.0 | 1.0 | 1.0 | 1.0 | 0.0 | 0.0 |
+| DoHBrw mapped CIC | 200 | 0.5 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| DoHBrw native adapter | 200 | 0.89 | 0.8197 | 1.0 | 0.9009 | 0.22 | 0.0 |
 
-These are bounded local audit samples, not final publication-scale benchmarks. They prove that previous perfect-looking banner values must not be used without a larger fresh rerun.
+Full-stack controlled evaluation is currently `BLOCKED_RUNTIME_NOT_CURRENT`: `/oracle/runtime-info` returned 404 from the running core, so Oracle preservation metrics were not claimed.
 
 ## Module Validation Highlights
 

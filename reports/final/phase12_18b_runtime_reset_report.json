@@ -1,0 +1,1490 @@
+{
+  "generated_at": 1782568478.65512,
+  "expected_git_commit": "e1aa7c3",
+  "ports": [
+    8000,
+    8001,
+    8002,
+    8003,
+    8004,
+    4173
+  ],
+  "initial_sources": {
+    "netstat": {
+      "cmd": [
+        "netstat",
+        "-ano"
+      ],
+      "exit_code": 0,
+      "stdout": "     4\n  UDP    192.168.157.1:1900     *:*                                    8508\n  UDP    192.168.157.1:2177     *:*                                    4804\n  UDP    192.168.157.1:6112     *:*                                    5848\n  UDP    192.168.157.1:59241    *:*                                    8508\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    3136\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    4488\n  UDP    [::]:5353              *:*                                    4488\n  UDP    [::]:5353              *:*                                    4488\n  UDP    [::]:5353              *:*                                    4488\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    28720\n  UDP    [::]:5353              *:*                                    4488\n  UDP    [::]:5355              *:*                                    3136\n  UDP    [::]:55690             *:*                                    5864\n  UDP    [::]:56602             *:*                                    3136\n  UDP    [::]:56884             *:*                                    3136\n  UDP    [::]:61733             *:*                                    3136\n  UDP    [::1]:1900             *:*                                    8508\n  UDP    [::1]:59237            *:*                                    8508\n  UDP    [fdfd::1a31:e794]:2177  *:*                                    4804\n  UDP    [fdfd::1a31:e794]:5353  *:*                                    5864\n  UDP    [fe80::84e:9af4:82ea:6f6d%14]:1900  *:*                                    8508\n  UDP    [fe80::84e:9af4:82ea:6f6d%14]:2177  *:*                                    4804\n  UDP    [fe80::84e:9af4:82ea:6f6d%14]:5353  *:*                                    5864\n  UDP    [fe80::84e:9af4:82ea:6f6d%14]:59232  *:*                                    8508\n  UDP    [fe80::2ce2:1ee5:d610:f149%17]:546  *:*                                    3540\n  UDP    [fe80::3bf7:aac3:da4f:4c76%24]:1900  *:*                                    8508\n  UDP    [fe80::3bf7:aac3:da4f:4c76%24]:2177  *:*                                    4804\n  UDP    [fe80::3bf7:aac3:da4f:4c76%24]:59233  *:*                                    8508\n  UDP    [fe80::81b2:7592:b1e2:724f%15]:1900  *:*                                    8508\n  UDP    [fe80::81b2:7592:b1e2:724f%15]:2177  *:*                                    4804\n  UDP    [fe80::81b2:7592:b1e2:724f%15]:5353  *:*                                    5864\n  UDP    [fe80::81b2:7592:b1e2:724f%15]:59235  *:*                                    8508\n  UDP    [fe80::cd15:26e2:1a:1408%23]:1900  *:*                                    8508\n  UDP    [fe80::cd15:26e2:1a:1408%23]:2177  *:*                                    4804\n  UDP    [fe80::cd15:26e2:1a:1408%23]:59236  *:*                                    8508\n  UDP    [fe80::df37:4d1b:149c:7fda%6]:1900  *:*                                    8508\n  UDP    [fe80::df37:4d1b:149c:7fda%6]:2177  *:*                                    4804\n  UDP    [fe80::df37:4d1b:149c:7fda%6]:5353  *:*                                    5864\n  UDP    [fe80::df37:4d1b:149c:7fda%6]:59234  *:*                                    8508\n",
+      "stderr": "",
+      "listeners": []
+    },
+    "get_net_tcp": {
+      "cmd": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-NetTCPConnection -State Listen -LocalPort 8000,8001,8002,8003,8004,4173 | Select LocalPort,OwningProcess | ConvertTo-Json"
+      ],
+      "exit_code": 0,
+      "stdout": "[\n    {\n        \"LocalPort\":  8004,\n        \"OwningProcess\":  18164\n    },\n    {\n        \"LocalPort\":  8003,\n        \"OwningProcess\":  5656\n    },\n    {\n        \"LocalPort\":  8002,\n        \"OwningProcess\":  13412\n    },\n    {\n        \"LocalPort\":  8001,\n        \"OwningProcess\":  33060\n    },\n    {\n        \"LocalPort\":  8000,\n        \"OwningProcess\":  1276\n    },\n    {\n        \"LocalPort\":  4173,\n        \"OwningProcess\":  25284\n    }\n]\n",
+      "stderr": "",
+      "listeners": [
+        {
+          "method": "Get-NetTCPConnection",
+          "port": 8004,
+          "pid": 18164
+        },
+        {
+          "method": "Get-NetTCPConnection",
+          "port": 8003,
+          "pid": 5656
+        },
+        {
+          "method": "Get-NetTCPConnection",
+          "port": 8002,
+          "pid": 13412
+        },
+        {
+          "method": "Get-NetTCPConnection",
+          "port": 8001,
+          "pid": 33060
+        },
+        {
+          "method": "Get-NetTCPConnection",
+          "port": 8000,
+          "pid": 1276
+        },
+        {
+          "method": "Get-NetTCPConnection",
+          "port": 4173,
+          "pid": 25284
+        }
+      ]
+    }
+  },
+  "listeners": [
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 8004,
+      "pid": 18164
+    },
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 8003,
+      "pid": 5656
+    },
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 8002,
+      "pid": 13412
+    },
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 8001,
+      "pid": 33060
+    },
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 8000,
+      "pid": 1276
+    },
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 4173,
+      "pid": 25284
+    }
+  ],
+  "pid_details": [
+    {
+      "pid": 18164,
+      "tasklist": {
+        "cmd": [
+          "tasklist",
+          "/FI",
+          "PID eq 18164",
+          "/V"
+        ],
+        "exit_code": 0,
+        "stdout": "INFO: No tasks are running which match the specified criteria.\n",
+        "stderr": ""
+      },
+      "wmic": {
+        "cmd": [
+          "wmic",
+          "process",
+          "where",
+          "processid=18164",
+          "get",
+          "ProcessId,Name,CommandLine",
+          "/FORMAT:LIST"
+        ],
+        "exit_code": 0,
+        "stdout": "\n\n\n\n\n\n",
+        "stderr": "No Instance(s) Available.\n\n"
+      },
+      "powershell_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Get-CimInstance Win32_Process -Filter \"ProcessId=18164\" | Select ProcessId,Name,CommandLine | ConvertTo-Json"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle_owned": false,
+      "resolvable": false
+    },
+    {
+      "pid": 5656,
+      "tasklist": {
+        "cmd": [
+          "tasklist",
+          "/FI",
+          "PID eq 5656",
+          "/V"
+        ],
+        "exit_code": 0,
+        "stdout": "INFO: No tasks are running which match the specified criteria.\n",
+        "stderr": ""
+      },
+      "wmic": {
+        "cmd": [
+          "wmic",
+          "process",
+          "where",
+          "processid=5656",
+          "get",
+          "ProcessId,Name,CommandLine",
+          "/FORMAT:LIST"
+        ],
+        "exit_code": 0,
+        "stdout": "\n\n\n\n\n\n",
+        "stderr": "No Instance(s) Available.\n\n"
+      },
+      "powershell_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Get-CimInstance Win32_Process -Filter \"ProcessId=5656\" | Select ProcessId,Name,CommandLine | ConvertTo-Json"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle_owned": false,
+      "resolvable": false
+    },
+    {
+      "pid": 13412,
+      "tasklist": {
+        "cmd": [
+          "tasklist",
+          "/FI",
+          "PID eq 13412",
+          "/V"
+        ],
+        "exit_code": 0,
+        "stdout": "INFO: No tasks are running which match the specified criteria.\n",
+        "stderr": ""
+      },
+      "wmic": {
+        "cmd": [
+          "wmic",
+          "process",
+          "where",
+          "processid=13412",
+          "get",
+          "ProcessId,Name,CommandLine",
+          "/FORMAT:LIST"
+        ],
+        "exit_code": 0,
+        "stdout": "\n\n\n\n\n\n",
+        "stderr": "No Instance(s) Available.\n\n"
+      },
+      "powershell_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Get-CimInstance Win32_Process -Filter \"ProcessId=13412\" | Select ProcessId,Name,CommandLine | ConvertTo-Json"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle_owned": false,
+      "resolvable": false
+    },
+    {
+      "pid": 33060,
+      "tasklist": {
+        "cmd": [
+          "tasklist",
+          "/FI",
+          "PID eq 33060",
+          "/V"
+        ],
+        "exit_code": 0,
+        "stdout": "INFO: No tasks are running which match the specified criteria.\n",
+        "stderr": ""
+      },
+      "wmic": {
+        "cmd": [
+          "wmic",
+          "process",
+          "where",
+          "processid=33060",
+          "get",
+          "ProcessId,Name,CommandLine",
+          "/FORMAT:LIST"
+        ],
+        "exit_code": 0,
+        "stdout": "\n\n\n\n\n\n",
+        "stderr": "No Instance(s) Available.\n\n"
+      },
+      "powershell_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Get-CimInstance Win32_Process -Filter \"ProcessId=33060\" | Select ProcessId,Name,CommandLine | ConvertTo-Json"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle_owned": false,
+      "resolvable": false
+    },
+    {
+      "pid": 1276,
+      "tasklist": {
+        "cmd": [
+          "tasklist",
+          "/FI",
+          "PID eq 1276",
+          "/V"
+        ],
+        "exit_code": 0,
+        "stdout": "INFO: No tasks are running which match the specified criteria.\n",
+        "stderr": ""
+      },
+      "wmic": {
+        "cmd": [
+          "wmic",
+          "process",
+          "where",
+          "processid=1276",
+          "get",
+          "ProcessId,Name,CommandLine",
+          "/FORMAT:LIST"
+        ],
+        "exit_code": 0,
+        "stdout": "\n\n\n\n\n\n",
+        "stderr": "No Instance(s) Available.\n\n"
+      },
+      "powershell_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Get-CimInstance Win32_Process -Filter \"ProcessId=1276\" | Select ProcessId,Name,CommandLine | ConvertTo-Json"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "oracle_owned": false,
+      "resolvable": false
+    },
+    {
+      "pid": 25284,
+      "tasklist": {
+        "cmd": [
+          "tasklist",
+          "/FI",
+          "PID eq 25284",
+          "/V"
+        ],
+        "exit_code": 0,
+        "stdout": "\nImage Name                     PID Session Name        Session#    Mem Usage Status          User Name                                              CPU Time Window Title                                                            \n========================= ======== ================ =========== ============ =============== ================================================== ============ ========================================================================\nnode.exe                     25284 Console                    1     69,160 K Unknown         LAPTOP-1KAU7CJF\\YOUSSEF ELSAEED                         0:00:02 N/A                                                                     \n",
+        "stderr": ""
+      },
+      "wmic": {
+        "cmd": [
+          "wmic",
+          "process",
+          "where",
+          "processid=25284",
+          "get",
+          "ProcessId,Name,CommandLine",
+          "/FORMAT:LIST"
+        ],
+        "exit_code": 0,
+        "stdout": "\n\n\n\nCommandLine=\"node\"   \"D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\O.R.A.C.L.E_GUi_V1_Figma\\node_modules\\.bin\\\\..\\vite\\bin\\vite.js\" preview --host 127.0.0.1 --port 4173\n\nName=node.exe\n\nProcessId=25284\n\n\n\n\n\n\n\n",
+        "stderr": ""
+      },
+      "powershell_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Get-CimInstance Win32_Process -Filter \"ProcessId=25284\" | Select ProcessId,Name,CommandLine | ConvertTo-Json"
+        ],
+        "exit_code": 0,
+        "stdout": "{\n    \"ProcessId\":  25284,\n    \"Name\":  \"node.exe\",\n    \"CommandLine\":  \"\\\"node\\\"   \\\"D:\\\\MY STUDIES\\\\UNIVERSITY\\\\GRAD\\\\Grad work\\\\Modules\\\\O.R.A.C.L.E_GUi_V1_Figma\\\\node_modules\\\\.bin\\\\\\\\..\\\\vite\\\\bin\\\\vite.js\\\" preview --host 127.0.0.1 --port 4173\"\n}\n",
+        "stderr": ""
+      },
+      "oracle_owned": true,
+      "resolvable": true
+    }
+  ],
+  "termination_attempts": [
+    {
+      "pid": 18164,
+      "oracle_owned": false,
+      "forced_for_target_oracle_port": true,
+      "taskkill": {
+        "cmd": [
+          "taskkill",
+          "/PID",
+          "18164",
+          "/F",
+          "/T"
+        ],
+        "exit_code": 128,
+        "stdout": "",
+        "stderr": "ERROR: The process \"18164\" not found.\n"
+      },
+      "stop_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Stop-Process -Id 18164 -Force -ErrorAction Continue"
+        ],
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "Stop-Process : Cannot find a process with the process identifier 18164.\nAt line:1 char:1\n+ Stop-Process -Id 18164 -Force -ErrorAction Continue\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (18164:Int32) [Stop-Process], ProcessCommandException\n    + FullyQualifiedErrorId : NoProcessFoundForGivenId,Microsoft.PowerShell.Commands.StopProcessCommand\n \n"
+      }
+    },
+    {
+      "pid": 5656,
+      "oracle_owned": false,
+      "forced_for_target_oracle_port": true,
+      "taskkill": {
+        "cmd": [
+          "taskkill",
+          "/PID",
+          "5656",
+          "/F",
+          "/T"
+        ],
+        "exit_code": 128,
+        "stdout": "",
+        "stderr": "ERROR: The process \"5656\" not found.\n"
+      },
+      "stop_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Stop-Process -Id 5656 -Force -ErrorAction Continue"
+        ],
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "Stop-Process : Cannot find a process with the process identifier 5656.\nAt line:1 char:1\n+ Stop-Process -Id 5656 -Force -ErrorAction Continue\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (5656:Int32) [Stop-Process], ProcessCommandException\n    + FullyQualifiedErrorId : NoProcessFoundForGivenId,Microsoft.PowerShell.Commands.StopProcessCommand\n \n"
+      }
+    },
+    {
+      "pid": 13412,
+      "oracle_owned": false,
+      "forced_for_target_oracle_port": true,
+      "taskkill": {
+        "cmd": [
+          "taskkill",
+          "/PID",
+          "13412",
+          "/F",
+          "/T"
+        ],
+        "exit_code": 128,
+        "stdout": "",
+        "stderr": "ERROR: The process \"13412\" not found.\n"
+      },
+      "stop_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Stop-Process -Id 13412 -Force -ErrorAction Continue"
+        ],
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "Stop-Process : Cannot find a process with the process identifier 13412.\nAt line:1 char:1\n+ Stop-Process -Id 13412 -Force -ErrorAction Continue\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (13412:Int32) [Stop-Process], ProcessCommandException\n    + FullyQualifiedErrorId : NoProcessFoundForGivenId,Microsoft.PowerShell.Commands.StopProcessCommand\n \n"
+      }
+    },
+    {
+      "pid": 33060,
+      "oracle_owned": false,
+      "forced_for_target_oracle_port": true,
+      "taskkill": {
+        "cmd": [
+          "taskkill",
+          "/PID",
+          "33060",
+          "/F",
+          "/T"
+        ],
+        "exit_code": 128,
+        "stdout": "",
+        "stderr": "ERROR: The process \"33060\" not found.\n"
+      },
+      "stop_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Stop-Process -Id 33060 -Force -ErrorAction Continue"
+        ],
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "Stop-Process : Cannot find a process with the process identifier 33060.\nAt line:1 char:1\n+ Stop-Process -Id 33060 -Force -ErrorAction Continue\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (33060:Int32) [Stop-Process], ProcessCommandException\n    + FullyQualifiedErrorId : NoProcessFoundForGivenId,Microsoft.PowerShell.Commands.StopProcessCommand\n \n"
+      }
+    },
+    {
+      "pid": 1276,
+      "oracle_owned": false,
+      "forced_for_target_oracle_port": true,
+      "taskkill": {
+        "cmd": [
+          "taskkill",
+          "/PID",
+          "1276",
+          "/F",
+          "/T"
+        ],
+        "exit_code": 128,
+        "stdout": "",
+        "stderr": "ERROR: The process \"1276\" not found.\n"
+      },
+      "stop_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Stop-Process -Id 1276 -Force -ErrorAction Continue"
+        ],
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "Stop-Process : Cannot find a process with the process identifier 1276.\nAt line:1 char:1\n+ Stop-Process -Id 1276 -Force -ErrorAction Continue\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (1276:Int32) [Stop-Process], ProcessCommandException\n    + FullyQualifiedErrorId : NoProcessFoundForGivenId,Microsoft.PowerShell.Commands.StopProcessCommand\n \n"
+      }
+    },
+    {
+      "pid": 25284,
+      "oracle_owned": true,
+      "forced_for_target_oracle_port": true,
+      "taskkill": {
+        "cmd": [
+          "taskkill",
+          "/PID",
+          "25284",
+          "/F",
+          "/T"
+        ],
+        "exit_code": 0,
+        "stdout": "SUCCESS: The process with PID 30268 (child process of PID 25284) has been terminated.\nSUCCESS: The process with PID 25284 (child process of PID 13304) has been terminated.\n",
+        "stderr": ""
+      },
+      "stop_process": {
+        "cmd": [
+          "powershell",
+          "-NoProfile",
+          "-Command",
+          "Stop-Process -Id 25284 -Force -ErrorAction Continue"
+        ],
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "Stop-Process : Cannot find a process with the process identifier 25284.\nAt line:1 char:1\n+ Stop-Process -Id 25284 -Force -ErrorAction Continue\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : ObjectNotFound: (25284:Int32) [Stop-Process], ProcessCommandException\n    + FullyQualifiedErrorId : NoProcessFoundForGivenId,Microsoft.PowerShell.Commands.StopProcessCommand\n \n"
+      }
+    }
+  ],
+  "listeners_after_kill": [
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 8004,
+      "pid": 18164
+    },
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 8003,
+      "pid": 5656
+    },
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 8002,
+      "pid": 13412
+    },
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 8001,
+      "pid": 33060
+    },
+    {
+      "method": "Get-NetTCPConnection",
+      "port": 8000,
+      "pid": 1276
+    }
+  ],
+  "stack_restart": {
+    "pid": 22640,
+    "poll": 0,
+    "services": {
+      "runtime_info": {
+        "ok": false,
+        "status_code": 404,
+        "body": {
+          "detail": "Not Found"
+        }
+      },
+      "health": {
+        "ok": true,
+        "status_code": 200,
+        "body": {
+          "status": "ok",
+          "service": "oracle_core",
+          "downstream": {
+            "qauthcore_url": "http://localhost:8001/",
+            "ethicq_url": "http://localhost:8002/",
+            "chronoledger_url": "http://localhost:8003/",
+            "ghosttunnel_url": "http://localhost:8004/"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status_code": 200,
+        "body": {
+          "backend_status": "READY",
+          "modules": {
+            "oracle_core": true,
+            "mutantshield": true,
+            "qauthcore": true,
+            "ethicq": true,
+            "chronoledger": true,
+            "ghosttunnel": true
+          },
+          "performance": {
+            "avg_latency_ms": 118.1,
+            "p95_latency_ms": 429.93,
+            "max_latency_ms": 1286.05,
+            "success": 100,
+            "degraded": 0,
+            "failed": 0
+          },
+          "assurance": {
+            "latest_completed": 1312,
+            "latest_pending": 0,
+            "latest_failed": 0,
+            "async_assurance_enabled": true
+          },
+          "ghosttunnel": {
+            "jobs_completed": 71,
+            "jobs_pending": 0,
+            "jobs_failed": 0,
+            "fast_ack_enabled": true,
+            "avg_latency_ms": 83.44,
+            "ghosttunnel_avg_ms": 7.21
+          },
+          "evolution": {
+            "final_status": "PASS_DRY_RUN",
+            "dry_run": true,
+            "candidate_trained": true,
+            "candidate_id": "candidate-20260627-022227-a2ddf3",
+            "evaluation_passed": false,
+            "promotion_allowed": false,
+            "promotion_status": "promotion_blocked_metrics",
+            "baseline_quality_warning": false,
+            "gan_status": "not_trained",
+            "gan_training_required": true,
+            "art_status": "available",
+            "art_available": true,
+            "art_version": "1.20.1",
+            "art_source": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\ART - IBM\\adversarial-robustness-toolbox-main",
+            "attacks_run": [
+              "zoo"
+            ],
+            "adversarial_accuracy": 1.0,
+            "robustness_drop": 0.0,
+            "adversarial_training_enabled": false,
+            "fair_baseline_reliable": true,
+            "promoted": false,
+            "promotion_simulated": true,
+            "datasets_used": [
+              "CIC-IDS2017",
+              "UNSW-NB15"
+            ],
+            "supervised_buffer_count": 10000,
+            "anomaly_buffer_count": 0,
+            "unverified_buffer_count": 130,
+            "adversarial_samples_generated": null,
+            "evaluation_reasons": [
+              "dataset:CIC-IDS2017:f1_drop>5%"
+            ],
+            "schema_compatible": true,
+            "baseline_present": true,
+            "full_ensemble": true,
+            "models_trained_count": 3,
+            "ensemble_promotion_ready": false,
+            "global_adversarial_gate_passed": true,
+            "model_coverage": {
+              "generated_at": 1782516151.4711723,
+              "candidate_dir": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3",
+              "models": [
+                {
+                  "model_name": "XGBoost",
+                  "production_artifact_found": true,
+                  "production_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\XGboost\\xgboost_classifier.pkl",
+                  "candidate_training_attempted": true,
+                  "candidate_trained": true,
+                  "retraining_supported": true,
+                  "adversarial_evaluated": true,
+                  "adversarial_training_applied": false,
+                  "promotion_eligible": true,
+                  "blocker_reason": null,
+                  "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\XGboost\\xgboost_candidate.pkl",
+                  "status": "trained"
+                },
+                {
+                  "model_name": "AutoEncoder",
+                  "production_artifact_found": true,
+                  "production_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\AutoEncoder\\autoencoder_v1.pkl",
+                  "candidate_training_attempted": true,
+                  "candidate_trained": true,
+                  "retraining_supported": true,
+                  "adversarial_evaluated": true,
+                  "adversarial_training_applied": false,
+                  "promotion_eligible": true,
+                  "blocker_reason": null,
+                  "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\AutoEncoder\\autoencoder_candidate.pkl",
+                  "status": "trained"
+                },
+                {
+                  "model_name": "LSTM",
+                  "production_artifact_found": true,
+                  "production_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\LSTM_Optimized\\Final Model\\lstm_v2_final_20260130_185100.pkl",
+                  "candidate_training_attempted": true,
+                  "candidate_trained": false,
+                  "retraining_supported": false,
+                  "adversarial_evaluated": false,
+                  "adversarial_training_applied": false,
+                  "promotion_eligible": false,
+                  "blocker_reason": "lstm_retraining_contract_not_satisfied;production_lstm_trainer_is_monolithic_and_writes_models_final_by_default;no_candidate_safe_lstm_training_api_available",
+                  "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\LSTM_Optimized\\lstm_training_report.json",
+                  "status": "blocked_contract_missing",
+                  "real_retraining": false,
+                  "surrogate_used": false,
+                  "production_inference_available": true,
+                  "safe_to_train": false,
+                  "contract_validation": {
+                    "valid": false,
+                    "missing_columns": [
+                      "sequence_id",
+                      "sequence_index",
+                      "timestamp",
+                      "flow_id",
+                      "attack_family"
+                    ],
+                    "warnings": [
+                      "sequence_grouping_unavailable"
+                    ],
+                    "safe_to_train": false,
+                    "contract_name": "lstm_retraining_contract",
+                    "contract_version": "1.0"
+                  }
+                },
+                {
+                  "model_name": "GNN",
+                  "production_artifact_found": true,
+                  "production_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\GNN\\gnn_graphsage_mutantshield.pth",
+                  "candidate_training_attempted": true,
+                  "candidate_trained": false,
+                  "retraining_supported": false,
+                  "adversarial_evaluated": false,
+                  "adversarial_training_applied": false,
+                  "promotion_eligible": false,
+                  "blocker_reason": "adaptation_buffer_missing_src_dst_timestamp_graph_columns;gnn_retraining_contract_not_satisfied;no_candidate_safe_gnn_training_api_available;graph_reconstruction_from_current_buffers_not_safe",
+                  "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\GNN\\gnn_training_report.json",
+                  "status": "blocked_contract_missing",
+                  "real_retraining": false,
+                  "surrogate_used": false,
+                  "production_inference_available": true,
+                  "safe_to_train": false,
+                  "contract_validation": {
+                    "valid": false,
+                    "missing_columns": [
+                      "flow_id",
+                      "src_ip",
+                      "dst_ip",
+                      "timestamp",
+                      "attack_family"
+                    ],
+                    "warnings": [],
+                    "safe_to_train": false,
+                    "contract_name": "gnn_retraining_contract",
+                    "contract_version": "1.0"
+                  }
+                },
+                {
+                  "model_name": "FusionMLP",
+                  "production_artifact_found": true,
+                  "production_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\FusionEngine\\learned_fusion_mlp.pt",
+                  "candidate_training_attempted": true,
+                  "candidate_trained": true,
+                  "retraining_supported": true,
+                  "adversarial_evaluated": true,
+                  "adversarial_training_applied": false,
+                  "promotion_eligible": false,
+                  "blocker_reason": "fusion_surrogate_requires_full_ensemble_validation",
+                  "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\FusionEngine\\fusion_candidate.pkl",
+                  "status": "surrogate_trained"
+                },
+                {
+                  "model_name": "GAN",
+                  "production_artifact_found": false,
+                  "production_artifact_path": null,
+                  "candidate_training_attempted": false,
+                  "candidate_trained": false,
+                  "retraining_supported": false,
+                  "adversarial_evaluated": false,
+                  "adversarial_training_applied": false,
+                  "promotion_eligible": false,
+                  "blocker_reason": "gan_not_trained",
+                  "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\GAN\\gan_candidate_status.json",
+                  "status": "not_trained"
+                }
+              ],
+              "models_trained_count": 3,
+              "real_models_trained_count": 2,
+              "promotion_eligible_count": 2,
+              "full_ensemble_complete": false,
+              "framework_final": true,
+              "framework_final_with_limitations": true,
+              "ensemble_limitations": [
+                {
+                  "model_name": "LSTM",
+                  "status": "blocked_contract_missing",
+                  "blocker_reason": "lstm_retraining_contract_not_satisfied;production_lstm_trainer_is_monolithic_and_writes_models_final_by_default;no_candidate_safe_lstm_training_api_available",
+                  "production_inference_available": true,
+                  "safe_to_train": false,
+                  "contract_validation": {
+                    "valid": false,
+                    "missing_columns": [
+                      "sequence_id",
+                      "sequence_index",
+                      "timestamp",
+                      "flow_id",
+                      "attack_family"
+                    ],
+                    "warnings": [
+                      "sequence_grouping_unavailable"
+                    ],
+                    "safe_to_train": false,
+                    "contract_name": "lstm_retraining_contract",
+                    "contract_version": "1.0"
+                  }
+                },
+                {
+                  "model_name": "GNN",
+                  "status": "blocked_contract_missing",
+                  "blocker_reason": "adaptation_buffer_missing_src_dst_timestamp_graph_columns;gnn_retraining_contract_not_satisfied;no_candidate_safe_gnn_training_api_available;graph_reconstruction_from_current_buffers_not_safe",
+                  "production_inference_available": true,
+                  "safe_to_train": false,
+                  "contract_validation": {
+                    "valid": false,
+                    "missing_columns": [
+                      "flow_id",
+                      "src_ip",
+                      "dst_ip",
+                      "timestamp",
+                      "attack_family"
+                    ],
+                    "warnings": [],
+                    "safe_to_train": false,
+                    "contract_name": "gnn_retraining_contract",
+                    "contract_version": "1.0"
+                  }
+                }
+              ],
+              "contract_gated_models": [
+                {
+                  "model_name": "LSTM",
+                  "status": "blocked_contract_missing",
+                  "safe_to_train": false,
+                  "missing_columns": [
+                    "sequence_id",
+                    "sequence_index",
+                    "timestamp",
+                    "flow_id",
+                    "attack_family"
+                  ]
+                },
+                {
+                  "model_name": "GNN",
+                  "status": "blocked_contract_missing",
+                  "safe_to_train": false,
+                  "missing_columns": [
+                    "flow_id",
+                    "src_ip",
+                    "dst_ip",
+                    "timestamp",
+                    "attack_family"
+                  ]
+                }
+              ],
+              "ensemble_promotion_ready": false
+            },
+            "adversarial_skipped": false,
+            "full_evolution_ready": true
+          },
+          "evolution_scheduler": {
+            "enabled": false,
+            "frequency": "weekly",
+            "last_run": null,
+            "next_run": null,
+            "mode": "candidate-only",
+            "adversarial_train": true,
+            "controlled_promotion_allowed": false,
+            "status": "idle"
+          },
+          "model_coverage": {
+            "models_trained_count": 3,
+            "promotion_eligible_count": 2,
+            "full_ensemble_complete": false,
+            "ensemble_promotion_ready": false,
+            "per_model": [
+              {
+                "model_name": "XGBoost",
+                "candidate_trained": true,
+                "adversarial_evaluated": true,
+                "promotion_eligible": true,
+                "status": "trained",
+                "blocker_reason": null
+              },
+              {
+                "model_name": "AutoEncoder",
+                "candidate_trained": true,
+                "adversarial_evaluated": true,
+                "promotion_eligible": true,
+                "status": "trained",
+                "blocker_reason": null
+              },
+              {
+                "model_name": "LSTM",
+                "candidate_trained": false,
+                "adversarial_evaluated": false,
+                "promotion_eligible": false,
+                "status": "blocked_contract_missing",
+                "blocker_reason": "lstm_retraining_contract_not_satisfied;production_lstm_trainer_is_monolithic_and_writes_models_final_by_default;no_candidate_safe_lstm_training_api_available"
+              },
+              {
+                "model_name": "GNN",
+                "candidate_trained": false,
+                "adversarial_evaluated": false,
+                "promotion_eligible": false,
+                "status": "blocked_contract_missing",
+                "blocker_reason": "adaptation_buffer_missing_src_dst_timestamp_graph_columns;gnn_retraining_contract_not_satisfied;no_candidate_safe_gnn_training_api_available;graph_reconstruction_from_current_buffers_not_safe"
+              },
+              {
+                "model_name": "FusionMLP",
+                "candidate_trained": true,
+                "adversarial_evaluated": true,
+                "promotion_eligible": false,
+                "status": "surrogate_trained",
+                "blocker_reason": "fusion_surrogate_requires_full_ensemble_validation"
+              },
+              {
+                "model_name": "GAN",
+                "candidate_trained": false,
+                "adversarial_evaluated": false,
+                "promotion_eligible": false,
+                "status": "not_trained",
+                "blocker_reason": "gan_not_trained"
+              }
+            ]
+          },
+          "human_review_queue_count": 259,
+          "full_adversarial_gate": true,
+          "chronoledger_evidence": {
+            "total_events": 130,
+            "bucket_counts": {
+              "false_positive_candidate": 130
+            },
+            "unverified_count": 130,
+            "require_human_approval": true,
+            "false_positive_candidate": 130,
+            "outlier_candidate": 0
+          },
+          "warnings": [
+            "Model promotion is blocked until fair production baseline is validated.",
+            "ChronoLedger evidence is unverified unless human reviewed.",
+            "GAN training required before synthetic attack generation."
+          ],
+          "report_warnings": [],
+          "architecture_status": {
+            "backend_ready": true,
+            "async_quantum_assurance_active": true,
+            "ghosttunnel_fast_ack_active": true,
+            "evolution_dry_run_pass": true,
+            "evolution_ready": true,
+            "promotion_blocked_safe": true
+          },
+          "gui_alignment": {
+            "evolution_engine_title": "MutantShield Evolution Engine",
+            "evolution_engine_subtitle": "Retraining, adversarial hardening, and promotion safety",
+            "safety_controls_disabled": [
+              "real_model_promotion",
+              "force_promote",
+              "auto_promote",
+              "delete_logs",
+              "delete_models"
+            ]
+          },
+          "reports": {
+            "backend_validation": "oracle_backend_final_validation.json",
+            "evolution_run": "evolution/evolution_run_report.json",
+            "evaluation_gate": "evolution/evaluation_gate_report.json",
+            "production_baseline": "evolution/production_baseline_metrics.json",
+            "chronoledger_evidence": "evolution/chronoledger_evidence.json"
+          }
+        }
+      },
+      "qauthcore": {
+        "ok": true,
+        "status_code": 200,
+        "body": {
+          "text": "\n    <!DOCTYPE html>\n    <html>\n    <head>\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css\">\n    <link rel=\"shortcut icon\" href=\"https://"
+        }
+      },
+      "ethicq": {
+        "ok": true,
+        "status_code": 200,
+        "body": {
+          "text": "\n    <!DOCTYPE html>\n    <html>\n    <head>\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css\">\n    <link rel=\"shortcut icon\" href=\"https://"
+        }
+      },
+      "chronoledger": {
+        "ok": true,
+        "status_code": 200,
+        "body": {
+          "status": "healthy",
+          "timestamp": 1782568475.5668511,
+          "components": {
+            "blockchain": true,
+            "storage": true,
+            "crypto": true
+          },
+          "chain_info": {
+            "length": 380,
+            "pending_events": 1,
+            "state": "syncing"
+          }
+        }
+      },
+      "ghosttunnel": {
+        "ok": true,
+        "status_code": 200,
+        "body": {
+          "text": "\n    <!DOCTYPE html>\n    <html>\n    <head>\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css\">\n    <link rel=\"shortcut icon\" href=\"https://"
+        }
+      },
+      "gui": {
+        "ok": true,
+        "status_code": 200,
+        "body": {
+          "text": "\n  <!DOCTYPE html>\n  <html lang=\"en\">\n    <head>\n      <meta charset=\"UTF-8\" />\n      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n      <title>O.R.A.C.L.E</title>\n      <s"
+        }
+      }
+    },
+    "ok": false
+  },
+  "final_health": {
+    "runtime_info": {
+      "ok": false,
+      "status_code": 404,
+      "body": {
+        "detail": "Not Found"
+      }
+    },
+    "health": {
+      "ok": true,
+      "status_code": 200,
+      "body": {
+        "status": "ok",
+        "service": "oracle_core",
+        "downstream": {
+          "qauthcore_url": "http://localhost:8001/",
+          "ethicq_url": "http://localhost:8002/",
+          "chronoledger_url": "http://localhost:8003/",
+          "ghosttunnel_url": "http://localhost:8004/"
+        }
+      }
+    },
+    "summary": {
+      "ok": true,
+      "status_code": 200,
+      "body": {
+        "backend_status": "READY",
+        "modules": {
+          "oracle_core": true,
+          "mutantshield": true,
+          "qauthcore": true,
+          "ethicq": true,
+          "chronoledger": true,
+          "ghosttunnel": true
+        },
+        "performance": {
+          "avg_latency_ms": 118.1,
+          "p95_latency_ms": 429.93,
+          "max_latency_ms": 1286.05,
+          "success": 100,
+          "degraded": 0,
+          "failed": 0
+        },
+        "assurance": {
+          "latest_completed": 1312,
+          "latest_pending": 0,
+          "latest_failed": 0,
+          "async_assurance_enabled": true
+        },
+        "ghosttunnel": {
+          "jobs_completed": 71,
+          "jobs_pending": 0,
+          "jobs_failed": 0,
+          "fast_ack_enabled": true,
+          "avg_latency_ms": 83.44,
+          "ghosttunnel_avg_ms": 7.21
+        },
+        "evolution": {
+          "final_status": "PASS_DRY_RUN",
+          "dry_run": true,
+          "candidate_trained": true,
+          "candidate_id": "candidate-20260627-022227-a2ddf3",
+          "evaluation_passed": false,
+          "promotion_allowed": false,
+          "promotion_status": "promotion_blocked_metrics",
+          "baseline_quality_warning": false,
+          "gan_status": "not_trained",
+          "gan_training_required": true,
+          "art_status": "available",
+          "art_available": true,
+          "art_version": "1.20.1",
+          "art_source": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\ART - IBM\\adversarial-robustness-toolbox-main",
+          "attacks_run": [
+            "zoo"
+          ],
+          "adversarial_accuracy": 1.0,
+          "robustness_drop": 0.0,
+          "adversarial_training_enabled": false,
+          "fair_baseline_reliable": true,
+          "promoted": false,
+          "promotion_simulated": true,
+          "datasets_used": [
+            "CIC-IDS2017",
+            "UNSW-NB15"
+          ],
+          "supervised_buffer_count": 10000,
+          "anomaly_buffer_count": 0,
+          "unverified_buffer_count": 130,
+          "adversarial_samples_generated": null,
+          "evaluation_reasons": [
+            "dataset:CIC-IDS2017:f1_drop>5%"
+          ],
+          "schema_compatible": true,
+          "baseline_present": true,
+          "full_ensemble": true,
+          "models_trained_count": 3,
+          "ensemble_promotion_ready": false,
+          "global_adversarial_gate_passed": true,
+          "model_coverage": {
+            "generated_at": 1782516151.4711723,
+            "candidate_dir": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3",
+            "models": [
+              {
+                "model_name": "XGBoost",
+                "production_artifact_found": true,
+                "production_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\XGboost\\xgboost_classifier.pkl",
+                "candidate_training_attempted": true,
+                "candidate_trained": true,
+                "retraining_supported": true,
+                "adversarial_evaluated": true,
+                "adversarial_training_applied": false,
+                "promotion_eligible": true,
+                "blocker_reason": null,
+                "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\XGboost\\xgboost_candidate.pkl",
+                "status": "trained"
+              },
+              {
+                "model_name": "AutoEncoder",
+                "production_artifact_found": true,
+                "production_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\AutoEncoder\\autoencoder_v1.pkl",
+                "candidate_training_attempted": true,
+                "candidate_trained": true,
+                "retraining_supported": true,
+                "adversarial_evaluated": true,
+                "adversarial_training_applied": false,
+                "promotion_eligible": true,
+                "blocker_reason": null,
+                "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\AutoEncoder\\autoencoder_candidate.pkl",
+                "status": "trained"
+              },
+              {
+                "model_name": "LSTM",
+                "production_artifact_found": true,
+                "production_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\LSTM_Optimized\\Final Model\\lstm_v2_final_20260130_185100.pkl",
+                "candidate_training_attempted": true,
+                "candidate_trained": false,
+                "retraining_supported": false,
+                "adversarial_evaluated": false,
+                "adversarial_training_applied": false,
+                "promotion_eligible": false,
+                "blocker_reason": "lstm_retraining_contract_not_satisfied;production_lstm_trainer_is_monolithic_and_writes_models_final_by_default;no_candidate_safe_lstm_training_api_available",
+                "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\LSTM_Optimized\\lstm_training_report.json",
+                "status": "blocked_contract_missing",
+                "real_retraining": false,
+                "surrogate_used": false,
+                "production_inference_available": true,
+                "safe_to_train": false,
+                "contract_validation": {
+                  "valid": false,
+                  "missing_columns": [
+                    "sequence_id",
+                    "sequence_index",
+                    "timestamp",
+                    "flow_id",
+                    "attack_family"
+                  ],
+                  "warnings": [
+                    "sequence_grouping_unavailable"
+                  ],
+                  "safe_to_train": false,
+                  "contract_name": "lstm_retraining_contract",
+                  "contract_version": "1.0"
+                }
+              },
+              {
+                "model_name": "GNN",
+                "production_artifact_found": true,
+                "production_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\GNN\\gnn_graphsage_mutantshield.pth",
+                "candidate_training_attempted": true,
+                "candidate_trained": false,
+                "retraining_supported": false,
+                "adversarial_evaluated": false,
+                "adversarial_training_applied": false,
+                "promotion_eligible": false,
+                "blocker_reason": "adaptation_buffer_missing_src_dst_timestamp_graph_columns;gnn_retraining_contract_not_satisfied;no_candidate_safe_gnn_training_api_available;graph_reconstruction_from_current_buffers_not_safe",
+                "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\GNN\\gnn_training_report.json",
+                "status": "blocked_contract_missing",
+                "real_retraining": false,
+                "surrogate_used": false,
+                "production_inference_available": true,
+                "safe_to_train": false,
+                "contract_validation": {
+                  "valid": false,
+                  "missing_columns": [
+                    "flow_id",
+                    "src_ip",
+                    "dst_ip",
+                    "timestamp",
+                    "attack_family"
+                  ],
+                  "warnings": [],
+                  "safe_to_train": false,
+                  "contract_name": "gnn_retraining_contract",
+                  "contract_version": "1.0"
+                }
+              },
+              {
+                "model_name": "FusionMLP",
+                "production_artifact_found": true,
+                "production_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\FusionEngine\\learned_fusion_mlp.pt",
+                "candidate_training_attempted": true,
+                "candidate_trained": true,
+                "retraining_supported": true,
+                "adversarial_evaluated": true,
+                "adversarial_training_applied": false,
+                "promotion_eligible": false,
+                "blocker_reason": "fusion_surrogate_requires_full_ensemble_validation",
+                "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\FusionEngine\\fusion_candidate.pkl",
+                "status": "surrogate_trained"
+              },
+              {
+                "model_name": "GAN",
+                "production_artifact_found": false,
+                "production_artifact_path": null,
+                "candidate_training_attempted": false,
+                "candidate_trained": false,
+                "retraining_supported": false,
+                "adversarial_evaluated": false,
+                "adversarial_training_applied": false,
+                "promotion_eligible": false,
+                "blocker_reason": "gan_not_trained",
+                "candidate_artifact_path": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\models_candidate\\candidate-20260627-022227-a2ddf3\\GAN\\gan_candidate_status.json",
+                "status": "not_trained"
+              }
+            ],
+            "models_trained_count": 3,
+            "real_models_trained_count": 2,
+            "promotion_eligible_count": 2,
+            "full_ensemble_complete": false,
+            "framework_final": true,
+            "framework_final_with_limitations": true,
+            "ensemble_limitations": [
+              {
+                "model_name": "LSTM",
+                "status": "blocked_contract_missing",
+                "blocker_reason": "lstm_retraining_contract_not_satisfied;production_lstm_trainer_is_monolithic_and_writes_models_final_by_default;no_candidate_safe_lstm_training_api_available",
+                "production_inference_available": true,
+                "safe_to_train": false,
+                "contract_validation": {
+                  "valid": false,
+                  "missing_columns": [
+                    "sequence_id",
+                    "sequence_index",
+                    "timestamp",
+                    "flow_id",
+                    "attack_family"
+                  ],
+                  "warnings": [
+                    "sequence_grouping_unavailable"
+                  ],
+                  "safe_to_train": false,
+                  "contract_name": "lstm_retraining_contract",
+                  "contract_version": "1.0"
+                }
+              },
+              {
+                "model_name": "GNN",
+                "status": "blocked_contract_missing",
+                "blocker_reason": "adaptation_buffer_missing_src_dst_timestamp_graph_columns;gnn_retraining_contract_not_satisfied;no_candidate_safe_gnn_training_api_available;graph_reconstruction_from_current_buffers_not_safe",
+                "production_inference_available": true,
+                "safe_to_train": false,
+                "contract_validation": {
+                  "valid": false,
+                  "missing_columns": [
+                    "flow_id",
+                    "src_ip",
+                    "dst_ip",
+                    "timestamp",
+                    "attack_family"
+                  ],
+                  "warnings": [],
+                  "safe_to_train": false,
+                  "contract_name": "gnn_retraining_contract",
+                  "contract_version": "1.0"
+                }
+              }
+            ],
+            "contract_gated_models": [
+              {
+                "model_name": "LSTM",
+                "status": "blocked_contract_missing",
+                "safe_to_train": false,
+                "missing_columns": [
+                  "sequence_id",
+                  "sequence_index",
+                  "timestamp",
+                  "flow_id",
+                  "attack_family"
+                ]
+              },
+              {
+                "model_name": "GNN",
+                "status": "blocked_contract_missing",
+                "safe_to_train": false,
+                "missing_columns": [
+                  "flow_id",
+                  "src_ip",
+                  "dst_ip",
+                  "timestamp",
+                  "attack_family"
+                ]
+              }
+            ],
+            "ensemble_promotion_ready": false
+          },
+          "adversarial_skipped": false,
+          "full_evolution_ready": true
+        },
+        "evolution_scheduler": {
+          "enabled": false,
+          "frequency": "weekly",
+          "last_run": null,
+          "next_run": null,
+          "mode": "candidate-only",
+          "adversarial_train": true,
+          "controlled_promotion_allowed": false,
+          "status": "idle"
+        },
+        "model_coverage": {
+          "models_trained_count": 3,
+          "promotion_eligible_count": 2,
+          "full_ensemble_complete": false,
+          "ensemble_promotion_ready": false,
+          "per_model": [
+            {
+              "model_name": "XGBoost",
+              "candidate_trained": true,
+              "adversarial_evaluated": true,
+              "promotion_eligible": true,
+              "status": "trained",
+              "blocker_reason": null
+            },
+            {
+              "model_name": "AutoEncoder",
+              "candidate_trained": true,
+              "adversarial_evaluated": true,
+              "promotion_eligible": true,
+              "status": "trained",
+              "blocker_reason": null
+            },
+            {
+              "model_name": "LSTM",
+              "candidate_trained": false,
+              "adversarial_evaluated": false,
+              "promotion_eligible": false,
+              "status": "blocked_contract_missing",
+              "blocker_reason": "lstm_retraining_contract_not_satisfied;production_lstm_trainer_is_monolithic_and_writes_models_final_by_default;no_candidate_safe_lstm_training_api_available"
+            },
+            {
+              "model_name": "GNN",
+              "candidate_trained": false,
+              "adversarial_evaluated": false,
+              "promotion_eligible": false,
+              "status": "blocked_contract_missing",
+              "blocker_reason": "adaptation_buffer_missing_src_dst_timestamp_graph_columns;gnn_retraining_contract_not_satisfied;no_candidate_safe_gnn_training_api_available;graph_reconstruction_from_current_buffers_not_safe"
+            },
+            {
+              "model_name": "FusionMLP",
+              "candidate_trained": true,
+              "adversarial_evaluated": true,
+              "promotion_eligible": false,
+              "status": "surrogate_trained",
+              "blocker_reason": "fusion_surrogate_requires_full_ensemble_validation"
+            },
+            {
+              "model_name": "GAN",
+              "candidate_trained": false,
+              "adversarial_evaluated": false,
+              "promotion_eligible": false,
+              "status": "not_trained",
+              "blocker_reason": "gan_not_trained"
+            }
+          ]
+        },
+        "human_review_queue_count": 259,
+        "full_adversarial_gate": true,
+        "chronoledger_evidence": {
+          "total_events": 130,
+          "bucket_counts": {
+            "false_positive_candidate": 130
+          },
+          "unverified_count": 130,
+          "require_human_approval": true,
+          "false_positive_candidate": 130,
+          "outlier_candidate": 0
+        },
+        "warnings": [
+          "Model promotion is blocked until fair production baseline is validated.",
+          "ChronoLedger evidence is unverified unless human reviewed.",
+          "GAN training required before synthetic attack generation."
+        ],
+        "report_warnings": [],
+        "architecture_status": {
+          "backend_ready": true,
+          "async_quantum_assurance_active": true,
+          "ghosttunnel_fast_ack_active": true,
+          "evolution_dry_run_pass": true,
+          "evolution_ready": true,
+          "promotion_blocked_safe": true
+        },
+        "gui_alignment": {
+          "evolution_engine_title": "MutantShield Evolution Engine",
+          "evolution_engine_subtitle": "Retraining, adversarial hardening, and promotion safety",
+          "safety_controls_disabled": [
+            "real_model_promotion",
+            "force_promote",
+            "auto_promote",
+            "delete_logs",
+            "delete_models"
+          ]
+        },
+        "reports": {
+          "backend_validation": "oracle_backend_final_validation.json",
+          "evolution_run": "evolution/evolution_run_report.json",
+          "evaluation_gate": "evolution/evaluation_gate_report.json",
+          "production_baseline": "evolution/production_baseline_metrics.json",
+          "chronoledger_evidence": "evolution/chronoledger_evidence.json"
+        }
+      }
+    },
+    "qauthcore": {
+      "ok": true,
+      "status_code": 200,
+      "body": {
+        "text": "\n    <!DOCTYPE html>\n    <html>\n    <head>\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css\">\n    <link rel=\"shortcut icon\" href=\"https://"
+      }
+    },
+    "ethicq": {
+      "ok": true,
+      "status_code": 200,
+      "body": {
+        "text": "\n    <!DOCTYPE html>\n    <html>\n    <head>\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css\">\n    <link rel=\"shortcut icon\" href=\"https://"
+      }
+    },
+    "chronoledger": {
+      "ok": true,
+      "status_code": 200,
+      "body": {
+        "status": "healthy",
+        "timestamp": 1782568478.6409624,
+        "components": {
+          "blockchain": true,
+          "storage": true,
+          "crypto": true
+        },
+        "chain_info": {
+          "length": 380,
+          "pending_events": 1,
+          "state": "syncing"
+        }
+      }
+    },
+    "ghosttunnel": {
+      "ok": true,
+      "status_code": 200,
+      "body": {
+        "text": "\n    <!DOCTYPE html>\n    <html>\n    <head>\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css\">\n    <link rel=\"shortcut icon\" href=\"https://"
+      }
+    },
+    "gui": {
+      "ok": true,
+      "status_code": 200,
+      "body": {
+        "text": "\n  <!DOCTYPE html>\n  <html lang=\"en\">\n    <head>\n      <meta charset=\"UTF-8\" />\n      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n      <title>O.R.A.C.L.E</title>\n      <s"
+      }
+    }
+  },
+  "runtime_info": {
+    "detail": "Not Found"
+  },
+  "ports_checked": true,
+  "all_services_alive": false,
+  "current_code_verified": false,
+  "pass": false
+}
