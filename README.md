@@ -97,78 +97,27 @@ Local service ports:
 - Oracle GUI: `http://127.0.0.1:4173`
 
 See `docs/DEPLOYMENT.md` for setup, environment variables, health checks, and troubleshooting.
-See `docs/DOCKER_DEPLOYMENT_ARCHITECTURE.md` for Docker runtime architecture.
 
-## Running Tests And Benchmarks
+## Using The Framework
 
-Operator-safe validation uses the existing running stack and does not stop services it did not start:
+After opening `http://127.0.0.1:4173`, use the sidebar to navigate:
 
-Health and acceptance:
+- **Global Dashboard**: overall backend health, latest events, live/replay status, and warnings.
+- **MutantShield**: detection summary and candidate-safe actions.
+- **Evolution Engine**: retraining/adaptation status with promotion safety controls.
+- **QAuthCore**: assurance and token verification status.
+- **EthicQ**: governance decisions and policy state.
+- **ChronoLedger**: audit and chain verification status.
+- **GhostTunnel**: secure response/queue status.
+- **Settings**: configuration visibility and locked dangerous actions.
 
-```powershell
-python scripts/oracle_final_acceptance_test.py
-```
-
-Full module validation:
-
-```powershell
-python scripts/oracle_runtime_current_code_check.py
-```
-
-Final benchmark:
+To demonstrate live-style event processing without packet capture permissions, run:
 
 ```powershell
-python scripts/oracle_final_acceptance_test.py
-```
-
-Live operator proof:
-
-```powershell
-python scripts/oracle_live_sensor_smoke_test.py
 python scripts/oracle_realtime_replay_proof.py --events 100
 ```
 
-Use `--manage-stack` only when you intentionally want a validation script to start and stop its own backend services.
-
-GUI live demo validation:
-
-```powershell
-python scripts/oracle_runtime_current_code_check.py
-python scripts/oracle_realtime_replay_proof.py --events 25
-```
-
-Docker runtime validation:
-
-```powershell
-python scripts/docker_oracle_status.py
-```
-
-Final operational verification:
-
-```powershell
-python scripts/oracle_runtime_current_code_check.py
-python scripts/oracle_final_acceptance_test.py
-```
-
-This verifies that the current Oracle Core runtime is loaded, the stack is reachable, and the final operator acceptance path is available.
-
-Final controlled detection verification:
-
-```powershell
-python scripts/oracle_runtime_current_code_check.py
-```
-
-Phase 12.20 is the current evidence gate for detection claims. `/oracle/runtime-info` must return `runtime_marker: phase12_19_current_runtime` before full-stack detection or request-handling metrics are trusted.
-
-Final metric summaries:
-
-- Historical mixed CIC/UNSW MutantShield baseline: accuracy `0.7425`, precision `0.8173`, recall `0.6114`, F1 `0.6995`. This is historical validation evidence, not a full-stack runtime claim.
-- Phase 12.20 repeated standalone highlights: CIC production recall `0.52 +/- 0.0392`, CSE production recall `0.0 +/- 0.0`, CSE repair candidate recall `0.9645 +/- 0.0166`, DoHBrw mapped recall `0.0 +/- 0.0`, DoHBrw native adapter recall `0.9956 +/- 0.0063`.
-- Phase 12.20 full-stack proof: repeated runs preserved detector fields with audit/auth rates of `1.0` and no degraded/failed events. See `docs/ORACLE_FULL_STACK_FINAL_DETECTION_PROOF.md`.
-
-Use `docs/ORACLE_PRESENTATION_METRICS_FINAL.md` and `docs/ORACLE_FINAL_DETECTION_CONFIDENCE_VERDICT.md` for presentation numbers. Do not claim one global perfect accuracy.
-
-The live dashboard demo flow is documented in `docs/ORACLE_GUI_LIVE_DEMO_SCRIPT.md`.
+Then refresh the dashboard and latest-events panel.
 
 ## Evolution Engine And Adaptive Retraining
 
@@ -183,20 +132,18 @@ GAN synthetic generation is deferred to the roadmap. SIEM/SOAR/EDR integrations 
 - ChronoLedger evidence is not trusted automatically for training; reviewed evidence is required.
 - `.env`, secrets, raw datasets, virtual environments, cache files, generated reports, and `node_modules` are excluded from upload.
 
-## Reports And Validation Results
+## Final Documentation
 
-Current validated framework status:
+The public repository includes concise final documents:
 
-- `ORACLE_MODULE_CAPABILITY_VALIDATED`
-- `ORACLE_FULLY_TESTED_AND_READY`
-- `ORACLE_FINAL_QA_COMPLETE`
-- `ORACLE_FINAL_DETECTION_CONFIDENCE_VERIFIED` after Phase 12.20 verification passes
-
-Summary metrics are documented in `docs/ORACLE_PRESENTATION_METRICS_FINAL.md`, `docs/ORACLE_MUTANTSHIELD_FINAL_DETECTION_RESULTS.md`, and `docs/ORACLE_FULL_STACK_FINAL_DETECTION_PROOF.md`.
-
-Phase 12.20 detection truth uses repeated fixed-seed evidence instead of banner metrics. It separates Production FusionEngine, UNSW mapped validation, CSE production baseline, CSE repair candidate, DoHBrw mapped baseline, DoHBrw native adapter, and full ORACLE stack preservation/audit behavior.
-
-Latest Phase 12.20 verification confirms that some mapped/production baselines still produce `0.0` recall, while the CSE repair candidate and DoHBrw native adapter perform well on repeated controlled samples. Banner/global detection metrics should be replaced by the per-path mean +/- std tables in `docs/ORACLE_PRESENTATION_METRICS_FINAL.md`.
+- `docs/SRS_PROJECT_ORACLE.md`: final software requirements specification.
+- `docs/ORACLE_FINAL_IMPORTANT_RESULTS.md`: concise real final results and presentation-safe metrics.
+- `docs/ARCHITECTURE.md`: module architecture and runtime flow.
+- `docs/DEPLOYMENT.md`: local and Docker deployment guide.
+- `docs/USER_GUIDE.md`: operator usage guide.
+- `docs/SECURITY_MODEL.md`: safety and security model.
+- `docs/MODULE_CAPABILITIES.md`: module capability summary.
+- `docs/RETRAINING_AND_EVOLUTION.md`: candidate-only adaptation workflow.
 
 Dashboard and module pages mark values as `LIVE`, `REPORT`, `DEMO`, `LOCKED`, `LIVE/CONFIG`, or `LIVE SAFETY POLICY`.
 
@@ -204,14 +151,37 @@ Dashboard actions are live. Module actions are either live-safe or locked with a
 
 ## Operator Dashboard Preview
 
-Selected professional screenshots can be added when available:
+### Global Dashboard
 
-- `docs/assets/screenshots/dashboard.png`
-- `docs/assets/screenshots/latest_events.png`
-- `docs/assets/screenshots/evolution_engine.png`
-- `docs/assets/screenshots/mutantshield.png`
+![Global Dashboard](docs/assets/screenshots/Global%20Dashboard.png)
 
-No screenshot links are embedded here until those exact files exist, to avoid broken README images.
+### MutantShield
+
+![MutantShield](docs/assets/screenshots/Mutant%20Sheild.png)
+
+### Evolution Engine
+
+![Evolution Engine](docs/assets/screenshots/Evo%20Engine.png)
+
+### QAuthCore
+
+![QAuthCore](docs/assets/screenshots/QauthCore.png)
+
+### EthicQ
+
+![EthicQ](docs/assets/screenshots/EthicQ.png)
+
+### ChronoLedger
+
+![ChronoLedger](docs/assets/screenshots/ChronoLedger.png)
+
+### GhostTunnel
+
+![GhostTunnel](docs/assets/screenshots/GhostTunnel.png)
+
+### Settings
+
+![Settings](docs/assets/screenshots/Settings.png)
 
 ## Known Limitations
 
@@ -249,11 +219,11 @@ Deferred/Future:
 - Cloud deployment.
 - Container orchestration.
 
-See `docs/ROADMAP.md` and `docs/SIEM_SOAR_EDR_INTEGRATION.md`.
+See `docs/ROADMAP.md`.
 
 ## Repository Structure
 
-See `docs/REPOSITORY_STRUCTURE.md` for the professional repository map. Some internal folder names reflect development history, but public entrypoints are documented through the files in `docs/`.
+The repository contains runtime source, GUI source, deployment files, and concise final documentation. Development-only scripts, raw reports, datasets, local caches, and model binaries are intentionally excluded from the public scope.
 
 ## License / Usage Note
 
