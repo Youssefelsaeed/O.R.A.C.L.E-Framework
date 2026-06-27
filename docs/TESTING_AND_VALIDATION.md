@@ -22,28 +22,30 @@ O.R.A.C.L.E Framework has been validated through backend, production-like simula
 - 0 failed
 - Historical CSE/DoHBrw recall values are not treated as banner truth unless reconfirmed by Phase 12.19 per-path evaluation.
 
-## Phase 12.19 Controlled Detection Verification
+## Phase 12.20 Repeated Detection Confidence Verification
 
 Fresh detection metrics must come from:
 
-- `docs/FINAL_DETECTION_RESULTS.md`
-- `docs/FULL_STACK_DETECTION_PROOF.md`
-- `docs/ORACLE_FINAL_METRICS_TRUTH.md`
+- `docs/ORACLE_PRESENTATION_METRICS_FINAL.md`
+- `docs/ORACLE_MUTANTSHIELD_FINAL_DETECTION_RESULTS.md`
+- `docs/ORACLE_FULL_STACK_FINAL_DETECTION_PROOF.md`
+- `docs/ORACLE_NETWORK_FLOW_REPLAY_RESULTS.md`
+- `docs/ORACLE_FINAL_DETECTION_CONFIDENCE_VERDICT.md`
 
 If runtime proof fails, full-stack metrics are blocked instead of being reported from a stale Oracle Core process.
 
-Latest Phase 12.19 controlled standalone MutantShield results:
+Latest Phase 12.20 repeated standalone MutantShield results, reported as mean +/- std:
 
 | Dataset / Path | Rows | Accuracy | Precision | Recall | F1 | FPR | FNR |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| CIC-IDS2017 production FusionEngine | 200 | 0.95 | 1.0 | 0.9 | 0.9474 | 0.0 | 0.1 |
-| UNSW-NB15 mapped validation | 200 | 0.47 | 0.0 | 0.0 | 0.0 | 0.06 | 1.0 |
-| CSE-CIC-IDS2018 production FusionEngine | 200 | 0.5 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
-| CSE-CIC-IDS2018 HOIC repair candidate | 200 | 0.975 | 0.9524 | 1.0 | 0.9756 | 0.05 | 0.0 |
-| DoHBrw mapped CIC | 200 | 0.5 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
-| DoHBrw native adapter | 200 | 0.89 | 0.8197 | 1.0 | 0.9009 | 0.22 | 0.0 |
+| CIC-IDS2017 production FusionEngine | repeated | 0.76 +/- 0.0196 | 1.0 +/- 0.0 | 0.52 +/- 0.0392 | 0.6833 +/- 0.0336 | see final doc | see final doc |
+| UNSW-NB15 mapped validation | repeated | 0.4622 +/- 0.0063 | 0.1217 +/- 0.0919 | 0.0133 +/- 0.0109 | 0.024 +/- 0.0194 | see final doc | see final doc |
+| CSE-CIC-IDS2018 production FusionEngine | repeated | 0.46 +/- 0.0189 | 0.0 +/- 0.0 | 0.0 +/- 0.0 | 0.0 +/- 0.0 | see final doc | see final doc |
+| CSE-CIC-IDS2018 HOIC repair candidate | repeated | 0.9689 +/- 0.0083 | 0.9733 +/- 0.0107 | 0.9645 +/- 0.0166 | 0.9687 +/- 0.0084 | see final doc | see final doc |
+| DoHBrw mapped CIC | repeated | 0.5 +/- 0.0 | 0.0 +/- 0.0 | 0.0 +/- 0.0 | 0.0 +/- 0.0 | see final doc | see final doc |
+| DoHBrw native adapter | repeated | 0.9 +/- 0.0283 | 0.8375 +/- 0.0392 | 0.9956 +/- 0.0063 | 0.9093 +/- 0.0241 | see final doc | see final doc |
 
-Full-stack controlled evaluation passed after `/oracle/runtime-info` proved `phase12_19_current_runtime`: all tested rows were accepted, detector fields were preserved, and audit/auth rates were `1.0`.
+Full-stack repeated evaluation passed after `/oracle/runtime-info` proved `phase12_19_current_runtime`: detector fields were preserved and audit/auth rates were `1.0`.
 
 ## Module Validation Highlights
 

@@ -158,15 +158,15 @@ Final controlled detection verification:
 python scripts/oracle_runtime_current_code_check.py
 ```
 
-Phase 12.19 is the current evidence gate for detection claims. `/oracle/runtime-info` must return `runtime_marker: phase12_19_current_runtime` before full-stack detection or request-handling metrics are trusted.
+Phase 12.20 is the current evidence gate for detection claims. `/oracle/runtime-info` must return `runtime_marker: phase12_19_current_runtime` before full-stack detection or request-handling metrics are trusted.
 
 Final metric summaries:
 
 - Historical mixed CIC/UNSW MutantShield baseline: accuracy `0.7425`, precision `0.8173`, recall `0.6114`, F1 `0.6995`. This is historical validation evidence, not a full-stack runtime claim.
-- Phase 12.19 controlled standalone highlights: CIC production recall `0.9`, CSE production recall `0.0`, CSE repair candidate recall `1.0`, DoHBrw mapped recall `0.0`, DoHBrw native adapter recall `1.0`.
-- Phase 12.19 full-stack proof: all tested rows were accepted by Oracle Core with detector field preservation, audit logging, and auth verification. See `docs/FULL_STACK_DETECTION_PROOF.md`.
+- Phase 12.20 repeated standalone highlights: CIC production recall `0.52 +/- 0.0392`, CSE production recall `0.0 +/- 0.0`, CSE repair candidate recall `0.9645 +/- 0.0166`, DoHBrw mapped recall `0.0 +/- 0.0`, DoHBrw native adapter recall `0.9956 +/- 0.0063`.
+- Phase 12.20 full-stack proof: repeated runs preserved detector fields with audit/auth rates of `1.0` and no degraded/failed events. See `docs/ORACLE_FULL_STACK_FINAL_DETECTION_PROOF.md`.
 
-Use `docs/FINAL_DETECTION_RESULTS.md` and `docs/ORACLE_FINAL_METRICS_TRUTH.md` for presentation numbers. Do not claim one global perfect accuracy.
+Use `docs/ORACLE_PRESENTATION_METRICS_FINAL.md` and `docs/ORACLE_FINAL_DETECTION_CONFIDENCE_VERDICT.md` for presentation numbers. Do not claim one global perfect accuracy.
 
 The live dashboard demo flow is documented in `docs/ORACLE_GUI_LIVE_DEMO_SCRIPT.md`.
 
@@ -190,30 +190,28 @@ Current validated framework status:
 - `ORACLE_MODULE_CAPABILITY_VALIDATED`
 - `ORACLE_FULLY_TESTED_AND_READY`
 - `ORACLE_FINAL_QA_COMPLETE`
-- `ORACLE_FINAL_DETECTION_AND_RUNTIME_VERIFIED` after Phase 12.19 verification passes
+- `ORACLE_FINAL_DETECTION_CONFIDENCE_VERIFIED` after Phase 12.20 verification passes
 
-Summary metrics are documented in `docs/TESTING_AND_VALIDATION.md` and `docs/MODULE_CAPABILITIES.md`.
+Summary metrics are documented in `docs/ORACLE_PRESENTATION_METRICS_FINAL.md`, `docs/ORACLE_MUTANTSHIELD_FINAL_DETECTION_RESULTS.md`, and `docs/ORACLE_FULL_STACK_FINAL_DETECTION_PROOF.md`.
 
-Phase 12.19 detection truth uses fresh per-path evidence instead of banner metrics. It separates Production FusionEngine, UNSW mapped validation, CSE production baseline, CSE repair candidate, DoHBrw mapped baseline, DoHBrw native adapter, and full ORACLE stack preservation/audit behavior.
+Phase 12.20 detection truth uses repeated fixed-seed evidence instead of banner metrics. It separates Production FusionEngine, UNSW mapped validation, CSE production baseline, CSE repair candidate, DoHBrw mapped baseline, DoHBrw native adapter, and full ORACLE stack preservation/audit behavior.
 
-Latest Phase 12.19 verification confirms that some mapped/production baselines still produce `0.0` recall, while the CSE repair candidate and DoHBrw native adapter perform well on their controlled samples. Banner/global detection metrics should be replaced by the per-path tables in `docs/FINAL_DETECTION_RESULTS.md`, `docs/FULL_STACK_DETECTION_PROOF.md`, and `docs/ORACLE_FINAL_METRICS_TRUTH.md`.
+Latest Phase 12.20 verification confirms that some mapped/production baselines still produce `0.0` recall, while the CSE repair candidate and DoHBrw native adapter perform well on repeated controlled samples. Banner/global detection metrics should be replaced by the per-path mean +/- std tables in `docs/ORACLE_PRESENTATION_METRICS_FINAL.md`.
 
-GUI data source labels are documented in `docs/GUI_DATA_SOURCES.md`. Dashboard and module pages mark values as `LIVE`, `REPORT`, `DEMO`, `LOCKED`, `LIVE/CONFIG`, or `LIVE SAFETY POLICY`.
+Dashboard and module pages mark values as `LIVE`, `REPORT`, `DEMO`, `LOCKED`, `LIVE/CONFIG`, or `LIVE SAFETY POLICY`.
 
 Dashboard actions are live. Module actions are either live-safe or locked with a visible safety reason. Live network capture requires Scapy/Npcap/admin rights; realtime replay is the validated safe live proof when packet capture is unavailable.
 
 ## Operator Dashboard Preview
 
-Screenshots are captured during final manual validation. Use `docs/FINAL_MANUAL_VALIDATION_GUIDE.md` for the exact capture checklist and standardized filenames.
+Selected professional screenshots can be added when available:
 
-![Dashboard](docs/assets/screenshots/Global%20Dashboard.png)
-![MutantShield](docs/assets/screenshots/Mutant%20Sheild.png)
-![QAuthCore](docs/assets/screenshots/QauthCore.png)
-![EthicQ](docs/assets/screenshots/EthicQ.png)
-![ChronoLedger](docs/assets/screenshots/ChronoLedger.png)
-![GhostTunnel](docs/assets/screenshots/GhostTunnel.png)
-![Evolution Engine](docs/assets/screenshots/Evo%20Engine.png)
-![Settings Safety](docs/assets/screenshots/Settings.png)
+- `docs/assets/screenshots/dashboard.png`
+- `docs/assets/screenshots/latest_events.png`
+- `docs/assets/screenshots/evolution_engine.png`
+- `docs/assets/screenshots/mutantshield.png`
+
+No screenshot links are embedded here until those exact files exist, to avoid broken README images.
 
 ## Known Limitations
 
