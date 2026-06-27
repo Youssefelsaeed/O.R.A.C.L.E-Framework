@@ -1,0 +1,203 @@
+{
+  "generated_at": 1782516158.101541,
+  "browser_automation": "not_used",
+  "limitation": "Validated by source inspection, live backend action endpoints, and GUI HTTP reachability.",
+  "gui_build_asset_present": true,
+  "source_checks": {
+    "api_base_shown": true,
+    "data_mode_live_connected": true,
+    "refresh_action_handler": true,
+    "health_check_action_handler": true,
+    "backend_validation_action_handler": true,
+    "latest_events_widget": true,
+    "live_proof_panel": true,
+    "mutantshield_dry_run_handler": true,
+    "mutantshield_retraining_locked": true,
+    "evolution_dry_run_handler": true,
+    "promote_candidate_locked": true,
+    "qauth_manage_users_locked": true,
+    "qauth_test_token_action": true,
+    "ethicq_edit_rules_locked": true,
+    "ghosttunnel_demo_transmit": true,
+    "chronoledger_chain_verify": true,
+    "settings_dangerous_controls_locked": true
+  },
+  "endpoint_checks": {
+    "gui_reachable": {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173",
+      "status_code": 200,
+      "latency_ms": 33.85,
+      "success": true,
+      "response_keys": [
+        "text"
+      ],
+      "body_summary": {},
+      "pass": true
+    },
+    "dashboard_summary": {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/summary",
+      "status_code": 200,
+      "latency_ms": 15.05,
+      "success": true,
+      "response_keys": [
+        "architecture_status",
+        "assurance",
+        "backend_status",
+        "chronoledger_evidence",
+        "evolution",
+        "evolution_scheduler",
+        "full_adversarial_gate",
+        "ghosttunnel",
+        "gui_alignment",
+        "human_review_queue_count",
+        "model_coverage",
+        "modules",
+        "performance",
+        "report_warnings",
+        "reports",
+        "warnings"
+      ],
+      "body_summary": {
+        "backend_status": "READY"
+      },
+      "pass": true
+    },
+    "latest_events": {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/latest-events",
+      "status_code": 200,
+      "latency_ms": 8.31,
+      "success": true,
+      "response_keys": [
+        "events",
+        "warnings"
+      ],
+      "body_summary": {
+        "events": 20
+      },
+      "pass": true
+    },
+    "health_check_action": {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/actions/health-check",
+      "status_code": 200,
+      "latency_ms": 13.28,
+      "success": true,
+      "response_keys": [
+        "health"
+      ],
+      "body_summary": {},
+      "pass": true
+    },
+    "backend_validation_action": {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/actions/backend-validation",
+      "status_code": 200,
+      "latency_ms": 1281.29,
+      "success": true,
+      "response_keys": [
+        "audit_logged",
+        "backend_status",
+        "failed_services",
+        "note",
+        "oracle_trace_id",
+        "status_code",
+        "success"
+      ],
+      "body_summary": {
+        "backend_status": "READY",
+        "success": true,
+        "oracle_trace_id": "8d2079da-073a-4ce0-9fa7-911bcebb7298",
+        "audit_logged": true,
+        "failed_services": []
+      },
+      "pass": true
+    },
+    "evolution_dry_run_action": {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/actions/evolution-dry-run",
+      "status_code": 200,
+      "latency_ms": 16793.67,
+      "success": true,
+      "response_keys": [
+        "evolution",
+        "promotion_allowed",
+        "run"
+      ],
+      "body_summary": {
+        "promotion_allowed": false
+      },
+      "pass": true
+    },
+    "qauth_test_token_action": {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/actions/qauth-test-token",
+      "status_code": 200,
+      "latency_ms": 466.45,
+      "success": true,
+      "response_keys": [
+        "keys",
+        "note",
+        "status_code",
+        "success",
+        "token_preview"
+      ],
+      "body_summary": {
+        "success": true
+      },
+      "pass": true
+    },
+    "ghosttunnel_test_transmit_action": {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/actions/ghosttunnel-test-transmit",
+      "status_code": 200,
+      "latency_ms": 28.03,
+      "success": true,
+      "response_keys": [
+        "accepted",
+        "fast_ack_enabled",
+        "job_id",
+        "jobs_completed",
+        "note",
+        "success"
+      ],
+      "body_summary": {
+        "success": true
+      },
+      "pass": true
+    },
+    "chronoledger_chain_verify_action": {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/actions/chronoledger-chain-verify",
+      "status_code": 200,
+      "latency_ms": 454.07,
+      "success": true,
+      "response_keys": [
+        "body",
+        "chain_status",
+        "note",
+        "status_code",
+        "success"
+      ],
+      "body_summary": {
+        "success": true
+      },
+      "pass": true
+    },
+    "reports_list": {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/reports",
+      "status_code": 200,
+      "latency_ms": 14.7,
+      "success": true,
+      "response_keys": [
+        "reports"
+      ],
+      "body_summary": {},
+      "pass": true
+    }
+  },
+  "pass": true
+}

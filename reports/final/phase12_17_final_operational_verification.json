@@ -1,0 +1,89 @@
+{
+  "generated_at": 1782516295.1505733,
+  "steps": {
+    "Stack Boot": {
+      "label": "Stack Boot",
+      "script": "oracle_phase12_17_stack_boot_test.py",
+      "success": true,
+      "exit_code": 0,
+      "stdout_tail": "\n=== ORACLE PHASE 12.17 STACK BOOT TEST ===\nOracle Core: PASS\nQAuthCore: PASS\nEthicQ: PASS\nChronoLedger: PASS\nGhostTunnel: PASS\nGUI: PASS\nStable 3 Minutes: PASS\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_17_stack_boot_test.json\n",
+      "stderr_tail": "",
+      "duration_seconds": 216.75
+    },
+    "Backend Endpoints": {
+      "label": "Backend Endpoints",
+      "script": "oracle_phase12_17_backend_endpoint_test.py",
+      "success": true,
+      "exit_code": 0,
+      "stdout_tail": "\n=== ORACLE PHASE 12.17 BACKEND ENDPOINT TEST ===\noracle_health: PASS (200) 11.66ms\noracle_docs: PASS (200) 5.46ms\noracle_test: PASS (200) 5.83ms\noracle_process_valid: PASS (200) 894.53ms\noracle_process_malformed: PASS (422) 9.5ms\noracle_process_oversized_safe: PASS (413) 8.81ms\ndashboard_summary: PASS (200) 17.15ms\ndashboard_latest_events: PASS (200) 9.5ms\ndashboard_health: PASS (200) 13.83ms\ndashboard_performance: PASS (200) 8.43ms\ndashboard_evolution: PASS (200) 18.07ms\ndashboard_reports: PASS (200) 6.13ms\naction_health_check: PASS (200) 13.87ms\naction_backend_validation: PASS (200) 813.53ms\naction_evolution_dry_run: PASS (200) 16267.38ms\naction_qauth_test_token: PASS (200) 435.43ms\naction_ghosttunnel_test_transmit: PASS (200) 15.71ms\naction_chronoledger_chain_verify: PASS (200) 413.54ms\nqauth_token_generate: PASS (200) 8.94ms\nqauth_health: PASS (200) 6.58ms\nqauth_token_verify: PASS (200) 7.68ms\nethicq_health: PASS (200) 5.76ms\nethicq_decision: PASS (200) 10.07ms\nchronoledger_health: PASS (200) 32.59ms\nchronoledger_event_append: PASS (200) 17.08ms\nchronoledger_chain_verify: PASS (200) 5.53ms\nghosttunnel_health: PASS (200) 6.59ms\nghosttunnel_transmit: PASS (200) 8.99ms\nPassed: 28/28\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_17_backend_endpoint_test.json\n",
+      "stderr_tail": "",
+      "duration_seconds": 19.8
+    },
+    "GUI Actions": {
+      "label": "GUI Actions",
+      "script": "oracle_phase12_17_gui_action_test.py",
+      "success": true,
+      "exit_code": 0,
+      "stdout_tail": "\n=== ORACLE PHASE 12.17 GUI ACTION TEST ===\nGUI Reachable: PASS\nDashboard Source Actions: PASS\nBackend Action Endpoints: PASS\nBrowser Automation: not_used\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_17_gui_action_test.json\n",
+      "stderr_tail": "",
+      "duration_seconds": 19.88
+    },
+    "Request Handling": {
+      "label": "Request Handling",
+      "script": "oracle_phase12_17_request_handling_test.py",
+      "success": false,
+      "exit_code": 1,
+      "stdout_tail": "\n=== ORACLE PHASE 12.17 REQUEST HANDLING TEST ===\nTotal: 1000\nValid Success: 850\nValid Degraded: 0\nValid Failed: 0\nMalformed Rejected 4xx: 100\nOversized Rejected 4xx: 50\nAvg/P95/P99/Max Latency ms (oracle_pipeline_timings_ms): 847.8 / 2572.32 / 2947.97 / 3178.55\nClient P95 Latency ms: 2605.02\nThroughput events/sec: 8.96\nAudit Logged Rate: 1.0\nvalid_failed_zero: PASS\ndegraded_under_or_equal_1pct: PASS\nmalformed_rejected_cleanly: PASS\noversized_rejected_cleanly: PASS\np95_under_1000_ms: FAIL\naudit_logged_at_least_99pct: PASS\nassurance_pending_zero: PASS\nghost_failed_zero: PASS\nFinal Status: FAIL\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_17_request_handling_test.json\n",
+      "stderr_tail": "",
+      "duration_seconds": 112.51
+    },
+    "Live Replay GUI Update": {
+      "label": "Live Replay GUI Update",
+      "script": "oracle_phase12_17_live_replay_gui_update_test.py",
+      "success": true,
+      "exit_code": 0,
+      "stdout_tail": "\n=== ORACLE PHASE 12.17 LIVE REPLAY GUI UPDATE TEST ===\nReplay Proof: PASS\nNew Trace IDs: 20\nLIVE_REPLAY Visible: PASS\nAudit Logged True: PASS\nRecent Timestamps: PASS\nGUI Widget Source Present: PASS\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_17_live_replay_gui_update_test.json\n",
+      "stderr_tail": "",
+      "duration_seconds": 14.44
+    },
+    "Reports & Docs": {
+      "label": "Reports & Docs",
+      "script": "oracle_phase12_17_reports_docs_test.py",
+      "success": true,
+      "exit_code": 0,
+      "stdout_tail": "\n=== ORACLE PHASE 12.17 REPORTS & DOCS TEST ===\nDocs: PASS\nReports: PASS\nReport Endpoints: PASS\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_17_reports_docs_test.json\n",
+      "stderr_tail": "",
+      "duration_seconds": 1.01
+    },
+    "Issue Sweep": {
+      "label": "Issue Sweep",
+      "script": "oracle_phase12_17_issue_sweep.py",
+      "success": true,
+      "exit_code": 0,
+      "stdout_tail": "\n=== ORACLE PHASE 12.17 ISSUE SWEEP ===\nmodels_final unchanged: TRUE\nForbidden staged files: 0\nRaw datasets staged: 0\n.env staged: 0\ndocker_runtime: blocked_if_docker_engine_unavailable\nlive_packet_capture: blocked_if_scapy_npcap_admin_unavailable\ngan: deferred\nlstm_gnn: contract_gated\nsiem_soar_edr: documented_future_integration\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_17_issue_sweep.json\n",
+      "stderr_tail": "",
+      "duration_seconds": 1.87
+    },
+    "GitHub Safety": {
+      "label": "GitHub Safety",
+      "script": "github_release_safety_check.py",
+      "success": true,
+      "exit_code": 0,
+      "stdout_tail": "=== O.R.A.C.L.E FRAMEWORK RELEASE SAFETY CHECK ===\nSafety Check: PASS\nProfessional Docs: PASS\nReports Not Staged: PASS\nmodels_final unchanged: TRUE\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\github_release_safety_check.json\n",
+      "stderr_tail": "",
+      "duration_seconds": 2.35
+    },
+    "Final Acceptance": {
+      "label": "Final Acceptance",
+      "script": "oracle_final_acceptance_test.py",
+      "success": true,
+      "exit_code": 0,
+      "stdout_tail": "\n=== ORACLE FINAL ACCEPTANCE TEST ===\nServices: PASS\nGUI: PASS\nBackend Regression: PASS\nFinal Benchmark: PASS\nDocumentation: PASS\nGitHub Readiness: PASS\nDeployment Guide: PASS\nRetraining Guide: PASS\nSafety: PASS\nmodels_final unchanged: TRUE\n\nFinal Status: ORACLE_FINAL_READY\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\ORACLE_FINAL_STATUS.json\n",
+      "stderr_tail": "",
+      "duration_seconds": 4.81
+    }
+  },
+  "models_final_unchanged": true,
+  "pass": false,
+  "final_status": "NOT_READY"
+}

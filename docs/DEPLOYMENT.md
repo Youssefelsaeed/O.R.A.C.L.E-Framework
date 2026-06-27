@@ -107,6 +107,14 @@ python scripts/oracle_live_sensor_smoke_test.py
 python scripts/oracle_realtime_replay_proof.py --events 100
 ```
 
+Run the final operational verification loop:
+
+```powershell
+python scripts/oracle_phase12_17_final_operational_verification.py
+```
+
+This verifies stack boot stability, endpoint behavior, GUI actions, request handling under load, latest event updates after replay, report/doc availability, issue sweep status, GitHub release safety, and final acceptance.
+
 If GUI buttons do not respond, verify `VITE_ORACLE_API_BASE_URL=http://127.0.0.1:8000`, rebuild the GUI, and confirm `http://127.0.0.1:8000/oracle/dashboard/summary` is reachable.
 
 ## Deployment Notes

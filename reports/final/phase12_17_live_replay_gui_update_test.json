@@ -1,0 +1,31 @@
+{
+  "generated_at": 1782516285.0441658,
+  "before_event_count": 20,
+  "after_event_count": 20,
+  "replay": {
+    "success": true,
+    "exit_code": 0,
+    "stdout_tail": "\n=== ORACLE REALTIME REPLAY PROOF ===\nEvents Sent: 50\nSuccess: 50\nDegraded: 0\nFailed: 0\nTrace IDs: 50\nAudit Logged: 50\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\oracle_realtime_replay_proof_report.json\n",
+    "stderr_tail": "",
+    "duration_seconds": 13.42
+  },
+  "new_trace_ids_count": 20,
+  "new_trace_ids_sample": [
+    "0de47ce4-71c6-4dfa-aebe-f637badfd815",
+    "165e10cb-b169-4a06-b394-878f33fc2ac0",
+    "28d724ef-2ce9-4670-a741-9096ff2dde60",
+    "342a9785-ab24-4042-8044-0c454d169890",
+    "355a4816-c1e1-4cab-a84f-35f2f06ba413",
+    "44528595-ab89-4a5e-bfe2-08461f88dea4",
+    "45fc31b4-f333-4b89-831f-ddce1c945859",
+    "47750317-76a9-4785-af33-18ffd3abc742",
+    "5232274c-e54a-4b7a-b3bc-9cdd0b16f8fc",
+    "59653a01-0857-4322-a7ce-f5287409eb55"
+  ],
+  "live_replay_visible": true,
+  "audit_logged_true": true,
+  "recent_timestamps": true,
+  "gui_widget_source_present": true,
+  "dashboard_api_success": true,
+  "pass": true
+}

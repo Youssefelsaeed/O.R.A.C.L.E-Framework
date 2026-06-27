@@ -97,6 +97,7 @@ python scripts/check_live_sensor_readiness.py
 python scripts/test_module_gui_actions.py
 python scripts/test_module_pages_operator_ui.py
 python scripts/check_docker_packaging_safety.py
+python scripts/oracle_phase12_17_final_operational_verification.py
 ```
 
 Build the GUI:
@@ -138,3 +139,15 @@ Docker mode is a runtime deployment path:
 - Realtime replay proof works with `python scripts/oracle_realtime_replay_proof.py --events 25 --oracle-url http://127.0.0.1:8000`
 - Live packet capture remains host/manual and is not containerized by default.
 - Docker images do not include raw datasets, `.env`, `node_modules`, or model binaries.
+
+## 9. Final Operational Proof
+
+`python scripts/oracle_phase12_17_final_operational_verification.py` is the final local operator proof. It verifies:
+
+- services stay alive after boot
+- dashboard and module action endpoints respond
+- GUI source and live backend actions are connected
+- unsafe actions are visibly locked
+- 1000 mixed requests are handled with clean malformed/oversized rejection
+- realtime replay creates fresh `LIVE_REPLAY` events visible through latest-events
+- final reports/docs and GitHub safety checks remain valid

@@ -1,0 +1,125 @@
+{
+  "generated_at": 1782516286.0584307,
+  "docs": {
+    "README.md": true,
+    "Docker docs": true,
+    "Deployment docs": true,
+    "Manual validation guide": true,
+    "SIEM/SOAR/EDR future doc": true,
+    "GUI data source docs": true,
+    "GitHub release notes": true,
+    "Run guide": true
+  },
+  "reports": {
+    "module capability reports": true,
+    "final benchmark reports": true,
+    "final QA reports": true,
+    "operator reports": true,
+    "docker safety report": true,
+    "screenshot folder": true
+  },
+  "endpoint_checks": {
+    "reports_list": {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/reports",
+      "status_code": 200,
+      "latency_ms": 31.71,
+      "success": true,
+      "response_keys": [
+        "reports"
+      ],
+      "body_summary": {},
+      "pass": true
+    },
+    "backend_validation_report": {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/reports/backend_validation",
+      "status_code": 200,
+      "latency_ms": 8.97,
+      "success": true,
+      "response_keys": [
+        "assurance_latest_completed",
+        "assurance_latest_failed",
+        "assurance_latest_pending",
+        "assurance_raw_transition_rows",
+        "avg_latency_ms",
+        "backend_readiness",
+        "checks",
+        "degraded_count",
+        "environment",
+        "failed_count",
+        "failure_injection",
+        "framework_test",
+        "generated_at",
+        "ghosttunnel_benchmark",
+        "ghosttunnel_jobs_completed",
+        "ghosttunnel_jobs_failed",
+        "ghosttunnel_jobs_pending",
+        "max_latency_ms",
+        "p95_latency_ms",
+        "stress_test",
+        "success_count",
+        "total_requests"
+      ],
+      "body_summary": {},
+      "pass": true
+    },
+    "evolution_run_report": {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/reports/evolution_run",
+      "status_code": 200,
+      "latency_ms": 10.18,
+      "success": true,
+      "response_keys": [
+        "adversarial_accuracy",
+        "adversarial_after",
+        "adversarial_before",
+        "adversarial_samples_used",
+        "adversarial_skipped",
+        "adversarial_training_enabled",
+        "anomaly_buffer_count",
+        "art_available",
+        "art_source",
+        "art_status",
+        "attacks_run",
+        "baseline_quality_warning",
+        "candidate_id",
+        "candidate_trained",
+        "chronoledger_evidence_count",
+        "clean_after",
+        "clean_before",
+        "cse_buffer_rows_added",
+        "datasets_used",
+        "dry_run",
+        "duration_s",
+        "ensemble_promotion_ready",
+        "evaluation_passed",
+        "evaluation_reasons",
+        "fair_baseline_reliable"
+      ],
+      "body_summary": {
+        "promotion_allowed": false
+      },
+      "pass": true
+    },
+    "chronoledger_evidence_report": {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/oracle/dashboard/reports/chronoledger_evidence",
+      "status_code": 200,
+      "latency_ms": 13.94,
+      "success": true,
+      "response_keys": [
+        "bucket_counts",
+        "events",
+        "generated_at",
+        "require_human_approval_for_chrono",
+        "total_events"
+      ],
+      "body_summary": {
+        "events": 130
+      },
+      "pass": true
+    }
+  },
+  "pass": true
+}

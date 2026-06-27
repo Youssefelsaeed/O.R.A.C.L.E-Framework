@@ -148,6 +148,14 @@ python scripts/check_docker_packaging_safety.py
 python scripts/test_docker_oracle_runtime.py
 ```
 
+Final operational verification:
+
+```powershell
+python scripts/oracle_phase12_17_final_operational_verification.py
+```
+
+This loop boots the local stack, checks backend endpoints and GUI actions, sends 1000 mixed Oracle requests, verifies realtime replay updates the latest-events feed, checks reports/docs, runs safety checks, and confirms `models_final` is unchanged.
+
 The live dashboard demo flow is documented in `docs/ORACLE_GUI_LIVE_DEMO_SCRIPT.md`.
 
 ## Evolution Engine And Adaptive Retraining
@@ -170,6 +178,7 @@ Current validated framework status:
 - `ORACLE_MODULE_CAPABILITY_VALIDATED`
 - `ORACLE_FULLY_TESTED_AND_READY`
 - `ORACLE_FINAL_QA_COMPLETE`
+- `ORACLE_FINAL_OPERATIONALLY_VERIFIED` after Phase 12.17 verification passes
 
 Summary metrics are documented in `docs/TESTING_AND_VALIDATION.md` and `docs/MODULE_CAPABILITIES.md`.
 

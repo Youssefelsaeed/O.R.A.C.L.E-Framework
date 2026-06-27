@@ -19,6 +19,7 @@ OPTIMIZED_ENV = {
     "PYTHONPATH": str(ROOT),
     "ORACLE_ASYNC_ASSURANCE": "1",
     "GHOSTTUNNEL_FAST_ACK": "1",
+    "ORACLE_TOKEN_CACHE_TTL_SECONDS": "600",
     "SERVICE_TIMING_LOG": "0",
     "VITE_ORACLE_API_BASE_URL": "http://127.0.0.1:8000",
 }
@@ -58,7 +59,7 @@ def kill_port(port: int) -> None:
         for line in out.splitlines():
             if f":{port} " in line and "LISTENING" in line:
                 pid = int(line.split()[-1])
-                subprocess.run(["taskkill", "/PID", str(pid), "/F"], capture_output=True)
+                subprocess.run(["taskkill", "/PID", str(pid), "/T", "/F"], capture_output=True)
     except Exception:
         pass
 

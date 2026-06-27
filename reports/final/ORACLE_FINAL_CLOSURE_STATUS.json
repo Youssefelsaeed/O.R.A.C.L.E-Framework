@@ -4,6 +4,19 @@
   "framework_status": "ORACLE_MODULE_CAPABILITY_VALIDATED",
   "final_qa_status": "ORACLE_FINAL_QA_COMPLETE",
   "github_release_status": "ORACLE_GITHUB_RELEASE_READY",
+  "phase12_17_operational_verification_status": "NOT_READY_LOCAL_REQUEST_HANDLING_BLOCKER",
+  "phase12_17_operational_verification_script": "scripts/oracle_phase12_17_final_operational_verification.py",
+  "phase12_17_coverage": [
+    "stack_boot_and_3_minute_stability",
+    "backend_endpoint_coverage",
+    "gui_action_verification",
+    "1000_mixed_request_handling",
+    "live_replay_latest_events_update",
+    "reports_docs_validation",
+    "issue_sweep",
+    "github_safety",
+    "final_acceptance"
+  ],
   "manual_validation_status": "ORACLE_FINAL_MANUALLY_VALIDATED_SCREENSHOTS_PRESENT",
   "manual_validation_guide": "docs/FINAL_MANUAL_VALIDATION_GUIDE.md",
   "screenshot_placeholder_status": "READY_WITH_EXISTING_SCREENSHOT_EVIDENCE",
@@ -21,6 +34,9 @@
     "Existing screenshots are present under docs/assets/screenshots; standardized filenames remain documented for future recapture.",
     "SIEM/SOAR/EDR connectors are not implemented in this release and are documented as future integration.",
     "GAN synthetic generation is deferred.",
+    "Docker runtime packaging is complete; Docker runtime is blocked locally when Docker Desktop/Linux engine is unavailable.",
+    "Live packet capture requires Scapy/Npcap/admin rights; realtime replay remains the validated safe live proof.",
+    "Phase 12.17 request handling needs rerun after the local Oracle Core process is restarted into the patched token-cache build; the visible service listener remained on the older health body and could not be terminated from this shell.",
     "Production deployment requires environment-specific hardening."
   ]
 }

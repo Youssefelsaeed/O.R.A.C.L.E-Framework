@@ -46,6 +46,7 @@ The final validation scripts default to operator mode. They use the existing run
 Run:
 
 ```powershell
+python scripts/oracle_phase12_17_final_operational_verification.py
 python scripts/oracle_final_acceptance_test.py
 python scripts/oracle_phase12_11_module_capability_validation.py
 ```
@@ -55,8 +56,11 @@ Expected status:
 ```text
 ORACLE_FINAL_READY
 ORACLE_MODULE_CAPABILITY_VALIDATED
+ORACLE_FINAL_OPERATIONALLY_VERIFIED
 models_final unchanged: TRUE
 ```
+
+Phase 12.17 performs the final operational loop: stack boot and three-minute stability, backend endpoint coverage, GUI action verification, 1000 mixed `/oracle/process` requests across concurrency levels, live replay latest-events freshness, reports/docs checks, issue sweep, GitHub safety, and final acceptance.
 
 If the stack is not already running, start it manually or use managed test mode explicitly:
 

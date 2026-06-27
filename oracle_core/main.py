@@ -52,6 +52,22 @@ app.add_middleware(
 app.include_router(dashboard_router)
 
 
+@app.get("/health", summary="Oracle Core service health.")
+async def health() -> Dict[str, Any]:
+    settings = get_settings()
+    return {
+        "status": "ok",
+        "service": "oracle_core",
+        "token_cache_ttl_seconds": settings.oracle_token_cache_ttl_seconds,
+        "downstream": {
+            "qauthcore_url": str(settings.qauthcore_url),
+            "ethicq_url": str(settings.ethicq_url),
+            "chronoledger_url": str(settings.chronoledger_url),
+            "ghosttunnel_url": str(settings.ghosttunnel_url),
+        },
+    }
+
+
 def get_http_client(request: Request) -> httpx.AsyncClient:
     client = getattr(request.app.state, "http_client", None)
     if client is None:
@@ -79,6 +95,16 @@ async def process_oracle_event(
     Input: raw JSON from MutantShield (flow_id, src_ip, dst_ip, risk_* fields, etc.).
     Output: fully populated OracleEvent document.
     """
+    if len(str(payload)) > 100_000:
+        return JSONResponse(
+            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+            content={
+                "status": "rejected",
+                "reason": "payload_too_large",
+                "details": ["payload exceeds 100000 character safety limit"],
+            },
+        )
+
     ok, details = validate_oracle_payload(payload)
     if not ok:
         return JSONResponse(

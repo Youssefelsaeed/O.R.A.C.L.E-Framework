@@ -1,0 +1,84 @@
+{
+  "generated_at": 1782519644.203912,
+  "concurrency_levels": [
+    1,
+    5,
+    10,
+    25
+  ],
+  "requests_per_level": {
+    "1": 850,
+    "5": 100,
+    "10": 30,
+    "25": 20
+  },
+  "per_level": {
+    "1": {
+      "requests": 850,
+      "duration_seconds": 379.29,
+      "avg_latency_ms": 446.01,
+      "p95_latency_ms": 1144.26
+    },
+    "5": {
+      "requests": 100,
+      "duration_seconds": 15.0,
+      "avg_latency_ms": 309.04,
+      "p95_latency_ms": 1195.38
+    },
+    "10": {
+      "requests": 30,
+      "duration_seconds": 1.75,
+      "avg_latency_ms": 499.41,
+      "p95_latency_ms": 1292.92
+    },
+    "25": {
+      "requests": 20,
+      "duration_seconds": 11.41,
+      "avg_latency_ms": 3518.29,
+      "p95_latency_ms": 11342.09
+    }
+  },
+  "metrics": {
+    "total": 1000,
+    "valid_total": 850,
+    "valid_success": 836,
+    "valid_degraded": 14,
+    "valid_failed": 0,
+    "malformed_rejected_4xx": 100,
+    "oversized_rejected_4xx": 50,
+    "client_avg_latency_ms": 495.36,
+    "client_p95_latency_ms": 1177.81,
+    "client_p99_latency_ms": 11302.79,
+    "client_max_latency_ms": 11545.31,
+    "throughput_events_per_sec": 2.45,
+    "retries": 0,
+    "failed_services": {
+      "chronoledger": 14,
+      "ethicq": 14,
+      "qauthcore": 14
+    },
+    "audit_logged_rate": 0.9835,
+    "assurance_latest_pending": 0,
+    "assurance_latest_failed": 0,
+    "ghost_jobs_pending": 0,
+    "ghost_jobs_failed": 0,
+    "avg_latency_ms": 567.34,
+    "p95_latency_ms": 1183.52,
+    "p99_latency_ms": 11301.35,
+    "max_latency_ms": 11532.41,
+    "latency_basis": "oracle_pipeline_timings_ms"
+  },
+  "pass_checks": {
+    "valid_failed_zero": true,
+    "degraded_under_or_equal_1pct": false,
+    "malformed_rejected_cleanly": true,
+    "oversized_rejected_cleanly": true,
+    "p95_under_1000_ms": false,
+    "audit_logged_at_least_99pct": false,
+    "assurance_pending_zero": true,
+    "ghost_failed_zero": true
+  },
+  "sample_failures": [],
+  "duration_seconds": 407.74,
+  "pass": false
+}

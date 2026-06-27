@@ -41,6 +41,10 @@ class OracleCoreSettings(BaseSettings):
         default=True,
         description="Enable deferred async assurance pipeline while keeping sync mode available.",
     )
+    oracle_token_cache_ttl_seconds: float = Field(
+        default=0.0,
+        description="Optional short-lived verified QAuth token cache for high-throughput operator validation.",
+    )
 
 
 @lru_cache

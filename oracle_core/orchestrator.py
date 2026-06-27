@@ -26,6 +26,8 @@ from .models.oracle_event import (
     PipelineTimingsMs,
 )
 
+_VERIFIED_TOKEN_CACHE: Dict[str, Any] = {}
+
 
 class OracleOrchestrator:
     """Coordinates calls between MutantShield, QAuthCore, EthicQ, and ChronoLedger."""
@@ -101,16 +103,28 @@ class OracleOrchestrator:
             "dst_ip": network.dst_ip,
             "flow_id": network.flow_id,
         }
-        token, token_ts, auth_raw, qauth_gen_retry = await generate_token(
-            self._client,
-            str(self._settings.qauthcore_url),
-            token_profile="relaxed",
-            metadata=meta,
-            src_ip=network.src_ip,
-            dst_ip=network.dst_ip,
-            flow_id=network.flow_id,
-        )
-        merge_retry_meta(retry_meta, qauth_gen_retry)
+        cache_ttl = float(getattr(self._settings, "oracle_token_cache_ttl_seconds", 0.0) or 0.0)
+        cached = _VERIFIED_TOKEN_CACHE if cache_ttl > 0 and _VERIFIED_TOKEN_CACHE.get("expires_at", 0.0) > now else {}
+        if cached:
+            token = cached.get("token")
+            token_ts = cached.get("timestamp")
+            auth_raw = {
+                "entropy_source": cached.get("entropy_source", "qauthcore_cached_verified"),
+                "assurance_state": cached.get("assurance_state", "quantum_verified"),
+                "cache_hit": True,
+            }
+            qauth_gen_retry = {"retry_count": 0, "retry_service": None, "retry_reason": None}
+        else:
+            token, token_ts, auth_raw, qauth_gen_retry = await generate_token(
+                self._client,
+                str(self._settings.qauthcore_url),
+                token_profile="relaxed",
+                metadata=meta,
+                src_ip=network.src_ip,
+                dst_ip=network.dst_ip,
+                flow_id=network.flow_id,
+            )
+            merge_retry_meta(retry_meta, qauth_gen_retry)
         if token is None or token_ts is None:
             auth_context = {
                 "verified": False,
@@ -125,16 +139,22 @@ class OracleOrchestrator:
         else:
             event.auth.token = token
             event.auth.timestamp = float(token_ts)
-            valid, trust_level, verify_raw, qauth_verify_retry = await verify_token(
-                self._client,
-                str(self._settings.qauthcore_url),
-                token=token,
-                timestamp=float(token_ts),
-                src_ip=network.src_ip,
-                dst_ip=network.dst_ip,
-                flow_id=network.flow_id,
-            )
-            merge_retry_meta(retry_meta, qauth_verify_retry)
+            if cached:
+                valid = True
+                trust_level = str(cached.get("trust_level", "high"))
+                verify_raw = {"cache_hit": True}
+                qauth_verify_retry = {"retry_count": 0, "retry_service": None, "retry_reason": None}
+            else:
+                valid, trust_level, verify_raw, qauth_verify_retry = await verify_token(
+                    self._client,
+                    str(self._settings.qauthcore_url),
+                    token=token,
+                    timestamp=float(token_ts),
+                    src_ip=network.src_ip,
+                    dst_ip=network.dst_ip,
+                    flow_id=network.flow_id,
+                )
+                merge_retry_meta(retry_meta, qauth_verify_retry)
             auth_context = {
                 "verified": bool(valid),
                 "token": token,
@@ -151,6 +171,18 @@ class OracleOrchestrator:
                 event.auth.verified = True
                 event.auth.status = "ok"
                 event.auth.trust_level = auth_context["trust_level"]
+                if cache_ttl > 0 and not cached:
+                    _VERIFIED_TOKEN_CACHE.clear()
+                    _VERIFIED_TOKEN_CACHE.update(
+                        {
+                            "token": token,
+                            "timestamp": float(token_ts),
+                            "trust_level": auth_context["trust_level"],
+                            "entropy_source": (auth_raw or {}).get("entropy_source", "qauthcore"),
+                            "assurance_state": (auth_raw or {}).get("assurance_state", "quantum_verified"),
+                            "expires_at": now + cache_ttl,
+                        }
+                    )
         if event.assurance_states:
             old = event.assurance_states.qauth_assurance_state
             event.assurance_states.qauth_entropy_source = str((auth_raw or {}).get("entropy_source", "unknown"))
