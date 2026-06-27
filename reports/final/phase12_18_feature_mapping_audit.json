@@ -1,0 +1,313 @@
+{
+  "generated_at": 1782552338.1776245,
+  "sample_size": 1000,
+  "datasets": {
+    "CIC-IDS2017": {
+      "dataset": "CIC-IDS2017",
+      "status": "PASS",
+      "files_discovered": [
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\GeneratedLabelledFlows\\TrafficLabelling\\Wednesday-workingHours.pcap_ISCX.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\GeneratedLabelledFlows\\TrafficLabelling\\Monday-WorkingHours.pcap_ISCX.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\Data set\\CIC-2017 (baseline)\\Wednesday-workingHours.pcap_ISCX.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\Wednesday-workingHours.pcap_ISCX.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\Monday-WorkingHours.pcap_ISCX.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\GeneratedLabelledFlows\\TrafficLabelling\\Tuesday-WorkingHours.pcap_ISCX.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\Tuesday-WorkingHours.pcap_ISCX.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\GeneratedLabelledFlows\\TrafficLabelling\\Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\GeneratedLabelledFlows\\TrafficLabelling\\Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\GeneratedLabelledFlows\\TrafficLabelling\\Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv"
+      ],
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\GeneratedLabelledFlows\\TrafficLabelling\\Wednesday-workingHours.pcap_ISCX.csv",
+      "rows_analyzed": 1000,
+      "label_column": " Label",
+      "total_columns": 85,
+      "numeric_columns": 80,
+      "label_distribution": {
+        "BENIGN": 1000
+      },
+      "production_feature_count": 78,
+      "mapped_feature_count_avg": 78.0,
+      "missing_features_top": [],
+      "average_mapped_ratio": 1.0,
+      "zero_filled_ratio": 0.0,
+      "sanitized_or_clipped_values": {
+        "clipped": 6824,
+        "inf": 2
+      },
+      "cic_style_path_valid": true,
+      "domain_adapter_required": false,
+      "honest_note": "CIC-style mapping is suitable for production MutantShield feature path."
+    },
+    "UNSW-NB15": {
+      "dataset": "UNSW-NB15",
+      "status": "PASS",
+      "files_discovered": [
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\UNSWB15\\UNSW-NB15_1.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\UNSWB15\\UNSW-NB15_2.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\UNSWB15\\UNSW-NB15_3.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\UNSWB15\\UNSW-NB15_4.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\Data set\\UNWB-2015\\UNSW_NB15_testing-set.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\UNSWB15\\UNSW_NB15_testing-set.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\Data set\\UNWB-2015\\UNSW_NB15_training-set.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\UNSWB15\\UNSW_NB15_training-set.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\UNSWB15\\UNSW-NB15_LIST_EVENTS.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\UNSWB15\\NUSW-NB15_features.csv"
+      ],
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\Data set\\UNWB-2015\\UNSW_NB15_testing-set.csv",
+      "rows_analyzed": 1000,
+      "label_column": "label",
+      "total_columns": 45,
+      "numeric_columns": 40,
+      "label_distribution": {
+        "0": 1000
+      },
+      "production_feature_count": 78,
+      "mapped_feature_count_avg": 39.0,
+      "missing_features_top": [
+        [
+          "Fwd IAT Max",
+          1000
+        ],
+        [
+          "Fwd IAT Min",
+          1000
+        ],
+        [
+          "Bwd IAT Total",
+          1000
+        ],
+        [
+          "Bwd IAT Max",
+          1000
+        ],
+        [
+          "Bwd IAT Min",
+          1000
+        ],
+        [
+          "Fwd PSH Flags",
+          1000
+        ],
+        [
+          "Bwd PSH Flags",
+          1000
+        ],
+        [
+          "Fwd URG Flags",
+          1000
+        ],
+        [
+          "Bwd URG Flags",
+          1000
+        ],
+        [
+          "Fwd Header Length",
+          1000
+        ],
+        [
+          "Bwd Header Length",
+          1000
+        ],
+        [
+          "Fwd Packets/s",
+          1000
+        ],
+        [
+          "Bwd Packets/s",
+          1000
+        ],
+        [
+          "Packet Length Variance",
+          1000
+        ],
+        [
+          "FIN Flag Count",
+          1000
+        ],
+        [
+          "SYN Flag Count",
+          1000
+        ],
+        [
+          "RST Flag Count",
+          1000
+        ],
+        [
+          "PSH Flag Count",
+          1000
+        ],
+        [
+          "ACK Flag Count",
+          1000
+        ],
+        [
+          "URG Flag Count",
+          1000
+        ]
+      ],
+      "average_mapped_ratio": 0.5,
+      "zero_filled_ratio": 0.5,
+      "sanitized_or_clipped_values": {},
+      "cic_style_path_valid": false,
+      "domain_adapter_required": true,
+      "honest_note": "UNSW uses semantic mapping to CIC-style features; results must be reported as partial-domain transfer, not native CIC performance."
+    },
+    "CSE-CIC-IDS2018": {
+      "dataset": "CSE-CIC-IDS2018",
+      "status": "PASS",
+      "files_discovered": [
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-20-2018.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-23-2018.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-22-2018.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-15-2018.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-14-2018.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\03-02-2018.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-16-2018.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-21-2018.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-28-2018.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\03-01-2018.csv"
+      ],
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-20-2018.csv",
+      "rows_analyzed": 1000,
+      "label_column": "Label",
+      "total_columns": 84,
+      "numeric_columns": 79,
+      "label_distribution": {
+        "DDoS attacks-LOIC-HTTP": 984,
+        "Benign": 16
+      },
+      "production_feature_count": 78,
+      "mapped_feature_count_avg": 77.0,
+      "missing_features_top": [
+        [
+          "Fwd Header Length.1",
+          1000
+        ]
+      ],
+      "average_mapped_ratio": 0.9872,
+      "zero_filled_ratio": 0.0128,
+      "sanitized_or_clipped_values": {
+        "clipped": 2884
+      },
+      "cic_style_path_valid": true,
+      "domain_adapter_required": false,
+      "honest_note": "CIC-style mapping is suitable for production MutantShield feature path."
+    },
+    "DoHBrw": {
+      "dataset": "DoHBrw",
+      "status": "PASS",
+      "files_discovered": [
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\Total_CSVs\\l1-nondoh.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\BenignDoH-NonDoH-CSVs\\CSVs\\Chrome\\all.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\archive\\BCCC-CIRA-CIC-DoHBrw-2020.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\BCCC\\BCCC-CIRA-CIC-DoHBrw-2020.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\BenignDoH-NonDoH-CSVs\\CSVs\\Firefox\\all.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\Total_CSVs\\l1-doh.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\Total_CSVs\\l2-malicious.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\MaliciousDoH-CSVs\\CSVs\\dns2tcp\\all.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\BenignDoH-NonDoH-CSVs\\CSVs\\Firefox\\Separate\\dump.22e976.csv",
+        "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\BenignDoH-NonDoH-CSVs\\CSVs\\Firefox\\Separate\\dump.6dbe55.csv"
+      ],
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\Total_CSVs\\l1-nondoh.csv",
+      "rows_analyzed": 1000,
+      "label_column": "Label",
+      "total_columns": 35,
+      "numeric_columns": 31,
+      "label_distribution": {
+        "NonDoH": 1000
+      },
+      "production_feature_count": 78,
+      "mapped_feature_count_avg": 0.0,
+      "missing_features_top": [
+        [
+          "Destination Port",
+          1000
+        ],
+        [
+          "Flow Duration",
+          1000
+        ],
+        [
+          "Total Fwd Packets",
+          1000
+        ],
+        [
+          "Total Backward Packets",
+          1000
+        ],
+        [
+          "Total Length of Fwd Packets",
+          1000
+        ],
+        [
+          "Total Length of Bwd Packets",
+          1000
+        ],
+        [
+          "Fwd Packet Length Max",
+          1000
+        ],
+        [
+          "Fwd Packet Length Min",
+          1000
+        ],
+        [
+          "Fwd Packet Length Mean",
+          1000
+        ],
+        [
+          "Fwd Packet Length Std",
+          1000
+        ],
+        [
+          "Bwd Packet Length Max",
+          1000
+        ],
+        [
+          "Bwd Packet Length Min",
+          1000
+        ],
+        [
+          "Bwd Packet Length Mean",
+          1000
+        ],
+        [
+          "Bwd Packet Length Std",
+          1000
+        ],
+        [
+          "Flow Bytes/s",
+          1000
+        ],
+        [
+          "Flow Packets/s",
+          1000
+        ],
+        [
+          "Flow IAT Mean",
+          1000
+        ],
+        [
+          "Flow IAT Std",
+          1000
+        ],
+        [
+          "Flow IAT Max",
+          1000
+        ],
+        [
+          "Flow IAT Min",
+          1000
+        ]
+      ],
+      "average_mapped_ratio": 0.0,
+      "zero_filled_ratio": 1.0,
+      "sanitized_or_clipped_values": {},
+      "cic_style_path_valid": false,
+      "domain_adapter_required": true,
+      "honest_note": "DoHBrw is not a CICFlowMeter domain; native DoHBrwAdapter is required for truthful evaluation."
+    }
+  },
+  "pass": true,
+  "truth_policy": "Missing datasets are reported as blocked; no banner metrics are reused as source of truth."
+}

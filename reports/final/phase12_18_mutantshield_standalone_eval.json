@@ -1,0 +1,688 @@
+{
+  "generated_at": 1782552421.4825127,
+  "sample_size": 50,
+  "results": {
+    "CIC-IDS2017:mapped_cic": {
+      "dataset": "CIC-IDS2017",
+      "path": "mapped_cic",
+      "status": "PASS",
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\GeneratedLabelledFlows\\TrafficLabelling\\Wednesday-workingHours.pcap_ISCX.csv",
+      "rows_tested": 50,
+      "fallback_path_used": false,
+      "fallback_count": 0,
+      "model_consensus_distribution": {
+        "1/4": 48,
+        "2/4": 2
+      },
+      "risk_score_distribution": {
+        "count": 50,
+        "avg": 0.234,
+        "p50": 0.1949,
+        "p95": 0.3483,
+        "min": 0.1824,
+        "max": 0.443
+      },
+      "risk_label_distribution": {
+        "BENIGN": 36,
+        "LOW": 14
+      },
+      "metrics": {
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": {
+          "tn": 50,
+          "fp": 0,
+          "fn": 0,
+          "tp": 0
+        },
+        "per_attack_family_recall": {}
+      },
+      "avg_inference_latency_ms": 417.0684,
+      "p95_inference_latency_ms": 218.6898,
+      "throughput_samples_sec": 2.4,
+      "sample_records": [
+        {
+          "row_index": 56,
+          "label": "BENIGN",
+          "risk_score": 0.19486252175252103,
+          "risk_label": "BENIGN",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 211,
+          "label": "BENIGN",
+          "risk_score": 0.19486252175252103,
+          "risk_label": "BENIGN",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 139,
+          "label": "BENIGN",
+          "risk_score": 0.2994853033608217,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 206,
+          "label": "BENIGN",
+          "risk_score": 0.3143738172275873,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 58,
+          "label": "BENIGN",
+          "risk_score": 0.2994853033608217,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 63,
+          "label": "BENIGN",
+          "risk_score": 0.43978056665178883,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 121,
+          "label": "BENIGN",
+          "risk_score": 0.20038594811145172,
+          "risk_label": "BENIGN",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 235,
+          "label": "BENIGN",
+          "risk_score": 0.44296870895123824,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 104,
+          "label": "BENIGN",
+          "risk_score": 0.3143738172275873,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 194,
+          "label": "BENIGN",
+          "risk_score": 0.2994853033608217,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        }
+      ]
+    },
+    "UNSW-NB15:mapped_cic": {
+      "dataset": "UNSW-NB15",
+      "path": "mapped_cic",
+      "status": "PASS",
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\UNSWB15\\UNSW_NB15_testing-set.csv",
+      "rows_tested": 50,
+      "fallback_path_used": false,
+      "fallback_count": 0,
+      "model_consensus_distribution": {
+        "2/4": 42,
+        "1/4": 8
+      },
+      "risk_score_distribution": {
+        "count": 50,
+        "avg": 0.4499,
+        "p50": 0.4628,
+        "p95": 0.492,
+        "min": 0.3483,
+        "max": 0.5269
+      },
+      "risk_label_distribution": {
+        "LOW": 22,
+        "MEDIUM": 28
+      },
+      "metrics": {
+        "accuracy": 0.96,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.04,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": {
+          "tn": 48,
+          "fp": 2,
+          "fn": 0,
+          "tp": 0
+        },
+        "per_attack_family_recall": {}
+      },
+      "avg_inference_latency_ms": 205.105,
+      "p95_inference_latency_ms": 235.5564,
+      "throughput_samples_sec": 4.87,
+      "sample_records": [
+        {
+          "row_index": 56,
+          "label": "0",
+          "risk_score": 0.4459368597694902,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 211,
+          "label": "0",
+          "risk_score": 0.47444653751189,
+          "risk_label": "MEDIUM",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 139,
+          "label": "0",
+          "risk_score": 0.4867404217396885,
+          "risk_label": "MEDIUM",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 206,
+          "label": "0",
+          "risk_score": 0.47541616965268846,
+          "risk_label": "MEDIUM",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 58,
+          "label": "0",
+          "risk_score": 0.348317398906902,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 63,
+          "label": "0",
+          "risk_score": 0.4473961639503083,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 121,
+          "label": "0",
+          "risk_score": 0.4485317862128284,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 235,
+          "label": "0",
+          "risk_score": 0.47675713297506234,
+          "risk_label": "MEDIUM",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 104,
+          "label": "0",
+          "risk_score": 0.47495708493307087,
+          "risk_label": "MEDIUM",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 194,
+          "label": "0",
+          "risk_score": 0.4464485049848446,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        }
+      ]
+    },
+    "CSE-CIC-IDS2018:mapped_cic": {
+      "dataset": "CSE-CIC-IDS2018",
+      "path": "mapped_cic",
+      "status": "PASS",
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-20-2018.csv",
+      "rows_tested": 50,
+      "fallback_path_used": false,
+      "fallback_count": 0,
+      "model_consensus_distribution": {
+        "1/4": 6,
+        "2/4": 44
+      },
+      "risk_score_distribution": {
+        "count": 50,
+        "avg": 0.4158,
+        "p50": 0.4361,
+        "p95": 0.4366,
+        "min": 0.1949,
+        "max": 0.4375
+      },
+      "risk_label_distribution": {
+        "BENIGN": 3,
+        "LOW": 47
+      },
+      "metrics": {
+        "accuracy": 0.12,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 1.0,
+        "confusion_matrix": {
+          "tn": 6,
+          "fp": 0,
+          "fn": 44,
+          "tp": 0
+        },
+        "per_attack_family_recall": {
+          "DDoS attacks-LOIC-HTTP": {
+            "attack_rows": 44,
+            "detected": 0,
+            "recall": 0.0
+          }
+        }
+      },
+      "avg_inference_latency_ms": 205.8305,
+      "p95_inference_latency_ms": 242.7085,
+      "throughput_samples_sec": 4.84,
+      "sample_records": [
+        {
+          "row_index": 56,
+          "label": "Benign",
+          "risk_score": 0.21372731628446034,
+          "risk_label": "BENIGN",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 211,
+          "label": "DDoS attacks-LOIC-HTTP",
+          "risk_score": 0.4364422120933838,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 139,
+          "label": "DDoS attacks-LOIC-HTTP",
+          "risk_score": 0.43650353224956945,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 206,
+          "label": "DDoS attacks-LOIC-HTTP",
+          "risk_score": 0.43656706778461696,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 58,
+          "label": "Benign",
+          "risk_score": 0.19486252175252103,
+          "risk_label": "BENIGN",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 63,
+          "label": "DDoS attacks-LOIC-HTTP",
+          "risk_score": 0.43747921799638406,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 121,
+          "label": "DDoS attacks-LOIC-HTTP",
+          "risk_score": 0.4366370645107506,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 235,
+          "label": "DDoS attacks-LOIC-HTTP",
+          "risk_score": 0.4364095934647054,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 104,
+          "label": "DDoS attacks-LOIC-HTTP",
+          "risk_score": 0.43612221776597626,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 194,
+          "label": "DDoS attacks-LOIC-HTTP",
+          "risk_score": 0.4361378171652569,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        }
+      ]
+    },
+    "DoHBrw:mapped_cic": {
+      "dataset": "DoHBrw",
+      "path": "mapped_cic",
+      "status": "PASS",
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\Total_CSVs\\l1-nondoh.csv",
+      "rows_tested": 50,
+      "fallback_path_used": false,
+      "fallback_count": 0,
+      "model_consensus_distribution": {
+        "1/4": 50
+      },
+      "risk_score_distribution": {
+        "count": 50,
+        "avg": 0.331,
+        "p50": 0.331,
+        "p95": 0.331,
+        "min": 0.331,
+        "max": 0.331
+      },
+      "risk_label_distribution": {
+        "LOW": 50
+      },
+      "metrics": {
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": {
+          "tn": 50,
+          "fp": 0,
+          "fn": 0,
+          "tp": 0
+        },
+        "per_attack_family_recall": {}
+      },
+      "avg_inference_latency_ms": 202.1737,
+      "p95_inference_latency_ms": 226.042,
+      "throughput_samples_sec": 4.94,
+      "sample_records": [
+        {
+          "row_index": 56,
+          "label": "NonDoH",
+          "risk_score": 0.3310491468525113,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 211,
+          "label": "NonDoH",
+          "risk_score": 0.3310491468525113,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 139,
+          "label": "NonDoH",
+          "risk_score": 0.3310491468525113,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 206,
+          "label": "NonDoH",
+          "risk_score": 0.3310491468525113,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 58,
+          "label": "NonDoH",
+          "risk_score": 0.3310491468525113,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 63,
+          "label": "NonDoH",
+          "risk_score": 0.3310491468525113,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 121,
+          "label": "NonDoH",
+          "risk_score": 0.3310491468525113,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 235,
+          "label": "NonDoH",
+          "risk_score": 0.3310491468525113,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 104,
+          "label": "NonDoH",
+          "risk_score": 0.3310491468525113,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 194,
+          "label": "NonDoH",
+          "risk_score": 0.3310491468525113,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        }
+      ]
+    },
+    "DoHBrw:native_adapter": {
+      "dataset": "DoHBrw",
+      "path": "native_adapter",
+      "status": "PASS",
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\Total_CSVs\\l1-nondoh.csv",
+      "rows_tested": 50,
+      "fallback_path_used": false,
+      "fallback_count": 0,
+      "model_consensus_distribution": {
+        "3/4": 4,
+        "1/4": 36,
+        "2/4": 10
+      },
+      "risk_score_distribution": {
+        "count": 50,
+        "avg": 0.2258,
+        "p50": 0.2004,
+        "p95": 0.5579,
+        "min": 0.0851,
+        "max": 0.6018
+      },
+      "risk_label_distribution": {
+        "MEDIUM": 8,
+        "LOW": 42
+      },
+      "metrics": {
+        "accuracy": 0.86,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.14,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": {
+          "tn": 43,
+          "fp": 7,
+          "fn": 0,
+          "tp": 0
+        },
+        "per_attack_family_recall": {}
+      },
+      "avg_inference_latency_ms": 170.8831,
+      "p95_inference_latency_ms": 176.057,
+      "throughput_samples_sec": 5.79,
+      "sample_records": [
+        {
+          "row_index": 56,
+          "label": "NonDoH",
+          "risk_score": 0.6018001194995247,
+          "risk_label": "MEDIUM",
+          "is_attack": true,
+          "model_consensus": "3/4",
+          "fallback": false
+        },
+        {
+          "row_index": 211,
+          "label": "NonDoH",
+          "risk_score": 0.200110965789645,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 139,
+          "label": "NonDoH",
+          "risk_score": 0.30014240122691266,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 206,
+          "label": "NonDoH",
+          "risk_score": 0.0869608015441846,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 58,
+          "label": "NonDoH",
+          "risk_score": 0.33346672989428044,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 63,
+          "label": "NonDoH",
+          "risk_score": 0.30298995771445336,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "2/4",
+          "fallback": false
+        },
+        {
+          "row_index": 121,
+          "label": "NonDoH",
+          "risk_score": 0.08550408171396061,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 235,
+          "label": "NonDoH",
+          "risk_score": 0.20046492986730302,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 104,
+          "label": "NonDoH",
+          "risk_score": 0.08521220280746833,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        },
+        {
+          "row_index": 194,
+          "label": "NonDoH",
+          "risk_score": 0.331599822640419,
+          "risk_label": "LOW",
+          "is_attack": false,
+          "model_consensus": "1/4",
+          "fallback": false
+        }
+      ]
+    }
+  },
+  "pass": true,
+  "truth_policy": "Metrics are computed only from available labeled rows using real inference; blocked datasets are not assigned substitute metrics."
+}

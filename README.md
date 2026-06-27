@@ -182,6 +182,16 @@ Current validated framework status:
 
 Summary metrics are documented in `docs/TESTING_AND_VALIDATION.md` and `docs/MODULE_CAPABILITIES.md`.
 
+Phase 12.18 detection truth audit uses fresh per-dataset evidence instead of banner metrics:
+
+```powershell
+python scripts/oracle_phase12_18_detection_truth_audit.py
+```
+
+The audit separates Production FusionEngine, CSE/CIC-style mapping, UNSW semantic mapping, DoHBrw mapped path, DoHBrw native adapter, and full ORACLE stack behavior. If raw datasets are absent locally, reports state `BLOCKED_MISSING_DATASET` and no metrics are fabricated.
+
+Latest Phase 12.18 bounded sample audit did not confirm previous perfect-looking detection claims. CSE mapped-path recall and DoHBrw native-adapter recall were `0.0` on the bounded sample, so banner/global detection metrics should be replaced by per-dataset Phase 12.18 tables.
+
 GUI data source labels are documented in `docs/GUI_DATA_SOURCES.md`. Dashboard and module pages mark values as `LIVE`, `REPORT`, `DEMO`, `LOCKED`, `LIVE/CONFIG`, or `LIVE SAFETY POLICY`.
 
 Dashboard actions are live. Module actions are either live-safe or locked with a visible safety reason. Live network capture requires Scapy/Npcap/admin rights; realtime replay is the validated safe live proof when packet capture is unavailable.

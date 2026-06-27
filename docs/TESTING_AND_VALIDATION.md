@@ -20,8 +20,30 @@ O.R.A.C.L.E Framework has been validated through backend, production-like simula
 - 1000 events
 - 0 degraded
 - 0 failed
-- CSE recall 1.0
-- DoHBrw recall 0.998
+- Historical CSE/DoHBrw recall values are not treated as banner truth unless reconfirmed by Phase 12.18 per-dataset evaluation.
+
+## Phase 12.18 Detection Truth Audit
+
+Fresh detection metrics must come from:
+
+- `reports/final/phase12_18_feature_mapping_audit.json`
+- `reports/final/phase12_18_mutantshield_standalone_eval.json`
+- `reports/final/phase12_18_full_stack_dataset_eval.json`
+- `reports/final/phase12_18_metric_truth_comparison.json`
+
+If raw datasets are absent, the Phase 12.18 reports mark the dataset as `BLOCKED_MISSING_DATASET` instead of carrying old or banner metrics forward.
+
+Latest bounded Phase 12.18 sample results:
+
+| Dataset / Path | Rows | Accuracy | Precision | Recall | F1 | FPR | FNR |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| CIC-IDS2017 mapped CIC | 50 | 1.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
+| UNSW-NB15 mapped CIC | 50 | 0.96 | 0.0 | 0.0 | 0.0 | 0.04 | 0.0 |
+| CSE-CIC-IDS2018 mapped CIC | 50 | 0.12 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| DoHBrw mapped CIC | 50 | 1.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
+| DoHBrw native adapter | 50 | 0.86 | 0.0 | 0.0 | 0.0 | 0.14 | 0.0 |
+
+These are bounded local audit samples, not final publication-scale benchmarks. They prove that previous perfect-looking banner values must not be used without a larger fresh rerun.
 
 ## Module Validation Highlights
 

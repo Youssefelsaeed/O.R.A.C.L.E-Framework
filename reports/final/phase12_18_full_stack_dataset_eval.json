@@ -1,0 +1,1475 @@
+{
+  "generated_at": 1782552693.539394,
+  "sample_size": 50,
+  "results": {
+    "CIC-IDS2017:mapped_cic": {
+      "dataset": "CIC-IDS2017",
+      "path": "mapped_cic",
+      "status": "PASS",
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CIC-17\\GeneratedLabelledFlows\\TrafficLabelling\\Wednesday-workingHours.pcap_ISCX.csv",
+      "events_sent": 50,
+      "success": 50,
+      "degraded": 0,
+      "failed": 0,
+      "status_code_distribution": {
+        "200": 50
+      },
+      "failed_service_distribution": {},
+      "audit_logged_rate": 1.0,
+      "auth_verified_rate": 1.0,
+      "ethics_decision_distribution": {
+        "investigate": 50
+      },
+      "action_distribution": {
+        "investigate": 50
+      },
+      "avg_latency_ms": 1470.4596,
+      "p95_latency_ms": 10817.1263,
+      "p99_latency_ms": 11069.34,
+      "detection_metrics": {
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": {
+          "tn": 50,
+          "fp": 0,
+          "fn": 0,
+          "tp": 0
+        }
+      },
+      "risk_score_distribution": {
+        "count": 50,
+        "avg": 0.234,
+        "p50": 0.1949,
+        "p95": 0.3483,
+        "min": 0.1824,
+        "max": 0.443
+      },
+      "false_allows": 0,
+      "false_blocks": 50,
+      "fallback_count": 0,
+      "throughput_events_sec": 0.52,
+      "proof_records": [
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.19486252175252103,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.19486252175252103,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "13d24cde-4676-4dd0-aabd-4d602215bce8",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.19486252175252103,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.19486252175252103,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "bc347ef0-76cc-4d8b-a1a3-c5d60918cd4b",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.2994853033608217,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.2994853033608217,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "2a45efb9-8c30-424f-ba1e-19ad0d7acd9d",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.3143738172275873,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3143738172275873,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "2c0e396b-579e-424c-98c6-fa1f7ea22254",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.2994853033608217,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.2994853033608217,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "adb0620b-b20a-474e-ae65-6df7027152e1",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.43978056665178883,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.43978056665178883,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "e46c7912-9ebd-4e06-b0b6-3980fcab12c2",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.20038594811145172,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.20038594811145172,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "a4cdb533-ab88-44d9-8a3d-ec6ce0b6e9ec",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.44296870895123824,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.44296870895123824,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "79cf2a1f-d513-4a21-a562-4d9074419981",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.3143738172275873,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3143738172275873,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "a4e4217c-f99a-4272-a400-1cc7b701f373",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.2994853033608217,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.2994853033608217,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "6583ef56-583e-42d5-a233-07876d2383eb",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.20038594811145172,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.20038594811145172,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "d8c919ee-7f8a-40a0-8a0d-fcb57dc7126e",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CIC-IDS2017",
+          "path": "mapped_cic",
+          "label": "BENIGN",
+          "mutantshield": {
+            "risk_score": 0.2994853033608217,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.2994853033608217,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "9850edb4-f537-454c-9e68-e0e105531939",
+          "fields_preserved": true
+        }
+      ]
+    },
+    "UNSW-NB15:mapped_cic": {
+      "dataset": "UNSW-NB15",
+      "path": "mapped_cic",
+      "status": "PASS",
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\UNSWB15\\UNSW_NB15_testing-set.csv",
+      "events_sent": 50,
+      "success": 50,
+      "degraded": 0,
+      "failed": 0,
+      "status_code_distribution": {
+        "200": 50
+      },
+      "failed_service_distribution": {},
+      "audit_logged_rate": 1.0,
+      "auth_verified_rate": 1.0,
+      "ethics_decision_distribution": {
+        "investigate": 50
+      },
+      "action_distribution": {
+        "investigate": 50
+      },
+      "avg_latency_ms": 73.647,
+      "p95_latency_ms": 160.3333,
+      "p99_latency_ms": 216.3004,
+      "detection_metrics": {
+        "accuracy": 0.96,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.04,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": {
+          "tn": 48,
+          "fp": 2,
+          "fn": 0,
+          "tp": 0
+        }
+      },
+      "risk_score_distribution": {
+        "count": 50,
+        "avg": 0.4499,
+        "p50": 0.4628,
+        "p95": 0.492,
+        "min": 0.3483,
+        "max": 0.5269
+      },
+      "false_allows": 0,
+      "false_blocks": 50,
+      "fallback_count": 0,
+      "throughput_events_sec": 3.57,
+      "proof_records": [
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.4459368597694902,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4459368597694902,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "f2fc03c6-88d0-40d5-8495-fc4717dcb90a",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.47444653751189,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.47444653751189,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "8143d9d8-9172-43f9-b5e5-f0e92b7f1c48",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.4867404217396885,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4867404217396885,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "1124b8c5-ec39-45b9-a705-ed19ee14babb",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.47541616965268846,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.47541616965268846,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "3afa9970-16fc-4325-9063-fb18333ffda0",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.348317398906902,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.348317398906902,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "c1252853-bd27-4285-bbd1-41dccf1c4aa3",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.4473961639503083,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4473961639503083,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "49faac1d-5db8-409a-a632-e29f75b4412f",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.4485317862128284,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4485317862128284,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "72ba15e4-86a5-4db3-a0e8-dbf1fda238b9",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.47675713297506234,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.47675713297506234,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "2a1613ec-5435-4e78-a546-2aa2fe345861",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.47495708493307087,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.47495708493307087,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "c5e27efe-7e5e-4f11-8390-7966e1dcdd47",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.4464485049848446,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4464485049848446,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "c78cda1d-15f0-45d0-98e5-4b4a247a3177",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.4872768065771256,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4872768065771256,
+            "risk_label": "MEDIUM",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "18b95367-40be-4366-8df2-da36d7a744ac",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "UNSW-NB15",
+          "path": "mapped_cic",
+          "label": "0",
+          "mutantshield": {
+            "risk_score": 0.3752007209375735,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3752007209375735,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "0c1ccf35-ac46-4c42-985b-8d3e184905ed",
+          "fields_preserved": true
+        }
+      ]
+    },
+    "CSE-CIC-IDS2018:mapped_cic": {
+      "dataset": "CSE-CIC-IDS2018",
+      "path": "mapped_cic",
+      "status": "PASS",
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\CSE-CIC-IDS-2018\\02-20-2018.csv",
+      "events_sent": 50,
+      "success": 50,
+      "degraded": 0,
+      "failed": 0,
+      "status_code_distribution": {
+        "200": 50
+      },
+      "failed_service_distribution": {},
+      "audit_logged_rate": 1.0,
+      "auth_verified_rate": 1.0,
+      "ethics_decision_distribution": {
+        "investigate": 50
+      },
+      "action_distribution": {
+        "investigate": 50
+      },
+      "avg_latency_ms": 110.0634,
+      "p95_latency_ms": 332.3488,
+      "p99_latency_ms": 541.0933,
+      "detection_metrics": {
+        "accuracy": 0.12,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 1.0,
+        "confusion_matrix": {
+          "tn": 6,
+          "fp": 0,
+          "fn": 44,
+          "tp": 0
+        }
+      },
+      "risk_score_distribution": {
+        "count": 50,
+        "avg": 0.4158,
+        "p50": 0.4361,
+        "p95": 0.4366,
+        "min": 0.1949,
+        "max": 0.4375
+      },
+      "false_allows": 0,
+      "false_blocks": 6,
+      "fallback_count": 0,
+      "throughput_events_sec": 3.09,
+      "proof_records": [
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "Benign",
+          "mutantshield": {
+            "risk_score": 0.21372731628446034,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.21372731628446034,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "3e71e29d-4d62-4820-9015-afcbfacedb1e",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "DDoS attacks-LOIC-HTTP",
+          "mutantshield": {
+            "risk_score": 0.4364422120933838,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4364422120933838,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "f087b827-1b19-48f7-b440-95eb3fbf51f5",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "DDoS attacks-LOIC-HTTP",
+          "mutantshield": {
+            "risk_score": 0.43650353224956945,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.43650353224956945,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "eb50736c-3ff2-4189-a006-72cf528934f0",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "DDoS attacks-LOIC-HTTP",
+          "mutantshield": {
+            "risk_score": 0.43656706778461696,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.43656706778461696,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "fd7f6449-c1b4-4a26-9e9b-e90e7921e218",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "Benign",
+          "mutantshield": {
+            "risk_score": 0.19486252175252103,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.19486252175252103,
+            "risk_label": "BENIGN",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "1e2b4ead-b16e-4718-8bae-f829c18e9515",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "DDoS attacks-LOIC-HTTP",
+          "mutantshield": {
+            "risk_score": 0.43747921799638406,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.43747921799638406,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "bade7028-cec5-4c46-9d5b-38940e9aa357",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "DDoS attacks-LOIC-HTTP",
+          "mutantshield": {
+            "risk_score": 0.4366370645107506,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4366370645107506,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "68017ddc-5a78-4ca7-a9d5-c76b1da061bb",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "DDoS attacks-LOIC-HTTP",
+          "mutantshield": {
+            "risk_score": 0.4364095934647054,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4364095934647054,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "76fb0bfa-4083-4397-8ecf-89f8b0a981ae",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "DDoS attacks-LOIC-HTTP",
+          "mutantshield": {
+            "risk_score": 0.43612221776597626,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.43612221776597626,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "f3c731c1-4550-4ce6-ab3b-6fde1f15cb53",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "DDoS attacks-LOIC-HTTP",
+          "mutantshield": {
+            "risk_score": 0.4361378171652569,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4361378171652569,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "379cfd20-9b41-431a-804b-f0bb79f5253c",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "DDoS attacks-LOIC-HTTP",
+          "mutantshield": {
+            "risk_score": 0.4361198234507649,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4361198234507649,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "c45ecc84-f3d6-4fd6-a6bd-d6fe24f8d2d7",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "CSE-CIC-IDS2018",
+          "path": "mapped_cic",
+          "label": "DDoS attacks-LOIC-HTTP",
+          "mutantshield": {
+            "risk_score": 0.4361060743347112,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.4361060743347112,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "c3db0873-47b5-4aa9-9e1f-5f2bd791d3ec",
+          "fields_preserved": true
+        }
+      ]
+    },
+    "DoHBrw:mapped_cic": {
+      "dataset": "DoHBrw",
+      "path": "mapped_cic",
+      "status": "PASS",
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\Total_CSVs\\l1-nondoh.csv",
+      "events_sent": 50,
+      "success": 50,
+      "degraded": 0,
+      "failed": 0,
+      "status_code_distribution": {
+        "200": 50
+      },
+      "failed_service_distribution": {},
+      "audit_logged_rate": 1.0,
+      "auth_verified_rate": 1.0,
+      "ethics_decision_distribution": {
+        "investigate": 50
+      },
+      "action_distribution": {
+        "investigate": 50
+      },
+      "avg_latency_ms": 1326.4819,
+      "p95_latency_ms": 10508.3896,
+      "p99_latency_ms": 11120.9652,
+      "detection_metrics": {
+        "accuracy": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": {
+          "tn": 50,
+          "fp": 0,
+          "fn": 0,
+          "tp": 0
+        }
+      },
+      "risk_score_distribution": {
+        "count": 50,
+        "avg": 0.331,
+        "p50": 0.331,
+        "p95": 0.331,
+        "min": 0.331,
+        "max": 0.331
+      },
+      "false_allows": 0,
+      "false_blocks": 50,
+      "fallback_count": 0,
+      "throughput_events_sec": 0.65,
+      "proof_records": [
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "89367944-96d1-41ba-8133-4f45e45efff7",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "44491786-a701-479c-b279-f605e3e57ed9",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "ccf8847b-ecb7-489b-bf2b-188b2d8fe9cd",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "ffc29770-4d7b-4844-a930-9a5f8d977014",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "a4abb246-a2fa-4248-83a9-37bc4a7745d6",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "70775cb8-5e58-43b6-b767-5e70aed75f91",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "d9af7550-c681-49d3-aefc-e80eae0a89e7",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "53fc8812-a4f8-43cb-91c8-b93c8cc5094c",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "84af692f-5f33-4216-a309-27b6f711594e",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "189f5aed-72b3-4f4e-a656-80d379c5734d",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "3f301ed6-7953-4b00-9f29-670914eb439f",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "mapped_cic",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.3310491468525113,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "50b5ca24-2444-4632-9c70-550854689abb",
+          "fields_preserved": true
+        }
+      ]
+    },
+    "DoHBrw:native_adapter": {
+      "dataset": "DoHBrw",
+      "path": "native_adapter",
+      "status": "PASS",
+      "source_file": "D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Workin with\\DohbrW\\Total_CSVs\\l1-nondoh.csv",
+      "events_sent": 50,
+      "success": 50,
+      "degraded": 0,
+      "failed": 0,
+      "status_code_distribution": {
+        "200": 50
+      },
+      "failed_service_distribution": {},
+      "audit_logged_rate": 1.0,
+      "auth_verified_rate": 1.0,
+      "ethics_decision_distribution": {
+        "investigate": 47,
+        "allow": 3
+      },
+      "action_distribution": {
+        "investigate": 47,
+        "allow": 3
+      },
+      "avg_latency_ms": 768.8298,
+      "p95_latency_ms": 1421.4993,
+      "p99_latency_ms": 10525.0692,
+      "detection_metrics": {
+        "accuracy": 0.86,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.14,
+        "false_negative_rate": 0.0,
+        "confusion_matrix": {
+          "tn": 43,
+          "fp": 7,
+          "fn": 0,
+          "tp": 0
+        }
+      },
+      "risk_score_distribution": {
+        "count": 50,
+        "avg": 0.2258,
+        "p50": 0.2004,
+        "p95": 0.5579,
+        "min": 0.0851,
+        "max": 0.6018
+      },
+      "false_allows": 0,
+      "false_blocks": 47,
+      "fallback_count": 0,
+      "throughput_events_sec": 1.13,
+      "proof_records": [
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.6018001194995247,
+            "risk_label": "MEDIUM",
+            "is_attack": true,
+            "model_consensus": "3/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.6018001194995247,
+            "risk_label": "MEDIUM",
+            "is_attack": true,
+            "model_consensus": "3/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "320d2fbc-3841-4c89-9e51-af599e6a949d",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.200110965789645,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.200110965789645,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "3b3bedf2-7b80-48bb-a8c9-82d4ee39227d",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.30014240122691266,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.30014240122691266,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "c008c53e-e050-4225-8da2-bb51bfcabddc",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.0869608015441846,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.0869608015441846,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "4f9fa92e-3bac-44e3-8a00-9ad2eb46750c",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.33346672989428044,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.33346672989428044,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "aef7d8a2-37f4-4ba1-aaa0-da41bd4eaa1c",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.30298995771445336,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.30298995771445336,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "2/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "a6811473-e14f-4b22-8b62-a68ab18726bc",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.08550408171396061,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.08550408171396061,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "8bdc5bf4-872d-4baf-8f84-3cf48db5f2e0",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.20046492986730302,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.20046492986730302,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "63df6053-36b2-4c93-8a7d-594382966079",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.08521220280746833,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.08521220280746833,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "03a0e35c-5133-4a0c-90d2-46b9f9ba45ec",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.331599822640419,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.331599822640419,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "714aebde-987e-48f8-9580-d5858b5d3dc1",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.20172094490844758,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.20172094490844758,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "7514dc8a-4d74-4619-a513-79655832b556",
+          "fields_preserved": true
+        },
+        {
+          "dataset": "DoHBrw",
+          "path": "native_adapter",
+          "label": "NonDoH",
+          "mutantshield": {
+            "risk_score": 0.26200282955141674,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_detection": {
+            "risk_score": 0.26200282955141674,
+            "risk_label": "LOW",
+            "is_attack": false,
+            "model_consensus": "1/4"
+          },
+          "oracle_final_action": "investigate",
+          "trace_id": "30b78fda-f344-40d2-9079-caa6f70841da",
+          "fields_preserved": true
+        }
+      ]
+    }
+  },
+  "proof_requirement": "proof_records include MutantShield risk fields and Oracle detection fields for side-by-side comparison.",
+  "pass": true
+}

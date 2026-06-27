@@ -1,0 +1,71 @@
+{
+  "generated_at": 1782552936.7000964,
+  "duration_seconds": 241.73,
+  "script_exit_code": 1,
+  "stdout_tail": "\n=== ORACLE PHASE 12.17 REQUEST HANDLING TEST ===\nTotal: 1000\nValid Success: 834\nValid Degraded: 16\nValid Failed: 0\nMalformed Rejected 4xx: 100\nOversized Rejected 4xx: 50\nAvg/P95/P99/Max Latency ms (oracle_pipeline_timings_ms): 294.32 / 853.83 / 10510.02 / 11134.74\nClient P95 Latency ms: 845.72\nThroughput events/sec: 4.15\nAudit Logged Rate: 0.9812\nvalid_failed_zero: PASS\ndegraded_under_or_equal_1pct: FAIL\nmalformed_rejected_cleanly: PASS\noversized_rejected_cleanly: PASS\np95_under_1000_ms: PASS\naudit_logged_at_least_99pct: FAIL\nassurance_pending_zero: PASS\nghost_failed_zero: PASS\nFinal Status: FAIL\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_17_request_handling_test.json\n",
+  "stderr_tail": "",
+  "source_report": "reports/final/phase12_17_request_handling_test.json",
+  "metrics": {
+    "total": 1000,
+    "valid_total": 850,
+    "valid_success": 834,
+    "valid_degraded": 16,
+    "valid_failed": 0,
+    "malformed_rejected_4xx": 100,
+    "oversized_rejected_4xx": 50,
+    "client_avg_latency_ms": 265.38,
+    "client_p95_latency_ms": 845.72,
+    "client_p99_latency_ms": 1770.2,
+    "client_max_latency_ms": 11142.26,
+    "throughput_events_per_sec": 4.15,
+    "retries": 0,
+    "failed_services": {
+      "chronoledger": 16,
+      "ethicq": 16,
+      "qauthcore": 16
+    },
+    "audit_logged_rate": 0.9812,
+    "assurance_latest_pending": 0,
+    "assurance_latest_failed": 0,
+    "ghost_jobs_pending": 0,
+    "ghost_jobs_failed": 0,
+    "avg_latency_ms": 294.32,
+    "p95_latency_ms": 853.83,
+    "p99_latency_ms": 10510.02,
+    "max_latency_ms": 11134.74,
+    "latency_basis": "oracle_pipeline_timings_ms"
+  },
+  "pass_checks": {
+    "valid_failed_zero": true,
+    "degraded_under_or_equal_1pct": false,
+    "malformed_rejected_cleanly": true,
+    "oversized_rejected_cleanly": true,
+    "p95_under_1000_ms": true,
+    "audit_logged_at_least_99pct": false,
+    "assurance_pending_zero": true,
+    "ghost_failed_zero": true
+  },
+  "failed_service_distribution": {
+    "chronoledger": 16,
+    "ethicq": 16,
+    "qauthcore": 16
+  },
+  "degraded_causes": {
+    "failed_services": {
+      "chronoledger": 16,
+      "ethicq": 16,
+      "qauthcore": 16
+    },
+    "audit_logged_rate": 0.9812,
+    "p95_latency_ms": 853.83,
+    "client_p95_latency_ms": 845.72
+  },
+  "pass_targets": {
+    "valid_failed_zero": true,
+    "degraded_under_or_equal_1pct": false,
+    "p95_under_1000_preferred": true,
+    "audit_logged_at_least_99pct": false,
+    "assurance_pending_latest_zero": true
+  },
+  "pass": false
+}

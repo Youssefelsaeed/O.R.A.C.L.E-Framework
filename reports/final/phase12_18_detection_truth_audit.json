@@ -1,0 +1,64 @@
+{
+  "generated_at": 1782552942.2457883,
+  "steps": {
+    "Clean Runtime Reset": {
+      "script": "oracle_phase12_18_clean_runtime_reset.py",
+      "exit_code": 1,
+      "success": false,
+      "duration_seconds": 54.41,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18 CLEAN RUNTIME RESET ===\nPorts Checked: PASS\nStale Processes Removed: 1\nStack Restarted: PASS\nCurrent Code Verified: FAIL\nFinal Status: FAIL\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18_clean_runtime_reset.json\n",
+      "stderr_tail": ""
+    },
+    "Feature Mapping Audit": {
+      "script": "oracle_phase12_18_feature_mapping_audit.py",
+      "exit_code": 0,
+      "success": true,
+      "duration_seconds": 13.61,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18 FEATURE MAPPING AUDIT ===\nCIC-IDS2017: PASS mapped_ratio=1.0\nUNSW-NB15: PASS mapped_ratio=0.5\nCSE-CIC-IDS2018: PASS mapped_ratio=0.9872\nDoHBrw: PASS mapped_ratio=0.0\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18_feature_mapping_audit.json\n",
+      "stderr_tail": ""
+    },
+    "MutantShield Standalone Eval": {
+      "script": "oracle_phase12_18_mutantshield_standalone_eval.py",
+      "exit_code": 0,
+      "success": true,
+      "duration_seconds": 84.25,
+      "stdout_tail": "\n=== MUTANTSHIELD STANDALONE DATASET EVALUATION ===\nCIC-IDS2017: PASS accuracy=1.0 recall=0.0 f1=0.0\nUNSW-NB15: PASS accuracy=0.96 recall=0.0 f1=0.0\nCSE-CIC-IDS2018: PASS accuracy=0.12 recall=0.0 f1=0.0\nDoHBrw Mapped Path: PASS accuracy=1.0 recall=0.0 f1=0.0\nDoHBrw Native Adapter: PASS accuracy=0.86 recall=0.0 f1=0.0\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18_mutantshield_standalone_eval.json\n",
+      "stderr_tail": "ore/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\n2026-06-27 12:25:47.295383: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.\nTo enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.\n2026-06-27 12:25:47,425 - FusionEngine_final - INFO - Loading LSTM v2 final (weights+metadata) from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\LSTM_Optimized\\Final Model\\lstm_v2_final_20260130_185100.pkl\n2026-06-27 12:25:48,154 - tensorflow - WARNING - From C:\\Users\\YOUSSEF ELSAEED\\AppData\\Roaming\\Python\\Python312\\site-packages\\keras\\src\\backend\\tensorflow\\core.py:232: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.\n\n2026-06-27 12:25:48,202 - FusionEngine_final - INFO - LSTM v2 loaded: 78 features, 11 classes, seq_len=15\n2026-06-27 12:25:48,202 - FusionEngine_final - INFO - Loading GNN from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\GNN\\gnn_graphsage_mutantshield.pth and D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\GNN\\gnn_graphsage_builder.pkl\n2026-06-27 12:25:51,290 - FusionEngine_final - INFO - GNN inference helper initialized (dynamic ego-graphs enabled)\n2026-06-27 12:25:51,290 - FusionEngine_final - INFO - All models loaded successfully\n2026-06-27 12:25:51,290 - FusionEngine_final - INFO - Loading learned fusion model from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\FusionEngine\\learned_fusion_mlp.pt\n2026-06-27 12:25:51,306 - FusionEngine_final - INFO - Learned fusion model loaded successfully\n2026-06-27 12:25:51,306 - FusionEngine_final - INFO - Risk calibrator loaded from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models\\risk_calibrator.pkl\n2026-06-27 12:25:51,306 - oracle_sensor.mutantshield - INFO - {'msg': 'mutantshield_fusion_loaded', 'model_keys': ['xgboost', 'autoencoder', 'lstm', 'gnn_model', 'gnn_builder']}\n"
+    },
+    "Full Stack Dataset Eval": {
+      "script": "oracle_phase12_18_full_stack_dataset_eval.py",
+      "exit_code": 0,
+      "success": true,
+      "duration_seconds": 272.2,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18 FULL STACK DATASET EVALUATION ===\nCIC-IDS2017:mapped_cic: PASS sent=50 recall=0.0 f1=0.0\nUNSW-NB15:mapped_cic: PASS sent=50 recall=0.0 f1=0.0\nCSE-CIC-IDS2018:mapped_cic: PASS sent=50 recall=0.0 f1=0.0\nDoHBrw:mapped_cic: PASS sent=50 recall=0.0 f1=0.0\nDoHBrw:native_adapter: PASS sent=50 recall=0.0 f1=0.0\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18_full_stack_dataset_eval.json\n",
+      "stderr_tail": "ore/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.\n2026-06-27 12:27:12.699847: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.\nTo enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.\n2026-06-27 12:27:12,841 - FusionEngine_final - INFO - Loading LSTM v2 final (weights+metadata) from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\LSTM_Optimized\\Final Model\\lstm_v2_final_20260130_185100.pkl\n2026-06-27 12:27:13,557 - tensorflow - WARNING - From C:\\Users\\YOUSSEF ELSAEED\\AppData\\Roaming\\Python\\Python312\\site-packages\\keras\\src\\backend\\tensorflow\\core.py:232: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.\n\n2026-06-27 12:27:13,620 - FusionEngine_final - INFO - LSTM v2 loaded: 78 features, 11 classes, seq_len=15\n2026-06-27 12:27:13,620 - FusionEngine_final - INFO - Loading GNN from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\GNN\\gnn_graphsage_mutantshield.pth and D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\GNN\\gnn_graphsage_builder.pkl\n2026-06-27 12:27:17,039 - FusionEngine_final - INFO - GNN inference helper initialized (dynamic ego-graphs enabled)\n2026-06-27 12:27:17,039 - FusionEngine_final - INFO - All models loaded successfully\n2026-06-27 12:27:17,039 - FusionEngine_final - INFO - Loading learned fusion model from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models_final\\FusionEngine\\learned_fusion_mlp.pt\n2026-06-27 12:27:17,055 - FusionEngine_final - INFO - Learned fusion model loaded successfully\n2026-06-27 12:27:17,055 - FusionEngine_final - INFO - Risk calibrator loaded from D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\Mutant_Sheild Module\\mutantshield\\src\\FinalVersion\\models\\risk_calibrator.pkl\n2026-06-27 12:27:17,055 - oracle_sensor.mutantshield - INFO - {'msg': 'mutantshield_fusion_loaded', 'model_keys': ['xgboost', 'autoencoder', 'lstm', 'gnn_model', 'gnn_builder']}\n"
+    },
+    "Metric Truth Comparison": {
+      "script": "oracle_phase12_18_metric_truth_comparison.py",
+      "exit_code": 0,
+      "success": true,
+      "duration_seconds": 0.1,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18 METRIC TRUTH COMPARISON ===\nFresh Metrics Available: True\nConfirmed Claims: 0\nUnsupported Claims: 0\nFinal Status: PASS\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18_metric_truth_comparison.json\n",
+      "stderr_tail": ""
+    },
+    "Request Handling Rerun": {
+      "script": "oracle_phase12_18_request_handling_rerun.py",
+      "exit_code": 1,
+      "success": false,
+      "duration_seconds": 241.84,
+      "stdout_tail": "\n=== ORACLE PHASE 12.18 REQUEST HANDLING RERUN ===\nvalid_failed: 0\nvalid_degraded: 16\np95_latency_ms: 853.83\naudit_logged_rate: 0.9812\nfailed_services: {'chronoledger': 16, 'ethicq': 16, 'qauthcore': 16}\nFinal Status: FAIL\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\phase12_18_request_handling_rerun.json\n",
+      "stderr_tail": ""
+    },
+    "GitHub Safety": {
+      "script": "github_release_safety_check.py",
+      "exit_code": 0,
+      "success": true,
+      "duration_seconds": 5.5,
+      "stdout_tail": "=== O.R.A.C.L.E FRAMEWORK RELEASE SAFETY CHECK ===\nSafety Check: PASS\nProfessional Docs: PASS\nReports Not Staged: PASS\nmodels_final unchanged: TRUE\nReport: D:\\MY STUDIES\\UNIVERSITY\\GRAD\\Grad work\\Modules\\reports\\final\\github_release_safety_check.json\n",
+      "stderr_tail": ""
+    }
+  },
+  "models_final_unchanged": true,
+  "pass": false,
+  "final_status": "NOT_READY"
+}

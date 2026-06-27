@@ -2,12 +2,31 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
 REPORTS_DIR = WORKSPACE_ROOT / "reports"
 EVOLUTION_DIR = REPORTS_DIR / "evolution"
+
+
+def _runtime_metadata() -> Dict[str, Any]:
+    try:
+        commit = subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=WORKSPACE_ROOT,
+            text=True,
+            stderr=subprocess.DEVNULL,
+            timeout=5,
+        ).strip()
+    except Exception:
+        commit = None
+    return {
+        "git_commit": commit,
+        "workspace_root": str(WORKSPACE_ROOT),
+        "code_marker": "phase12_18_runtime_metadata",
+    }
 
 
 def _read_json(path: Path) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
@@ -336,6 +355,7 @@ def build_dashboard_summary() -> Dict[str, Any]:
         "warnings": content_warnings,
         "report_warnings": report_warnings,
         "architecture_status": architecture_status,
+        "runtime": _runtime_metadata(),
         "gui_alignment": {
             "evolution_engine_title": "MutantShield Evolution Engine",
             "evolution_engine_subtitle": (
