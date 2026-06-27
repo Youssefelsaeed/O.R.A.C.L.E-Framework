@@ -20,32 +20,30 @@ O.R.A.C.L.E Framework has been validated through backend, production-like simula
 - 1000 events
 - 0 degraded
 - 0 failed
-- Historical CSE/DoHBrw recall values are not treated as banner truth unless reconfirmed by Phase 12.18 per-dataset evaluation.
+- Historical CSE/DoHBrw recall values are not treated as banner truth unless reconfirmed by Phase 12.19 per-path evaluation.
 
-## Phase 12.18B Controlled Detection Verification
+## Phase 12.19 Controlled Detection Verification
 
 Fresh detection metrics must come from:
 
-- `reports/final/phase12_18b_eval_set_summary.json`
-- `reports/final/phase12_18b_detector_routing_audit.json`
-- `reports/final/phase12_18b_mutantshield_controlled_eval.json`
-- `reports/final/phase12_18b_full_stack_controlled_eval.json`
-- `reports/final/ORACLE_FINAL_DETECTION_VERDICT.json`
+- `docs/FINAL_DETECTION_RESULTS.md`
+- `docs/FULL_STACK_DETECTION_PROOF.md`
+- `docs/ORACLE_FINAL_METRICS_TRUTH.md`
 
 If runtime proof fails, full-stack metrics are blocked instead of being reported from a stale Oracle Core process.
 
-Latest Phase 12.18B controlled standalone MutantShield results:
+Latest Phase 12.19 controlled standalone MutantShield results:
 
 | Dataset / Path | Rows | Accuracy | Precision | Recall | F1 | FPR | FNR |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| CIC-IDS2017 production FusionEngine | 124 | 0.9274 | 1.0 | 0.625 | 0.7692 | 0.0 | 0.375 |
-| UNSW-NB15 mapped validation | 200 | 0.48 | 0.1667 | 0.01 | 0.0189 | 0.05 | 0.99 |
+| CIC-IDS2017 production FusionEngine | 200 | 0.95 | 1.0 | 0.9 | 0.9474 | 0.0 | 0.1 |
+| UNSW-NB15 mapped validation | 200 | 0.47 | 0.0 | 0.0 | 0.0 | 0.06 | 1.0 |
 | CSE-CIC-IDS2018 production FusionEngine | 200 | 0.5 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
-| CSE-CIC-IDS2018 HOIC repair candidate | 200 | 1.0 | 1.0 | 1.0 | 1.0 | 0.0 | 0.0 |
+| CSE-CIC-IDS2018 HOIC repair candidate | 200 | 0.975 | 0.9524 | 1.0 | 0.9756 | 0.05 | 0.0 |
 | DoHBrw mapped CIC | 200 | 0.5 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
 | DoHBrw native adapter | 200 | 0.89 | 0.8197 | 1.0 | 0.9009 | 0.22 | 0.0 |
 
-Full-stack controlled evaluation is currently `BLOCKED_RUNTIME_NOT_CURRENT`: `/oracle/runtime-info` returned 404 from the running core, so Oracle preservation metrics were not claimed.
+Full-stack controlled evaluation passed after `/oracle/runtime-info` proved `phase12_19_current_runtime`: all tested rows were accepted, detector fields were preserved, and audit/auth rates were `1.0`.
 
 ## Module Validation Highlights
 

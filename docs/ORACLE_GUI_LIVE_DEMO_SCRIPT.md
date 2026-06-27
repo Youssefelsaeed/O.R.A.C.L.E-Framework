@@ -99,14 +99,9 @@ No dashboard section should silently show mock data.
 ## 6. Validate The Demo Setup
 
 ```powershell
-python scripts/test_dashboard_action_endpoints.py
-python scripts/test_gui_operator_console_live.py
-python scripts/check_live_sensor_readiness.py
-python scripts/test_module_gui_actions.py
-python scripts/test_module_pages_operator_ui.py
-python scripts/check_docker_packaging_safety.py
-python scripts/oracle_phase12_17_final_operational_verification.py
-python scripts/oracle_phase12_18b_final_detection_verification.py
+python scripts/oracle_runtime_current_code_check.py
+python scripts/oracle_final_acceptance_test.py
+python scripts/oracle_realtime_replay_proof.py --events 25
 ```
 
 Build the GUI:
@@ -151,12 +146,9 @@ Docker mode is a runtime deployment path:
 
 ## 9. Final Operational Proof
 
-`python scripts/oracle_phase12_17_final_operational_verification.py` is the final local operator proof. It verifies:
+`python scripts/oracle_runtime_current_code_check.py` is the final local runtime proof. It verifies:
 
-- services stay alive after boot
-- dashboard and module action endpoints respond
-- GUI source and live backend actions are connected
-- unsafe actions are visibly locked
-- 1000 mixed requests are handled with clean malformed/oversized rejection
+- `/oracle/runtime-info` returns `phase12_19_current_runtime`
+- dashboard summary and service health endpoints respond
+- backend service ports are current ORACLE processes
 - realtime replay creates fresh `LIVE_REPLAY` events visible through latest-events
-- final reports/docs and GitHub safety checks remain valid

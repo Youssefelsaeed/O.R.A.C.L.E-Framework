@@ -71,8 +71,7 @@ http://127.0.0.1:4173
 Validate:
 
 ```powershell
-python scripts/check_docker_packaging_safety.py
-python scripts/test_docker_oracle_runtime.py
+python scripts/docker_oracle_status.py
 ```
 
 Stop:
@@ -89,15 +88,13 @@ Operator mode uses the running stack and leaves it alive:
 
 ```powershell
 python scripts/oracle_final_acceptance_test.py
-python scripts/oracle_phase12_11_module_capability_validation.py
-python scripts/oracle_phase11_final_benchmark.py
+python scripts/oracle_runtime_current_code_check.py
 ```
 
 Managed test mode is explicit:
 
 ```powershell
 python scripts/oracle_final_acceptance_test.py --manage-stack
-python scripts/oracle_phase12_11_module_capability_validation.py --manage-stack
 ```
 
 Run live proof:
@@ -110,10 +107,11 @@ python scripts/oracle_realtime_replay_proof.py --events 100
 Run the final operational verification loop:
 
 ```powershell
-python scripts/oracle_phase12_17_final_operational_verification.py
+python scripts/oracle_runtime_current_code_check.py
+python scripts/oracle_final_acceptance_test.py
 ```
 
-This verifies stack boot stability, endpoint behavior, GUI actions, request handling under load, latest event updates after replay, report/doc availability, issue sweep status, GitHub release safety, and final acceptance.
+This verifies current-code runtime proof, service reachability, and final acceptance without requiring development phase scripts.
 
 If GUI buttons do not respond, verify `VITE_ORACLE_API_BASE_URL=http://127.0.0.1:8000`, rebuild the GUI, and confirm `http://127.0.0.1:8000/oracle/dashboard/summary` is reachable.
 

@@ -74,7 +74,7 @@ Docker runtime quick start:
 
 ```powershell
 python scripts/docker_oracle_up.py
-python scripts/test_docker_oracle_runtime.py
+python scripts/docker_oracle_status.py
 ```
 
 Docker opens the same GUI at `http://127.0.0.1:4173`. Stop it with:
@@ -112,19 +112,18 @@ python scripts/oracle_final_acceptance_test.py
 Full module validation:
 
 ```powershell
-python scripts/oracle_phase12_11_module_capability_validation.py
+python scripts/oracle_runtime_current_code_check.py
 ```
 
 Final benchmark:
 
 ```powershell
-python scripts/oracle_phase11_final_benchmark.py
+python scripts/oracle_final_acceptance_test.py
 ```
 
 Live operator proof:
 
 ```powershell
-python scripts/oracle_operator_final_validation.py
 python scripts/oracle_live_sensor_smoke_test.py
 python scripts/oracle_realtime_replay_proof.py --events 100
 ```
@@ -134,35 +133,40 @@ Use `--manage-stack` only when you intentionally want a validation script to sta
 GUI live demo validation:
 
 ```powershell
-python scripts/test_dashboard_action_endpoints.py
-python scripts/test_gui_operator_console_live.py
-python scripts/check_live_sensor_readiness.py
-python scripts/test_module_gui_actions.py
-python scripts/test_module_pages_operator_ui.py
+python scripts/oracle_runtime_current_code_check.py
+python scripts/oracle_realtime_replay_proof.py --events 25
 ```
 
 Docker runtime validation:
 
 ```powershell
-python scripts/check_docker_packaging_safety.py
-python scripts/test_docker_oracle_runtime.py
+python scripts/docker_oracle_status.py
 ```
 
 Final operational verification:
 
 ```powershell
-python scripts/oracle_phase12_17_final_operational_verification.py
+python scripts/oracle_runtime_current_code_check.py
+python scripts/oracle_final_acceptance_test.py
 ```
 
-This loop boots the local stack, checks backend endpoints and GUI actions, sends 1000 mixed Oracle requests, verifies realtime replay updates the latest-events feed, checks reports/docs, runs safety checks, and confirms `models_final` is unchanged.
+This verifies that the current Oracle Core runtime is loaded, the stack is reachable, and the final operator acceptance path is available.
 
 Final controlled detection verification:
 
 ```powershell
-python scripts/oracle_phase12_18b_final_detection_verification.py
+python scripts/oracle_runtime_current_code_check.py
 ```
 
-Phase 12.18B is the current evidence gate for detection claims. It builds fixed-seed controlled eval sets, runs MutantShield standalone on CIC/UNSW/CSE/DoHBrw paths, compares old metric claims, and blocks full-stack claims unless `/oracle/runtime-info` proves `phase12_18b_runtime`. The latest local run remained `NOT_READY` because stale Windows listeners prevented current-code proof for Oracle Core.
+Phase 12.19 is the current evidence gate for detection claims. `/oracle/runtime-info` must return `runtime_marker: phase12_19_current_runtime` before full-stack detection or request-handling metrics are trusted.
+
+Final metric summaries:
+
+- Historical mixed CIC/UNSW MutantShield baseline: accuracy `0.7425`, precision `0.8173`, recall `0.6114`, F1 `0.6995`. This is historical validation evidence, not a full-stack runtime claim.
+- Phase 12.19 controlled standalone highlights: CIC production recall `0.9`, CSE production recall `0.0`, CSE repair candidate recall `1.0`, DoHBrw mapped recall `0.0`, DoHBrw native adapter recall `1.0`.
+- Phase 12.19 full-stack proof: all tested rows were accepted by Oracle Core with detector field preservation, audit logging, and auth verification. See `docs/FULL_STACK_DETECTION_PROOF.md`.
+
+Use `docs/FINAL_DETECTION_RESULTS.md` and `docs/ORACLE_FINAL_METRICS_TRUTH.md` for presentation numbers. Do not claim one global perfect accuracy.
 
 The live dashboard demo flow is documented in `docs/ORACLE_GUI_LIVE_DEMO_SCRIPT.md`.
 
@@ -186,19 +190,13 @@ Current validated framework status:
 - `ORACLE_MODULE_CAPABILITY_VALIDATED`
 - `ORACLE_FULLY_TESTED_AND_READY`
 - `ORACLE_FINAL_QA_COMPLETE`
-- `ORACLE_FINAL_OPERATIONALLY_VERIFIED` after Phase 12.17 verification passes
+- `ORACLE_FINAL_DETECTION_AND_RUNTIME_VERIFIED` after Phase 12.19 verification passes
 
 Summary metrics are documented in `docs/TESTING_AND_VALIDATION.md` and `docs/MODULE_CAPABILITIES.md`.
 
-Phase 12.18 detection truth audit uses fresh per-dataset evidence instead of banner metrics:
+Phase 12.19 detection truth uses fresh per-path evidence instead of banner metrics. It separates Production FusionEngine, UNSW mapped validation, CSE production baseline, CSE repair candidate, DoHBrw mapped baseline, DoHBrw native adapter, and full ORACLE stack preservation/audit behavior.
 
-```powershell
-python scripts/oracle_phase12_18_detection_truth_audit.py
-```
-
-The audit separates Production FusionEngine, CSE/CIC-style mapping, UNSW semantic mapping, DoHBrw mapped path, DoHBrw native adapter, and full ORACLE stack behavior. If raw datasets are absent locally, reports state `BLOCKED_MISSING_DATASET` and no metrics are fabricated.
-
-Latest Phase 12.18 bounded sample audit did not confirm previous perfect-looking detection claims. CSE mapped-path recall and DoHBrw native-adapter recall were `0.0` on the bounded sample, so banner/global detection metrics should be replaced by per-dataset Phase 12.18 tables.
+Latest Phase 12.19 verification confirms that some mapped/production baselines still produce `0.0` recall, while the CSE repair candidate and DoHBrw native adapter perform well on their controlled samples. Banner/global detection metrics should be replaced by the per-path tables in `docs/FINAL_DETECTION_RESULTS.md`, `docs/FULL_STACK_DETECTION_PROOF.md`, and `docs/ORACLE_FINAL_METRICS_TRUTH.md`.
 
 GUI data source labels are documented in `docs/GUI_DATA_SOURCES.md`. Dashboard and module pages mark values as `LIVE`, `REPORT`, `DEMO`, `LOCKED`, `LIVE/CONFIG`, or `LIVE SAFETY POLICY`.
 
