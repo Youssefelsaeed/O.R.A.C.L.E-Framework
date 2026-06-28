@@ -84,7 +84,7 @@ For final detection proof, also open:
 http://127.0.0.1:8000/oracle/runtime-info
 ```
 
-The current-code proof must show `code_marker: phase12_18b_runtime`. If this endpoint returns `404` or a different marker, do not claim full-stack Phase 12.18B detection metrics.
+The current-code proof must show `runtime_marker: phase12_19_current_runtime`. If this endpoint returns `404` or a different marker, do not claim final full-stack detection/runtime metrics.
 
 ## 5. Explain Data Badges
 
@@ -121,6 +121,7 @@ npm run build
 ## 7. Module Operator Actions
 
 Dashboard actions are live. Module actions are either live-safe or locked with a visible safety reason:
+Unavailable or unsafe operator actions are intentionally safety-locked and displayed using controlled demo-safe messages.
 
 - MutantShield `Run Evolution Dry-Run`: safe backend dry-run; no promotion.
 - MutantShield `Trigger Retraining`: locked; use candidate-only dry-run.
@@ -146,7 +147,7 @@ Docker mode is a runtime deployment path:
 
 ## 9. Final Operational Proof
 
-`python scripts/oracle_runtime_current_code_check.py` is the final local runtime proof. It verifies:
+Use `http://127.0.0.1:8000/oracle/runtime-info`, `http://127.0.0.1:8000/health`, and `python scripts/oracle_realtime_replay_proof.py --events 25` as the final local runtime proof. This verifies:
 
 - `/oracle/runtime-info` returns `phase12_19_current_runtime`
 - dashboard summary and service health endpoints respond

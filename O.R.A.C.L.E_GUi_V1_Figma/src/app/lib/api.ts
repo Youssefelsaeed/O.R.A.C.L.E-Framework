@@ -88,6 +88,13 @@ export interface ApiResult<T> {
 
 let lastKnownSummary: DashboardSummary | null = null;
 
+function polishApiError(detail: string, status?: number): string {
+  if (detail.includes("script_not_found") || detail.includes("run_mutantshield_evolution.py")) {
+    return "Evolution Dry-Run is unavailable in this demonstration build. Production models remain protected. Candidate evaluation can be performed through the validated offline/replay workflow.";
+  }
+  return `HTTP ${status}${detail ? `: ${detail}` : ""}`;
+}
+
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<ApiResult<T>> {
   try {
     const res = await fetch(`${API_BASE}${path}`, {
@@ -109,7 +116,7 @@ async function apiFetch<T>(path: string, init?: RequestInit): Promise<ApiResult<
         data && typeof data === "object" && "detail" in data
           ? String((data as Record<string, unknown>).detail)
           : text.slice(0, 300);
-      return { data: null, offline: false, status: res.status, error: `HTTP ${res.status}${detail ? `: ${detail}` : ""}` };
+      return { data: null, offline: false, status: res.status, error: polishApiError(detail, res.status) };
     }
     return { data, offline: false, status: res.status };
   } catch (error) {

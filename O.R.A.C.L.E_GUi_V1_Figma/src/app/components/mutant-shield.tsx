@@ -123,8 +123,13 @@ export function MutantShield() {
             onClick={() =>
               action.showLocked(
                 "Trigger Retraining",
-                "Production retraining is blocked. Use Evolution Dry-Run / candidate-only mode.",
-                { production_models_unchanged: true, allowed_action: "POST /oracle/dashboard/actions/evolution-dry-run" },
+                "Production retraining is locked. Use candidate-only Evolution Dry-Run or validated offline evaluation reports.",
+                {
+                  status: "LOCKED",
+                  reason: "Production retraining cannot run from the final demo GUI.",
+                  safe_alternative: "POST /oracle/dashboard/actions/evolution-dry-run",
+                  production_models_unchanged: true,
+                },
               )
             }
           >

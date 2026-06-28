@@ -130,11 +130,11 @@ export function EthicQ() {
           onClick={() =>
             action.showLocked(
               "Edit Rules",
-              "EthicQ rule editing is locked in final demo mode. Policy changes require reviewed config update.",
+              "Policy editing is locked in final demo mode. Rule changes require reviewed configuration update.",
               {
-                locked: true,
-                view_rationality_matrix: "/oracle/dashboard/reports/backend_validation",
-                health_check: "POST /oracle/dashboard/actions/health-check",
+                status: "LOCKED",
+                reason: "Policy changes are safety-sensitive and are not changed during the final demo.",
+                safe_alternative: "View Rationality Matrix",
               },
             )
           }

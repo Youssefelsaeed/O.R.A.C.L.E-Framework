@@ -4,7 +4,22 @@ import { GlassCard } from "@/app/components/glass-card";
 import { Badge } from "@/app/components/ui/badge";
 import { Button } from "@/app/components/ui/button";
 
-type ActionStatus = "idle" | "running" | "success" | "failed" | "locked";
+type ActionStatus = "idle" | "running" | "success" | "failed" | "locked" | "safe_unavailable";
+
+function polishOperatorMessage(message?: string) {
+  if (!message) return undefined;
+  if (message.includes("script_not_found") || message.includes("run_mutantshield_evolution.py")) {
+    return "Evolution Dry-Run is unavailable in this demonstration build. Production models remain protected. Candidate evaluation can be performed through the validated offline/replay workflow.";
+  }
+  return message;
+}
+
+function classifyActionStatus(response: { data: Record<string, unknown> | null; error?: string }): ActionStatus {
+  const status = response.data && typeof response.data.status === "string" ? response.data.status : "";
+  if (status === "locked_or_unavailable" || status === "safe_unavailable") return "safe_unavailable";
+  if (response.error) return "failed";
+  return "success";
+}
 
 export function DataBadge({ label }: { label: "LIVE" | "REPORT" | "DEMO" | "LOCKED" | "LIVE/REPORT" }) {
   const color =
@@ -38,8 +53,8 @@ export function useOperatorActionPanel() {
     const response = await fn();
     setResult({
       name,
-      status: response.error ? "failed" : "success",
-      message: response.error,
+      status: classifyActionStatus(response),
+      message: polishOperatorMessage(response.error || (response.data?.reason as string | undefined)),
       data: response.data,
       timestamp: new Date().toLocaleString(),
     });
@@ -48,6 +63,8 @@ export function useOperatorActionPanel() {
   const color =
     result.status === "success"
       ? "text-[#00ffcc]"
+      : result.status === "safe_unavailable"
+        ? "text-[#fbbf24]"
       : result.status === "failed" || result.status === "locked"
         ? "text-[#ff3366]"
         : result.status === "running"
@@ -69,7 +86,7 @@ export function useOperatorActionPanel() {
           </p>
           {result.message && <p className="text-sm text-[#fbbf24] mb-2">{result.message}</p>}
           <pre className="max-h-56 overflow-auto rounded-lg bg-black/30 border border-white/10 p-3 text-xs text-gray-300">
-            {result.data ? JSON.stringify(result.data, null, 2).slice(0, 1400) : "No backend output yet."}
+            {result.data ? JSON.stringify(result.data, null, 2).slice(0, 1400) : result.status === "idle" ? "Awaiting operator action..." : "No action output available for this safe/locked operation."}
           </pre>
         </div>
       </GlassCard>

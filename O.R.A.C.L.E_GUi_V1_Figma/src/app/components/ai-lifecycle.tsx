@@ -10,7 +10,7 @@ import {
   TooltipTrigger,
 } from "@/app/components/ui/tooltip";
 import { useEvolutionData } from "@/app/lib/use-oracle-data";
-import { API_BASE, runEvolutionDryRun, SAFETY_BLOCKED_MSG } from "@/app/lib/api";
+import { API_BASE, runEvolutionDryRun } from "@/app/lib/api";
 import { useState } from "react";
 import {
   Database,
@@ -115,7 +115,7 @@ function SourceLabel({ source }: { source: "LIVE/CONFIG" | "REPORT" | "LIVE SAFE
 export function AILifecycle() {
   const { data, offline, loading, refresh } = useEvolutionData();
   const [actionResult, setActionResult] = useState<{
-    status: "idle" | "running" | "success" | "failed";
+    status: "idle" | "running" | "success" | "failed" | "safe_unavailable" | "locked";
     timestamp?: string;
     error?: string;
     data?: Record<string, unknown> | null;
@@ -130,14 +130,28 @@ export function AILifecycle() {
   const artVersion = String(evo.art_version || "—");
   const artLabel = evo.art_source === "local" ? `ART v${artVersion} local` : `ART ${artVersion}`;
 
-  const handlePromote = () => alert(SAFETY_BLOCKED_MSG);
+  const handlePromote = () => {
+    setActionResult({
+      status: "locked",
+      timestamp: new Date().toLocaleString(),
+      error: "Promotion is blocked by ORACLE safety gates. Production models remain unchanged.",
+      data: {
+        status: "LOCKED",
+        reason: "Production promotion requires evaluation, adversarial gate, human approval, rollback planning, and hash audit.",
+        safe_alternative: "Review candidate-only evaluation evidence.",
+        production_models_unchanged: true,
+      },
+    });
+  };
   const handleDryRun = async () => {
     setActionResult({ status: "running", timestamp: new Date().toLocaleString() });
     const result = await runEvolutionDryRun();
+    const responseStatus =
+      result.data && typeof result.data.status === "string" ? result.data.status : "";
     setActionResult({
-      status: result.error ? "failed" : "success",
+      status: responseStatus === "locked_or_unavailable" ? "safe_unavailable" : result.error ? "failed" : "success",
       timestamp: new Date().toLocaleString(),
-      error: result.error,
+      error: result.error || (result.data?.reason as string | undefined),
       data: result.data,
     });
     await refresh();
@@ -158,7 +172,7 @@ export function AILifecycle() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <span>
-                  <Button className="bg-[#a855f7]/50 text-white cursor-not-allowed" disabled onClick={handlePromote}>
+                  <Button className="bg-[#a855f7]/50 text-white cursor-not-allowed" onClick={handlePromote}>
                     <Lock className="size-4 mr-2" />
                     Promote Candidate
                   </Button>
@@ -187,12 +201,12 @@ export function AILifecycle() {
           <h3 className="mb-2">Evolution Action Result <SourceLabel source="LIVE/CONFIG" /></h3>
           <p className="text-xs text-gray-400 mb-3">
             {actionResult.status === "idle"
-              ? "Click Run Evolution Dry-Run to see live backend action output here."
+              ? "Awaiting operator action..."
               : `Status: ${actionResult.status} at ${actionResult.timestamp}`}
           </p>
           {actionResult.error && <p className="text-sm text-[#ff3366] mb-2">{actionResult.error}</p>}
           <pre className="max-h-64 overflow-auto rounded-lg bg-black/30 border border-white/10 p-3 text-xs text-gray-300">
-            {actionResult.data ? JSON.stringify(actionResult.data, null, 2).slice(0, 1600) : "No action output yet."}
+            {actionResult.data ? JSON.stringify(actionResult.data, null, 2).slice(0, 1600) : "No action output available for this safe/locked operation."}
           </pre>
         </div>
       </GlassCard>

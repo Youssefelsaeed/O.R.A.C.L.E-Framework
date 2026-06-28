@@ -228,6 +228,19 @@ async def action_backend_validation() -> Dict[str, Any]:
 
 @router.post("/actions/evolution-dry-run")
 async def action_evolution_dry_run() -> Dict[str, Any]:
+    script = WORKSPACE_ROOT / "scripts" / "run_mutantshield_evolution.py"
+    if not script.exists():
+        evo = await dashboard_evolution()
+        return {
+            "status": "locked_or_unavailable",
+            "safe": True,
+            "success": False,
+            "reason": "Evolution dry-run script is unavailable in this demonstration build.",
+            "production_models_unchanged": True,
+            "recommended_action": "Use validated final evolution reports or run offline candidate evaluation manually.",
+            "evolution": evo.get("evolution"),
+            "promotion_allowed": (evo.get("evolution") or {}).get("promotion_allowed"),
+        }
     result = await _run_script(
         "run_mutantshield_evolution.py", "--dry-run", "--max-rows", "5000", timeout=300.0
     )

@@ -148,6 +148,7 @@ The public repository includes concise final documents:
 Dashboard and module pages mark values as `LIVE`, `REPORT`, `DEMO`, `LOCKED`, `LIVE/CONFIG`, or `LIVE SAFETY POLICY`.
 
 Dashboard actions are live. Module actions are either live-safe or locked with a visible safety reason. Live network capture requires Scapy/Npcap/admin rights; realtime replay is the validated safe live proof when packet capture is unavailable.
+Unavailable or unsafe operator actions are intentionally safety-locked and displayed using controlled demo-safe messages.
 
 ## Operator Dashboard Preview
 

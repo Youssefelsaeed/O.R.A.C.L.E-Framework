@@ -84,11 +84,13 @@ export function QAuthCore() {
           onClick={() =>
             action.showLocked(
               "Manage Users",
-              "QAuthCore user management is a future admin feature. Current validated capabilities: token generation, verification, and assurance.",
+              "User management is outside the validated final demo scope. QAuthCore validated capabilities are token generation, verification, and assurance.",
               {
+                status: "LOCKED",
+                reason: "User and role administration requires reviewed production configuration.",
+                safe_alternative: "Generate Test Token",
                 health_check: "POST /oracle/dashboard/actions/health-check",
                 safe_test_token: "POST /oracle/dashboard/actions/qauth-test-token",
-                capability_report: "/oracle/dashboard/reports/backend_validation",
               },
             )
           }

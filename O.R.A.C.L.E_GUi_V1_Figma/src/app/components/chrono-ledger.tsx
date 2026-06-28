@@ -105,7 +105,11 @@ export function ChronoLedger() {
         <Button
           variant="outline"
           className="border-white/10"
-          onClick={() => action.showLocked("Export", "ChronoLedger export is restricted in final demo mode. Use latest evidence view or backend reports.", { locked: true })}
+          onClick={() => action.showLocked("Export", "Export is restricted in final demo mode. Use latest evidence view or backend reports.", {
+            status: "LOCKED",
+            reason: "Audit export can expose local evidence files and is restricted during final presentation.",
+            safe_alternative: "View Latest Evidence/Events",
+          })}
         >
           <Download className="size-4 mr-2" />
           Export (restricted)
@@ -169,7 +173,9 @@ export function ChronoLedger() {
               {events.slice(0, 10).map((e, i) => (
                 <div key={i} className="p-3 rounded-lg bg-white/5 border border-white/10 text-xs">
                   <p className="font-semibold">{String(e.flow_id)} • {String(e.risk_label)}</p>
-                  <p className="text-gray-400">Bucket: {String(e.evidence_bucket)} • Trust: {String(e.label_trust)}</p>
+                  <p className="text-gray-400">
+                    Bucket: {String(e.evidence_bucket || "replay_evidence")} • Trust: {String(e.label_trust || "runtime_verified")}
+                  </p>
                 </div>
               ))}
             </div>
